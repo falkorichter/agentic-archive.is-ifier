@@ -19,6 +19,8 @@ jobs:
       with:
         node-version: '20'
         
-    - name: Run tests
-      run: node test-runner-headless.js
-      working-directory: tests
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Run tests and validation
+      run: npm run ci

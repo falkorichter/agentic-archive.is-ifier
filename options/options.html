@@ -8,7 +8,6 @@
 <body>
     <div class="container">
         <h1 id="title">Archive.is-ifier Options</h1>
-        
         <div class="section">
             <label for="archiveUrl" id="archiveUrlLabel">Archive service URL:</label>
             <select id="archiveUrl">
@@ -20,8 +19,8 @@
         </div>
 
         <div class="section">
-            <h3 id="autoArchivingTitle">Auto-Archiving Settings <span style="color: #ff6600; font-size: 0.8em; font-weight: normal;">(Beta)</span></h3>
-            
+            <h3 id="autoArchivingTitle">Auto-Archiving Settings <span class="beta-label">(Beta)</span></h3>
+
             <div class="subsection">
                 <label for="textIndicators" id="textIndicatorsLabel">Text indicators to scan for:</label>
                 <textarea id="textIndicators" rows="4" placeholder="premium content&#10;paywall&#10;subscription required&#10;/premium|exclusive/"></textarea>
@@ -45,7 +44,7 @@
 
         <div class="section">
             <h3 id="debugSettingsTitle">Debug Settings</h3>
-            
+
             <div class="subsection">
                 <label class="checkbox-label">
                     <input type="checkbox" id="debugMode">
@@ -73,10 +72,10 @@
             <button id="save" type="button">Save</button>
             <button id="reset" type="button">Reset to defaults</button>
         </div>
-        
+
         <div id="status" class="status"></div>
     </div>
-    
+
     <script src="options.js"></script>
 </body>
 </html>
