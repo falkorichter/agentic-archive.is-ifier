@@ -479,6 +479,38 @@ const testCases = [
         result: result 
       };
     }
+  },
+
+  // Archive badge tests
+  {
+    name: 'archiveBadge - Shows for archived URLs',
+    test: () => {
+      const result = testArchiveBadgeForArchivedUrl();
+      return { 
+        pass: result.success && result.allCorrect,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'archiveBadge - Hidden for non-archived URLs',
+    test: () => {
+      const result = testArchiveBadgeForNonArchivedUrl();
+      return { 
+        pass: result.success && result.allCorrect,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'archiveBadge - Update logic works correctly',
+    test: () => {
+      const result = testBadgeUpdateLogic();
+      return { 
+        pass: result.success && result.archivedCorrect && result.nonArchivedCorrect,
+        result: result 
+      };
+    }
   }
 ];
 

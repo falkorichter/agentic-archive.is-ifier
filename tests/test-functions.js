@@ -390,3 +390,128 @@ function testContentScriptMessageHandling(messageType) {
     return { success: false, error: error.message };
   }
 }
+
+// Test archive badge should show for archived URLs
+function testArchiveBadgeForArchivedUrl() {
+  try {
+    const archivedUrls = [
+      'https://archive.ph/abc123/https://example.com',
+      'https://archive.is/xyz789/https://example.com',
+      'https://archive.today/def456/https://example.com',
+      'https://web.archive.org/web/20220101000000/https://example.com'
+    ];
+    
+    let results = [];
+    
+    for (const url of archivedUrls) {
+      const shouldShowBadge = isArchiveUrl(url);
+      results.push({
+        url: url,
+        shouldShowBadge: shouldShowBadge,
+        isCorrect: shouldShowBadge === true
+      });
+    }
+    
+    const allCorrect = results.every(r => r.isCorrect);
+    
+    return {
+      success: true,
+      results: results,
+      allCorrect: allCorrect
+    };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+// Test archive badge should not show for non-archived URLs
+function testArchiveBadgeForNonArchivedUrl() {
+  try {
+    const nonArchivedUrls = [
+      'https://example.com',
+      'https://google.com',
+      'https://github.com/user/repo',
+      'https://news.ycombinator.com',
+      'https://stackoverflow.com/questions/123456'
+    ];
+    
+    let results = [];
+    
+    for (const url of nonArchivedUrls) {
+      const shouldShowBadge = isArchiveUrl(url);
+      results.push({
+        url: url,
+        shouldShowBadge: shouldShowBadge,
+        isCorrect: shouldShowBadge === false
+      });
+    }
+    
+    const allCorrect = results.every(r => r.isCorrect);
+    
+    return {
+      success: true,
+      results: results,
+      allCorrect: allCorrect
+    };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+// Test badge update logic
+function testBadgeUpdateLogic() {
+  try {
+    // Mock badge state
+    let badgeState = {
+      text: '',
+      backgroundColor: '',
+      title: ''
+    };
+    
+    // Mock chrome.action methods for testing
+    const mockChromeAction = {
+      setBadgeText: (options) => { badgeState.text = options.text; },
+      setBadgeBackgroundColor: (options) => { badgeState.backgroundColor = options.color; },
+      setTitle: (options) => { badgeState.title = options.title; }
+    };
+    
+    // Test function that simulates updateArchiveBadge logic
+    function simulateUpdateArchiveBadge(tabId, url) {
+      if (isArchiveUrl(url)) {
+        mockChromeAction.setBadgeText({ tabId: tabId, text: '✓' });
+        mockChromeAction.setBadgeBackgroundColor({ tabId: tabId, color: '#4CAF50' });
+        mockChromeAction.setTitle({ tabId: tabId, title: 'Archive.is-ifier - This page is archived' });
+      } else {
+        mockChromeAction.setBadgeText({ tabId: tabId, text: '' });
+        mockChromeAction.setTitle({ tabId: tabId, title: 'Archive.is-ifier' });
+      }
+    }
+    
+    // Test archived URL
+    simulateUpdateArchiveBadge(1, 'https://archive.ph/abc123/https://example.com');
+    const archivedState = {
+      text: badgeState.text,
+      backgroundColor: badgeState.backgroundColor,
+      title: badgeState.title
+    };
+    
+    // Reset and test non-archived URL
+    badgeState = { text: '', backgroundColor: '', title: '' };
+    simulateUpdateArchiveBadge(1, 'https://example.com');
+    const nonArchivedState = {
+      text: badgeState.text,
+      backgroundColor: badgeState.backgroundColor,
+      title: badgeState.title
+    };
+    
+    return {
+      success: true,
+      archivedState: archivedState,
+      nonArchivedState: nonArchivedState,
+      archivedCorrect: archivedState.text === '✓' && archivedState.backgroundColor === '#4CAF50',
+      nonArchivedCorrect: nonArchivedState.text === '' && nonArchivedState.title === 'Archive.is-ifier'
+    };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
