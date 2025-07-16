@@ -11,9 +11,13 @@ A Chrome extension for archiving URLs with archive.is and similar services. This
 - **Extract real URLs** - Extract original URLs from archive.is/archive.ph links
 - **Archive selected text** - Archive text selections containing URLs
 - **Archive current page** - Archive the currently active page
+- **Auto-archiving** - Automatically archive pages containing specified text indicators
+- **Pattern-based scanning** - Configure URL patterns for targeted page scanning
 
 ### ✅ Configuration & Options
 - **Configurable archive service** - Choose between archive.ph, archive.is, archive.today
+- **Auto-archiving settings** - Configure text indicators and page patterns for automatic archiving
+- **Global scanning toggle** - Option to scan all websites for indicators, not just specific patterns
 - **Clean options UI** - Intuitive settings interface 
 - **Persistent settings** - Your preferences are saved and synchronized
 
@@ -37,17 +41,20 @@ See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 
 ## Usage
 
-1. **Configure** - Right-click the extension icon → Options to choose your preferred archive service
+1. **Configure** - Right-click the extension icon → Options to choose your preferred archive service and set up auto-archiving
 2. **Archive links** - Right-click any link and select archive options from context menu
 3. **Archive pages** - Right-click anywhere on a page to archive the current page
 4. **Archive selections** - Select text containing URLs and right-click to archive
-5. **View archives** - Use "Show archived versions" to see historical snapshots
+5. **Auto-archiving** - Configure text indicators and URL patterns for automatic page archiving
+6. **Global scanning** - Enable scanning all websites for indicators, or use specific URL patterns
+7. **View archives** - Use "Show archived versions" to see historical snapshots
 
 ## File Structure
 
 ```
 ├── manifest.json              # Extension manifest with permissions
 ├── background.js              # Service worker for context menus & API calls
+├── content.js                 # Content script for page scanning & auto-archiving
 ├── options/
 │   ├── options.html          # Options page UI
 │   ├── options.css           # Styling
@@ -73,6 +80,17 @@ const archiveSubmitUrl = `${archiveServiceUrl}?url=${encodeURIComponent(cleanedU
 
 This mimics the archive service form submission process while providing seamless integration through the browser context menu.
 
+## Auto-Archiving Features
+
+The extension includes automatic page archiving capabilities:
+
+- **Text Indicators**: Configure patterns to search for in page content (supports regex)
+- **URL Patterns**: Define which pages to scan based on URL patterns
+- **Global Scanning**: Option to scan all visited websites regardless of URL patterns
+- **Smart Matching**: Supports both simple text matching and regex patterns
+
+When enabled, the content script scans pages for configured indicators and automatically archives matching pages.
+
 ## Related Projects
 
 This extension is similar to [rahiel/archiveror](https://github.com/rahiel/archiveror), which provides broader archiving functionality including multiple services (archive.is, archive.org, perma.cc, webcitation.org) and bookmark automation. Archiveror offers more comprehensive features like local MHTML saving and automatic bookmark archiving, while agentic-archive.is-ifier focuses specifically on archive.is-style services with a streamlined context menu experience.
@@ -85,6 +103,7 @@ Run the test suite by opening `tests/test.html` in your browser. Tests cover:
 - Archive URL detection and extraction  
 - Context menu functionality
 - Complete archiving workflows
+- Auto-archiving and content scanning functionality
 
 ### Contributing
 When contributing:
