@@ -412,13 +412,17 @@
             const foundIndicators = scanPageForIndicators(settings.textIndicators || '');
             
             // 6. Determine final result
-            if (normalScanWouldOccur && foundIndicators.length > 0) {
+            // In debug mode, indicators take precedence over normal scanning conditions (except homepage exclusion)
+            if (isHomepage) {
+                wouldArchive = false;
+                skipReason = 'Homepage exclusion';
+            } else if (foundIndicators.length > 0) {
                 wouldArchive = true;
                 archiveReason = `Found indicators: ${foundIndicators.join(', ')}`;
-            } else if (!normalScanWouldOccur) {
-                wouldArchive = false;
-                skipReason = isHomepage ? 'Homepage exclusion' : 'No matching patterns and global scanning disabled';
-            } else if (foundIndicators.length === 0) {
+                if (!normalScanWouldOccur) {
+                    archiveReason += ' (debug mode: indicators override normal scanning conditions)';
+                }
+            } else {
                 wouldArchive = false;
                 skipReason = 'No indicators found in page content';
             }

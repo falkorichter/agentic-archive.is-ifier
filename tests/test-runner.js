@@ -475,7 +475,7 @@ const testCases = [
     test: () => {
       const result = testDebugScanNoConditions();
       return { 
-        pass: result.success && result.wouldArchive === false && result.normalScanWouldOccur === false,
+        pass: result.success && result.wouldArchive === true && result.normalScanWouldOccur === false && result.foundIndicators.length > 0,
         result: result 
       };
     }
