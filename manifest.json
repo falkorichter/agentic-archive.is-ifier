@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "__MSG_appName__",
+    "description": "__MSG_appDesc__",
+    "version": "1.0.2",
+    "default_locale": "en_US",
+    "icons": {
+        "16": "img/icon.png",
+        "48": "img/icon.png",
+        "128": "img/icon.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "options_ui": {
+        "page": "options/options.html"
+    },
+    "permissions": [
+        "contextMenus",
+        "clipboardWrite",
+        "storage",
+        "tabs",
+        "activeTab",
+        "notifications"
+    ],
+    "host_permissions": [
+        "https://archive.is/*",
+        "https://archive.ph/*",
+        "https://web.archive.org/*"
+    ]
+}

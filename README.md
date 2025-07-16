@@ -1,24 +1,114 @@
 # agentic-archive.is-ifier
 
-this is a vibe coded chrome extension tryint to mimic https://chromewebstore.google.com/detail/archiveisifier/mcpaaodjfngbeolmaaobjmoefnafljkc
+A Chrome extension for archiving URLs with archive.is and similar services. This extension provides comprehensive context menu integration for archiving web content and managing archive links.
 
-## requirements:
-Adds archive.is-content to contextmenu
+## Features
 
-This extension allows users to right click urls and
-- archive the link with archive.is
-- archive the link and copy archive.is-link to clipboard
-- show all archived versions of link
-- show real URL (if right clicked archive.is/fo-link)
-- open selected url on archive.is (urls that are not a-tags)
-- open current page on archive.is
-- make the url an option which can be edited in options https://archive.ph/ could be another URL
-- copy the options and interface from https://github.com/falkorichter/export-tabs-urls
-- the icon should be some basic png with `is!` written in it
+### ✅ Context Menu Integration
+- **Archive links** - Submit URLs to your configured archive service (archive.is, archive.ph, archive.today)
+- **Archive and copy** - Archive links and automatically copy the archive URL to clipboard  
+- **Show archived versions** - View archived versions using Wayback Machine
+- **Extract real URLs** - Extract original URLs from archive.is/archive.ph links
+- **Archive selected text** - Archive text selections containing URLs
+- **Archive current page** - Archive the currently active page
 
-here is the form on archive.is
+### ✅ Configuration & Options
+- **Configurable archive service** - Choose between archive.ph, archive.is, archive.today
+- **Clean options UI** - Intuitive settings interface 
+- **Persistent settings** - Your preferences are saved and synchronized
+
+### ✅ Technical Implementation
+- **Manifest v3** - Modern Chrome extension with proper permissions
+- **Service worker** - Efficient background processing
+- **Internationalization** - Multi-language support framework
+- **Custom icon** - Distinctive "is!" icon for easy identification
+- **Error handling** - Comprehensive notifications and error management
+- **Comprehensive tests** - Isolated unit tests for core functionality
+
+## Installation
+
+1. Download or clone this repository
+2. Open Chrome and navigate to `chrome://extensions/`
+3. Enable "Developer mode" (toggle in top right)
+4. Click "Load unpacked" and select the extension directory
+5. The extension will appear in your Chrome toolbar
+
+See [INSTALL.md](INSTALL.md) for detailed installation instructions.
+
+## Usage
+
+1. **Configure** - Right-click the extension icon → Options to choose your preferred archive service
+2. **Archive links** - Right-click any link and select archive options from context menu
+3. **Archive pages** - Right-click anywhere on a page to archive the current page
+4. **Archive selections** - Select text containing URLs and right-click to archive
+5. **View archives** - Use "Show archived versions" to see historical snapshots
+
+## File Structure
+
 ```
-<form id="submiturl" style="text-align:left;height:75px;background-color:#B40010;position:relative" action="https://archive.ph/submit/" method="GET"><div style="padding:5px;margin:0 20px;color:white;font-weight:bold;font-size:16px">My url is alive and I want to archive its content</div><div style="margin:0;padding:0;position:absolute;left:20px;right:140px"><input id="url" style="padding:0px 2px;height:2em;width:100%;border:0" type="text" name="url" placeholder="http://www.domain.com/url" value="" tabindex="1"></div><div style="margin:0;padding:0;position:absolute;width:100px;right:20px"><input style="padding:4px;height:2em;width:100px" type="submit" value="save" tabindex="-1"></div></form>
+├── manifest.json              # Extension manifest with permissions
+├── background.js              # Service worker for context menus & API calls
+├── options/
+│   ├── options.html          # Options page UI
+│   ├── options.css           # Styling
+│   └── options.js            # Options functionality
+├── _locales/en_US/
+│   └── messages.json         # Internationalization strings
+├── img/
+│   └── icon.png             # Extension icon with "is!" text
+├── tests/                    # Test suite for core functionality
+│   ├── test.html            # Browser-based test runner
+│   ├── test-runner.js       # Test execution framework
+│   └── test-functions.js    # Unit tests for core functions
+└── INSTALL.md               # Installation instructions
 ```
-which we want to mimic. we don't want to open the URL but post the URL to the same endpoint.
+
+## Archive Service Integration
+
+The extension submits URLs to archive services using their form submission endpoints:
+
+```javascript
+const archiveSubmitUrl = `${archiveServiceUrl}?url=${encodeURIComponent(cleanedUrl)}`;
+```
+
+This mimics the archive service form submission process while providing seamless integration through the browser context menu.
+
+## Related Projects
+
+This extension is similar to [rahiel/archiveror](https://github.com/rahiel/archiveror), which provides broader archiving functionality including multiple services (archive.is, archive.org, perma.cc, webcitation.org) and bookmark automation. Archiveror offers more comprehensive features like local MHTML saving and automatic bookmark archiving, while agentic-archive.is-ifier focuses specifically on archive.is-style services with a streamlined context menu experience.
+
+## Development
+
+### Testing
+Run the test suite by opening `tests/test.html` in your browser. Tests cover:
+- URL cleaning and validation
+- Archive URL detection and extraction  
+- Context menu functionality
+- Complete archiving workflows
+
+### Contributing
+When contributing:
+1. Update the README with new features
+2. Write tests for new functionality  
+3. Check for external code changes before submitting
+4. Document the LLM and tools used in development
+
+## AI Generation Notice
+
+This entire codebase was generated using AI tools (specifically GitHub Copilot and Claude) with no human coding intervention. The extension was created through iterative AI-assisted development, including:
+- Initial code generation
+- Bug fixes and refinements  
+- Test suite creation
+- Documentation
+
+## Development Metadata
+
+**Last updated:** 2024
+**AI Tools Used:** GitHub Copilot, Claude (Anthropic)
+**Development Method:** Fully AI-generated with iterative refinement
+**Test Coverage:** Core functionality, URL processing, archive detection
+
+---
+
+*For future development: Always update README, write comprehensive tests, verify no external code conflicts, and document AI/LLM tools used in the development process., bump version in manifest with each commit that does not touch markdown files*
 

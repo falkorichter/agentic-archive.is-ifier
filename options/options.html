@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Archive.is-ifier Options</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Archive.is-ifier Options</h1>
+        
+        <div class="section">
+            <label for="archiveUrl" id="archiveUrlLabel">Archive service URL:</label>
+            <select id="archiveUrl">
+                <option value="https://archive.ph/submit/">archive.ph</option>
+                <option value="https://archive.is/submit/">archive.is</option>
+                <option value="https://archive.today/submit/">archive.today</option>
+            </select>
+            <p class="help-text" id="archiveUrlHelp">Choose which archive service to use</p>
+        </div>
+
+        <div class="section">
+            <h3>Features:</h3>
+            <ul>
+                <li>Right-click on links to archive them</li>
+                <li>Archive links and copy the archive URL to clipboard</li>
+                <li>View archived versions of links</li>
+                <li>Extract real URLs from archive links</li>
+                <li>Archive selected text as URLs</li>
+                <li>Archive the current page</li>
+            </ul>
+        </div>
+
+        <div class="buttons">
+            <button id="save" type="button">Save</button>
+            <button id="reset" type="button">Reset to defaults</button>
+        </div>
+        
+        <div id="status" class="status"></div>
+    </div>
+    
+    <script src="options.js"></script>
+</body>
+</html>
