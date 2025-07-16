@@ -13,7 +13,7 @@ body {
     background: white;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
 }
 
 h1 {
@@ -26,6 +26,12 @@ h1 {
 h3 {
     color: #555;
     margin-top: 25px;
+}
+
+.beta-label {
+    color: #f60;
+    font-size: 0.8em;
+    font-weight: normal;
 }
 
 .section {
@@ -62,7 +68,7 @@ textarea {
 select:focus, textarea:focus {
     outline: none;
     border-color: #B40010;
-    box-shadow: 0 0 0 2px rgba(180, 0, 16, 0.1);
+    box-shadow: 0 0 0 2px rgb(180 0 16 / 10%);
 }
 
 .subsection {
