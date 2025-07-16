@@ -5,13 +5,23 @@
   "private": true,
   "scripts": {
     "test": "node tests/test-runner-headless.js",
+    "lint:js": "eslint *.js **/*.js --ignore-pattern eslint.config.js",
+    "lint:html": "html-validate *.html **/*.html",
+    "lint:css": "stylelint **/*.css",
+    "lint": "npm run lint:js && npm run lint:html && npm run lint:css",
+    "format": "prettier --write \"**/*.{js,html,css,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,html,css,json,md}\"",
     "validate:html": "html-validate *.html **/*.html",
     "validate:css": "stylelint **/*.css",
     "validate": "npm run validate:html && npm run validate:css",
-    "ci": "npm run test && npm run validate"
+    "ci": "npm run test && npm run lint && npm run format:check"
   },
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.5",
     "html-validate": "^8.0.0",
+    "prettier": "^3.6.2",
     "stylelint": "^16.0.0",
     "stylelint-config-standard": "^36.0.0"
   },
