@@ -52,7 +52,12 @@ function runTests() {
           shouldScanUrlWithPatterns: shouldScanUrlWithPatterns,
           shouldScanPage: shouldScanPage,
           testTabIndexBehavior: testTabIndexBehavior,
-          testContentScriptMessageHandling: testContentScriptMessageHandling
+          testContentScriptMessageHandling: testContentScriptMessageHandling,
+          testDebugScanAnalysis: testDebugScanAnalysis,
+          testDebugScanWithIndicators: testDebugScanWithIndicators,
+          testDebugScanHomepage: testDebugScanHomepage,
+          testDebugScanNoIndicators: testDebugScanNoIndicators,
+          testDebugScanNoConditions: testDebugScanNoConditions
         };
       }
     `);
@@ -70,7 +75,9 @@ function runTests() {
       const { cleanUrl, isValidUrl, isArchiveUrl, extractRealUrlFromArchive, 
               generateArchiveId, testArchiveUrlWorkflow, testShowArchivedVersionsWorkflow, 
               testShowRealUrlWorkflow, scanPageForIndicators, shouldScanUrlWithPatterns,
-              shouldScanPage, testTabIndexBehavior, testContentScriptMessageHandling } = testFunctions;
+              shouldScanPage, testTabIndexBehavior, testContentScriptMessageHandling,
+              testDebugScanAnalysis, testDebugScanWithIndicators, testDebugScanHomepage,
+              testDebugScanNoIndicators, testDebugScanNoConditions } = testFunctions;
       
       const testCases = [${testCasesMatch[1]}];
       return testCases;

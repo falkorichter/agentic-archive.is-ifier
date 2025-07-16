@@ -150,7 +150,16 @@ async function handleDebugScan() {
             });
             
             if (response && response.success) {
-                showStatus('Debug scan completed! Check console for detailed logs.', 'success');
+                const result = response.result;
+                if (result && typeof result.wouldArchive === 'boolean') {
+                    if (result.wouldArchive) {
+                        showStatus(`✅ Archive WOULD open - ${result.reason}`, 'success');
+                    } else {
+                        showStatus(`❌ Archive would NOT open - ${result.reason}`, 'info');
+                    }
+                } else {
+                    showStatus('Debug scan completed! Check page for notification.', 'success');
+                }
             } else {
                 showStatus('Debug scan failed: ' + (response?.error || 'Unknown error'), 'error');
             }

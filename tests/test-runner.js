@@ -439,6 +439,46 @@ const testCases = [
         result: result 
       };
     }
+  },
+  {
+    name: 'debugScan - With indicators found',
+    test: () => {
+      const result = testDebugScanWithIndicators();
+      return { 
+        pass: result.success && result.wouldArchive === true && result.foundIndicators.length > 0,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'debugScan - Homepage exclusion',
+    test: () => {
+      const result = testDebugScanHomepage();
+      return { 
+        pass: result.success && result.wouldArchive === false && result.isHomepage === true,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'debugScan - No indicators found',
+    test: () => {
+      const result = testDebugScanNoIndicators();
+      return { 
+        pass: result.success && result.wouldArchive === false && result.foundIndicators.length === 0,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'debugScan - No scanning conditions met',
+    test: () => {
+      const result = testDebugScanNoConditions();
+      return { 
+        pass: result.success && result.wouldArchive === false && result.normalScanWouldOccur === false,
+        result: result 
+      };
+    }
   }
 ];
 

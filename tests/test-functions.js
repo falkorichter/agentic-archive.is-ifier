@@ -221,7 +221,114 @@ function shouldScanPage(url, settings) {
   return shouldScanUrlWithPatterns(url, settings.pagePathPatterns || '');
 }
 
-// Test function to verify tab creation with correct index
+// Test function for debug scan analysis - always runs regardless of conditions
+function testDebugScanAnalysis(url, settings, mockPageContent = '') {
+  try {
+    // Simulate the debug scan analysis logic
+    const urlObj = new URL(url);
+    const isHomepage = urlObj.pathname === '/' || urlObj.pathname === '';
+    const globalScanningEnabled = settings.globalScanning === true;
+    
+    // Check page path patterns
+    let pathMatches = false;
+    const pathPatterns = settings.pagePathPatterns || '';
+    if (pathPatterns.trim()) {
+      pathMatches = shouldScanUrlWithPatterns(url, pathPatterns);
+    }
+    
+    // Determine if normal scan would occur
+    const normalScanWouldOccur = !isHomepage && (globalScanningEnabled || pathMatches);
+    
+    // Always run indicator scanning for debug (regardless of normal conditions)
+    const foundIndicators = scanPageForIndicators(settings.textIndicators || '', mockPageContent);
+    
+    // Determine final result
+    let wouldArchive = false;
+    let reason = '';
+    
+    if (normalScanWouldOccur && foundIndicators.length > 0) {
+      wouldArchive = true;
+      reason = `Found indicators: ${foundIndicators.join(', ')}`;
+    } else if (!normalScanWouldOccur) {
+      wouldArchive = false;
+      reason = isHomepage ? 'Homepage exclusion' : 'No matching patterns and global scanning disabled';
+    } else if (foundIndicators.length === 0) {
+      wouldArchive = false;
+      reason = 'No indicators found in page content';
+    }
+    
+    return {
+      success: true,
+      wouldArchive: wouldArchive,
+      reason: reason,
+      foundIndicators: foundIndicators,
+      normalScanWouldOccur: normalScanWouldOccur,
+      isHomepage: isHomepage,
+      globalScanningEnabled: globalScanningEnabled,
+      pathMatches: pathMatches
+    };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+// Test debug scan with indicators found
+function testDebugScanWithIndicators() {
+  const url = 'https://example.com/article/123';
+  const settings = {
+    globalScanning: true,
+    textIndicators: 'premium content\npaywall',
+    pagePathPatterns: '',
+    debugMode: true
+  };
+  const mockPageContent = 'This article contains premium content that requires subscription.';
+  
+  return testDebugScanAnalysis(url, settings, mockPageContent);
+}
+
+// Test debug scan on homepage (should show would not archive)
+function testDebugScanHomepage() {
+  const url = 'https://example.com/';
+  const settings = {
+    globalScanning: true,
+    textIndicators: 'premium content',
+    pagePathPatterns: '',
+    debugMode: true
+  };
+  const mockPageContent = 'This homepage has premium content mentioned.';
+  
+  return testDebugScanAnalysis(url, settings, mockPageContent);
+}
+
+// Test debug scan with no indicators found
+function testDebugScanNoIndicators() {
+  const url = 'https://example.com/article/123';
+  const settings = {
+    globalScanning: true,
+    textIndicators: 'premium content\npaywall',
+    pagePathPatterns: '',
+    debugMode: true
+  };
+  const mockPageContent = 'This is a free article with no restricted content.';
+  
+  return testDebugScanAnalysis(url, settings, mockPageContent);
+}
+
+// Test debug scan with no scanning conditions met
+function testDebugScanNoConditions() {
+  const url = 'https://example.com/article/123';
+  const settings = {
+    globalScanning: false,
+    textIndicators: 'premium content',
+    pagePathPatterns: '', // No patterns
+    debugMode: true
+  };
+  const mockPageContent = 'This article has premium content.';
+  
+  return testDebugScanAnalysis(url, settings, mockPageContent);
+}
+
+// Test function for tab creation with correct index
 function testTabIndexBehavior() {
   try {
     // Mock tab object representing current tab at index 3
@@ -252,7 +359,18 @@ function testContentScriptMessageHandling(messageType) {
         break;
       case 'MANUAL_DEBUG_SCAN':
         // This would normally be async, but for testing we simulate the expected structure
-        expectedResponse = { success: true };
+        expectedResponse = { 
+          success: true, 
+          result: {
+            wouldArchive: false,
+            reason: 'No indicators found in page content',
+            foundIndicators: [],
+            normalScanWouldOccur: true,
+            isHomepage: false,
+            globalScanningEnabled: false,
+            pathMatches: false
+          }
+        };
         break;
       default:
         expectedResponse = null;
