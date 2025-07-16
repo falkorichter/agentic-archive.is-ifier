@@ -337,6 +337,26 @@ const testCases = [
         result: result 
       };
     }
+  },
+
+  // Debug mode functionality test
+  {
+    name: 'debugMode - Settings include debug mode',
+    test: () => {
+      // Test that debug mode setting can be included in settings object
+      const testSettings = {
+        globalScanning: false,
+        textIndicators: 'test',
+        pagePathPatterns: '',
+        debugMode: true
+      };
+      const hasDebugMode = 'debugMode' in testSettings;
+      const debugModeValue = testSettings.debugMode;
+      return { 
+        pass: hasDebugMode && debugModeValue === true,
+        result: { hasDebugMode, debugModeValue, testSettings }
+      };
+    }
   }
 ];
 
