@@ -1,0 +1,47 @@
+{
+    "appName": {
+        "message": "Archive.is-ifier"
+    },
+    "appDesc": {
+        "message": "Right-click to archive URLs with archive.is"
+    },
+    "contextMenuArchive": {
+        "message": "Archive this link"
+    },
+    "contextMenuArchiveCopy": {
+        "message": "Archive this link and copy URL"
+    },
+    "contextMenuShowVersions": {
+        "message": "Show archived versions"
+    },
+    "contextMenuShowReal": {
+        "message": "Show real URL"
+    },
+    "contextMenuArchiveSelection": {
+        "message": "Archive selected URL"
+    },
+    "contextMenuArchivePage": {
+        "message": "Archive current page"
+    },
+    "optionsTitle": {
+        "message": "Archive.is-ifier Options"
+    },
+    "optionsArchiveUrl": {
+        "message": "Archive service URL"
+    },
+    "optionsArchiveUrlHelp": {
+        "message": "Choose which archive service to use"
+    },
+    "optionsSave": {
+        "message": "Save"
+    },
+    "notificationSuccess": {
+        "message": "URL archived successfully"
+    },
+    "notificationError": {
+        "message": "Error archiving URL"
+    },
+    "notificationCopied": {
+        "message": "Archive URL copied to clipboard"
+    }
+}
