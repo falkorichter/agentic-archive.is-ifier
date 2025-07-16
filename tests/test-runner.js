@@ -1,0 +1,256 @@
+// Test runner for Archive.is-ifier extension
+
+// Test cases
+const testCases = [
+  // URL cleaning tests
+  {
+    name: 'cleanUrl - Valid HTTPS URL',
+    test: () => {
+      const result = cleanUrl('https://example.com');
+      return { pass: result === 'https://example.com', result: result };
+    }
+  },
+  {
+    name: 'cleanUrl - Valid HTTP URL',
+    test: () => {
+      const result = cleanUrl('http://example.com');
+      return { pass: result === 'http://example.com', result: result };
+    }
+  },
+  {
+    name: 'cleanUrl - Domain without protocol',
+    test: () => {
+      const result = cleanUrl('example.com');
+      return { pass: result === 'https://example.com', result: result };
+    }
+  },
+  {
+    name: 'cleanUrl - URL with whitespace',
+    test: () => {
+      const result = cleanUrl('  https://example.com  ');
+      return { pass: result === 'https://example.com', result: result };
+    }
+  },
+  {
+    name: 'cleanUrl - Empty string',
+    test: () => {
+      const result = cleanUrl('');
+      return { pass: result === '', result: result };
+    }
+  },
+  {
+    name: 'cleanUrl - Invalid text with spaces',
+    test: () => {
+      const result = cleanUrl('some random text');
+      return { pass: result === 'some random text', result: result };
+    }
+  },
+
+  // URL validation tests
+  {
+    name: 'isValidUrl - Valid HTTPS URL',
+    test: () => {
+      const result = isValidUrl('https://example.com');
+      return { pass: result === true, result: result };
+    }
+  },
+  {
+    name: 'isValidUrl - Invalid URL',
+    test: () => {
+      const result = isValidUrl('not a url');
+      return { pass: result === false, result: result };
+    }
+  },
+  {
+    name: 'isValidUrl - Empty string',
+    test: () => {
+      const result = isValidUrl('');
+      return { pass: result === false, result: result };
+    }
+  },
+
+  // Archive URL detection tests
+  {
+    name: 'isArchiveUrl - archive.ph URL',
+    test: () => {
+      const result = isArchiveUrl('https://archive.ph/abc123/example.com');
+      return { pass: result === true, result: result };
+    }
+  },
+  {
+    name: 'isArchiveUrl - archive.is URL',
+    test: () => {
+      const result = isArchiveUrl('https://archive.is/def456/example.com');
+      return { pass: result === true, result: result };
+    }
+  },
+  {
+    name: 'isArchiveUrl - web.archive.org URL',
+    test: () => {
+      const result = isArchiveUrl('https://web.archive.org/web/20220101000000/example.com');
+      return { pass: result === true, result: result };
+    }
+  },
+  {
+    name: 'isArchiveUrl - regular URL',
+    test: () => {
+      const result = isArchiveUrl('https://example.com');
+      return { pass: result === false, result: result };
+    }
+  },
+
+  // Real URL extraction tests
+  {
+    name: 'extractRealUrlFromArchive - archive.ph URL',
+    test: () => {
+      const result = extractRealUrlFromArchive('https://archive.ph/abc123/https://example.com');
+      return { pass: result === 'https://example.com', result: result };
+    }
+  },
+  {
+    name: 'extractRealUrlFromArchive - archive.is URL',
+    test: () => {
+      const result = extractRealUrlFromArchive('https://archive.is/def456/https://github.com');
+      return { pass: result === 'https://github.com', result: result };
+    }
+  },
+  {
+    name: 'extractRealUrlFromArchive - web.archive.org URL',
+    test: () => {
+      const result = extractRealUrlFromArchive('https://web.archive.org/web/20220101000000/https://example.com');
+      return { pass: result === 'https://example.com', result: result };
+    }
+  },
+  {
+    name: 'extractRealUrlFromArchive - non-archive URL',
+    test: () => {
+      const result = extractRealUrlFromArchive('https://example.com');
+      return { pass: result === null, result: result };
+    }
+  },
+
+  // Workflow tests
+  {
+    name: 'testArchiveUrlWorkflow - Valid URL',
+    test: () => {
+      const result = testArchiveUrlWorkflow('https://example.com');
+      return { 
+        pass: result.success && result.cleanedUrl === 'https://example.com' && result.archiveSubmitUrl.includes('archive.ph'), 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'testArchiveUrlWorkflow - Domain without protocol',
+    test: () => {
+      const result = testArchiveUrlWorkflow('github.com');
+      return { 
+        pass: result.success && result.cleanedUrl === 'https://github.com' && result.archiveSubmitUrl.includes('archive.ph'), 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'testArchiveUrlWorkflow - Invalid URL',
+    test: () => {
+      const result = testArchiveUrlWorkflow('not a url');
+      return { 
+        pass: !result.success && result.error === 'Invalid URL', 
+        result: result 
+      };
+    }
+  },
+
+  {
+    name: 'testShowArchivedVersionsWorkflow - Valid URL',
+    test: () => {
+      const result = testShowArchivedVersionsWorkflow('https://example.com');
+      return { 
+        pass: result.success && result.searchUrl === 'https://web.archive.org/web/*/https://example.com', 
+        result: result 
+      };
+    }
+  },
+
+  {
+    name: 'testShowRealUrlWorkflow - Archive URL',
+    test: () => {
+      const result = testShowRealUrlWorkflow('https://archive.ph/abc123/https://example.com');
+      return { 
+        pass: result.success && result.realUrl === 'https://example.com' && result.isValid, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'testShowRealUrlWorkflow - Non-archive URL',
+    test: () => {
+      const result = testShowRealUrlWorkflow('https://example.com');
+      return { 
+        pass: !result.success && result.error === 'Not an archive URL', 
+        result: result 
+      };
+    }
+  }
+];
+
+// Run all tests
+function runAllTests() {
+  const resultsDiv = document.getElementById('test-results');
+  resultsDiv.innerHTML = '<h2>Test Results</h2>';
+  
+  let passCount = 0;
+  let totalCount = testCases.length;
+  
+  testCases.forEach((testCase, index) => {
+    try {
+      const testResult = testCase.test();
+      const testDiv = document.createElement('div');
+      testDiv.className = `test ${testResult.pass ? 'pass' : 'fail'}`;
+      
+      testDiv.innerHTML = `
+        <div class="test-name">${testCase.name}</div>
+        <div class="test-result">
+          Status: ${testResult.pass ? 'PASS ✓' : 'FAIL ✗'}<br>
+          Result: ${JSON.stringify(testResult.result, null, 2)}
+        </div>
+      `;
+      
+      resultsDiv.appendChild(testDiv);
+      
+      if (testResult.pass) {
+        passCount++;
+      }
+    } catch (error) {
+      const testDiv = document.createElement('div');
+      testDiv.className = 'test fail';
+      testDiv.innerHTML = `
+        <div class="test-name">${testCase.name}</div>
+        <div class="test-result">
+          Status: ERROR ✗<br>
+          Error: ${error.message}
+        </div>
+      `;
+      resultsDiv.appendChild(testDiv);
+    }
+  });
+  
+  // Add summary
+  const summaryDiv = document.createElement('div');
+  summaryDiv.style.cssText = 'margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 5px; font-weight: bold;';
+  summaryDiv.innerHTML = `
+    <h3>Test Summary</h3>
+    Passed: ${passCount}/${totalCount} (${Math.round(passCount/totalCount*100)}%)
+  `;
+  resultsDiv.appendChild(summaryDiv);
+}
+
+// Clear test results
+function clearResults() {
+  document.getElementById('test-results').innerHTML = '';
+}
+
+// Auto-run tests when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Test page loaded. Click "Run All Tests" to start testing.');
+});

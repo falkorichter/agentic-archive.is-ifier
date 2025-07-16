@@ -108,18 +108,18 @@ async function archiveUrl(url, copyToClipboard = false) {
     const archiveServiceUrl = result.archiveUrl || DEFAULT_ARCHIVE_URL;
     
     // Clean up the URL
-    const cleanUrl = cleanUrl(url);
-    if (!isValidUrl(cleanUrl)) {
+    const cleanedUrl = cleanUrl(url);
+    if (!isValidUrl(cleanedUrl)) {
       showNotification(chrome.i18n.getMessage('notificationError'), 'Invalid URL');
       return;
     }
 
     // Submit to archive service
-    const archiveUrl = `${archiveServiceUrl}?url=${encodeURIComponent(cleanUrl)}`;
+    const archiveSubmitUrl = `${archiveServiceUrl}?url=${encodeURIComponent(cleanedUrl)}`;
     
     // Open archive page in new tab
     const tab = await chrome.tabs.create({ 
-      url: archiveUrl,
+      url: archiveSubmitUrl,
       active: !copyToClipboard // Don't activate tab if we're just copying
     });
 
@@ -129,7 +129,7 @@ async function archiveUrl(url, copyToClipboard = false) {
         try {
           // For now, we'll copy the archive.is URL format
           // In a real implementation, we'd need to parse the response
-          const archivedUrl = `https://archive.ph/${generateArchiveId()}/${cleanUrl}`;
+          const archivedUrl = `https://archive.ph/${generateArchiveId()}/${cleanedUrl}`;
           await copyToClipboardFunction(archivedUrl);
           showNotification(chrome.i18n.getMessage('notificationCopied'));
         } catch (error) {
@@ -147,8 +147,8 @@ async function archiveUrl(url, copyToClipboard = false) {
 
 // Show archived versions of a URL
 function showArchivedVersions(url) {
-  const cleanUrl = cleanUrl(url);
-  const searchUrl = `https://web.archive.org/web/*/${cleanUrl}`;
+  const cleanedUrl = cleanUrl(url);
+  const searchUrl = `https://web.archive.org/web/*/${cleanedUrl}`;
   chrome.tabs.create({ url: searchUrl });
 }
 
