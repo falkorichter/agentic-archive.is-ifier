@@ -42,6 +42,7 @@ The extension provides a comprehensive options page for configuring archive serv
 - **Custom icon** - Distinctive "is!" icon for easy identification
 - **Error handling** - Comprehensive notifications and error management
 - **Comprehensive tests** - Isolated unit tests for core functionality
+- **Code quality** - HTML/CSS validation integrated into CI pipeline
 
 ## Installation
 
@@ -91,7 +92,13 @@ See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 ├── tests/                    # Test suite for core functionality
 │   ├── test.html            # Browser-based test runner
 │   ├── test-runner.js       # Test execution framework
+│   ├── test-runner-headless.js  # Headless test runner for CI
 │   └── test-functions.js    # Unit tests for core functions
+├── .github/workflows/
+│   └── ci.yml               # CI pipeline with tests and validation
+├── package.json             # Node.js dependencies for validation tools
+├── .htmlvalidate.json       # HTML validation configuration
+├── .stylelintrc.json        # CSS validation configuration
 └── INSTALL.md               # Installation instructions
 ```
 
@@ -123,12 +130,38 @@ This extension is similar to [rahiel/archiveror](https://github.com/rahiel/archi
 ## Development
 
 ### Testing
-Run the test suite by opening `tests/test.html` in your browser. Tests cover:
+Run the test suite and validation by:
+
+**JavaScript Tests:**
+```bash
+npm test
+# or directly: node tests/test-runner-headless.js
+```
+
+**HTML/CSS Validation:**
+```bash
+npm run validate
+# or separately:
+npm run validate:html  # HTML syntax and semantics
+npm run validate:css   # CSS syntax and style consistency
+```
+
+**Complete CI Check:**
+```bash
+npm run ci  # Runs both tests and validation
+```
+
+**Browser-based Testing:**
+Open `tests/test.html` in your browser for interactive testing.
+
+Tests cover:
 - URL cleaning and validation
 - Archive URL detection and extraction  
 - Context menu functionality
 - Complete archiving workflows
 - Auto-archiving and content scanning functionality
+- **HTML validation** - Syntax, semantics, accessibility
+- **CSS validation** - Syntax, modern standards, consistency
 
 **Future Enhancement**: Consider integrating Playwright into the CI pipeline to enable automated browser testing of the popup interface and ensure UI functionality doesn't break with future changes. This would provide visual regression testing and automated screenshot capture for documentation updates.
 
@@ -136,9 +169,10 @@ Run the test suite by opening `tests/test.html` in your browser. Tests cover:
 When contributing:
 1. Update the README with new features
 2. Write tests for new functionality  
-3. Check for external code changes before submitting
-4. Document the LLM and tools used in development
-5. **Update screenshots** - When UI changes are made, update screenshots in the README using browser testing tools like Playwright to ensure documentation stays current
+3. **Run validation** - Ensure `npm run ci` passes before submitting
+4. Check for external code changes before submitting
+5. Document the LLM and tools used in development
+6. **Update screenshots** - When UI changes are made, update screenshots in the README using browser testing tools like Playwright to ensure documentation stays current
 
 ## AI Generation Notice
 
@@ -153,7 +187,7 @@ This entire codebase was generated using AI tools (specifically GitHub Copilot a
 **Last updated:** 2024
 **AI Tools Used:** GitHub Copilot, Claude (Anthropic)
 **Development Method:** Fully AI-generated with iterative refinement
-**Test Coverage:** Core functionality, URL processing, archive detection
+**Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation
 
 ---
 
