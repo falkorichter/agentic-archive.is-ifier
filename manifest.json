@@ -9,6 +9,11 @@
         "48": "img/icon.png",
         "128": "img/icon.png"
     },
+    "action": {
+        "default_icon": "img/icon.png",
+        "default_title": "__MSG_appName__",
+        "default_popup": "popup/popup.html"
+    },
     "background": {
         "service_worker": "background.js"
     },

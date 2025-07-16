@@ -43,5 +43,23 @@
     },
     "notificationCopied": {
         "message": "Archive URL copied to clipboard"
+    },
+    "popupArchivePage": {
+        "message": "Archive current page"
+    },
+    "popupArchivePageDesc": {
+        "message": "Save this page to archive.is"
+    },
+    "popupShowVersions": {
+        "message": "Show archived versions"
+    },
+    "popupShowVersionsDesc": {
+        "message": "View history on Wayback Machine"
+    },
+    "popupSettings": {
+        "message": "Settings"
+    },
+    "popupSettingsDesc": {
+        "message": "Configure archive options"
     }
 }
