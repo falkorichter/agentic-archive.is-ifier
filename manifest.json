@@ -12,6 +12,13 @@
     "background": {
         "service_worker": "background.js"
     },
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["content.js"],
+            "run_at": "document_end"
+        }
+    ],
     "options_ui": {
         "page": "options/options.html"
     },
@@ -21,11 +28,14 @@
         "storage",
         "tabs",
         "activeTab",
-        "notifications"
+        "notifications",
+        "scripting"
     ],
     "host_permissions": [
         "https://archive.is/*",
         "https://archive.ph/*",
-        "https://web.archive.org/*"
+        "https://web.archive.org/*",
+        "http://*/*",
+        "https://*/*"
     ]
 }

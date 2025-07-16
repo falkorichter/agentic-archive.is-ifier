@@ -47,7 +47,10 @@ function runTests() {
           generateArchiveId: generateArchiveId,
           testArchiveUrlWorkflow: testArchiveUrlWorkflow,
           testShowArchivedVersionsWorkflow: testShowArchivedVersionsWorkflow,
-          testShowRealUrlWorkflow: testShowRealUrlWorkflow
+          testShowRealUrlWorkflow: testShowRealUrlWorkflow,
+          scanPageForIndicators: scanPageForIndicators,
+          shouldScanUrlWithPatterns: shouldScanUrlWithPatterns,
+          shouldScanPage: shouldScanPage
         };
       }
     `);
@@ -64,7 +67,8 @@ function runTests() {
     const testCasesScript = new Function('testFunctions', `
       const { cleanUrl, isValidUrl, isArchiveUrl, extractRealUrlFromArchive, 
               generateArchiveId, testArchiveUrlWorkflow, testShowArchivedVersionsWorkflow, 
-              testShowRealUrlWorkflow } = testFunctions;
+              testShowRealUrlWorkflow, scanPageForIndicators, shouldScanUrlWithPatterns,
+              shouldScanPage } = testFunctions;
       
       const testCases = [${testCasesMatch[1]}];
       return testCases;

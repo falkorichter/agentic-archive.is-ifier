@@ -118,3 +118,84 @@ function testShowRealUrlWorkflow(url) {
     return { success: false, error: error.message };
   }
 }
+
+// New functions for content script functionality testing
+
+// Test function for scanning page content for indicators
+function scanPageForIndicators(textIndicators, pageContent) {
+  if (!textIndicators.trim()) {
+    return [];
+  }
+
+  const indicators = textIndicators.split('\n').filter(i => i.trim());
+  const foundIndicators = [];
+  const pageText = pageContent.toLowerCase();
+
+  indicators.forEach(indicator => {
+    const trimmedIndicator = indicator.trim();
+    if (!trimmedIndicator) return;
+
+    try {
+      // Support both simple text matching and regex patterns
+      if (trimmedIndicator.startsWith('/') && trimmedIndicator.endsWith('/')) {
+        // Treat as regex
+        const regex = new RegExp(trimmedIndicator.slice(1, -1), 'gi');
+        if (regex.test(pageText)) {
+          foundIndicators.push(trimmedIndicator);
+        }
+      } else {
+        // Simple string matching (case insensitive)
+        if (pageText.includes(trimmedIndicator.toLowerCase())) {
+          foundIndicators.push(trimmedIndicator);
+        }
+      }
+    } catch (error) {
+      // If regex is invalid, fall back to string matching
+      if (pageText.includes(trimmedIndicator.toLowerCase())) {
+        foundIndicators.push(trimmedIndicator);
+      }
+    }
+  });
+
+  return foundIndicators;
+}
+
+// Test function for checking if URL matches path patterns
+function shouldScanUrlWithPatterns(url, pagePathPatterns) {
+  if (!pagePathPatterns.trim()) {
+    return false;
+  }
+
+  const patterns = pagePathPatterns.split('\n').filter(p => p.trim());
+  
+  return patterns.some(pattern => {
+    const trimmedPattern = pattern.trim();
+    if (!trimmedPattern) return false;
+    
+    try {
+      // Support both simple text matching and regex patterns
+      if (trimmedPattern.startsWith('/') && trimmedPattern.endsWith('/')) {
+        // Treat as regex
+        const regex = new RegExp(trimmedPattern.slice(1, -1), 'i');
+        return regex.test(url);
+      } else {
+        // Simple string matching (case insensitive)
+        return url.toLowerCase().includes(trimmedPattern.toLowerCase());
+      }
+    } catch (error) {
+      // If regex is invalid, fall back to string matching
+      return url.toLowerCase().includes(trimmedPattern.toLowerCase());
+    }
+  });
+}
+
+// Test function for overall scanning decision logic
+function shouldScanPage(url, settings) {
+  // If global scanning is enabled, scan all pages
+  if (settings.globalScanning === true) {
+    return true;
+  }
+
+  // Otherwise, check if current page matches any path patterns
+  return shouldScanUrlWithPatterns(url, settings.pagePathPatterns || '');
+}

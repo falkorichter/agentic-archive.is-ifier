@@ -191,6 +191,128 @@ const testCases = [
         result: result 
       };
     }
+  },
+
+  // Content scanning tests
+  {
+    name: 'scanPageForIndicators - Simple text match',
+    test: () => {
+      const indicators = 'premium content\npaywall';
+      const pageContent = 'This article contains premium content for subscribers only.';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 1 && result[0] === 'premium content', 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'scanPageForIndicators - No matches',
+    test: () => {
+      const indicators = 'premium content\npaywall';
+      const pageContent = 'This is a free article for everyone to read.';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 0, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'scanPageForIndicators - Regex pattern match',
+    test: () => {
+      const indicators = '/premium|exclusive/\npaywall';
+      const pageContent = 'This exclusive article is for members only.';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 1 && result[0] === '/premium|exclusive/', 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'scanPageForIndicators - Multiple matches',
+    test: () => {
+      const indicators = 'premium\nsubscription';
+      const pageContent = 'Premium subscription required for this content.';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 2 && result.includes('premium') && result.includes('subscription'), 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanUrlWithPatterns - Simple pattern match',
+    test: () => {
+      const patterns = 'news.example.com\nblog.test.org';
+      const url = 'https://news.example.com/article/123';
+      const result = shouldScanUrlWithPatterns(url, patterns);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanUrlWithPatterns - No pattern match',
+    test: () => {
+      const patterns = 'news.example.com\nblog.test.org';
+      const url = 'https://other.website.com/article/123';
+      const result = shouldScanUrlWithPatterns(url, patterns);
+      return { 
+        pass: result === false, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanUrlWithPatterns - Regex pattern match',
+    test: () => {
+      const patterns = '/article\\/\\d+/\nblog.test.org';
+      const url = 'https://example.com/article/12345';
+      const result = shouldScanUrlWithPatterns(url, patterns);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Global scanning enabled',
+    test: () => {
+      const url = 'https://any-website.com/page';
+      const settings = { globalScanning: true, pagePathPatterns: '' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Pattern match only',
+    test: () => {
+      const url = 'https://news.example.com/article';
+      const settings = { globalScanning: false, pagePathPatterns: 'news.example.com' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - No scanning conditions met',
+    test: () => {
+      const url = 'https://other-site.com/page';
+      const settings = { globalScanning: false, pagePathPatterns: 'news.example.com' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === false, 
+        result: result 
+      };
+    }
   }
 ];
 

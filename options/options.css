@@ -48,10 +48,37 @@ select {
     background-color: white;
 }
 
-select:focus {
+textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: monospace;
+    resize: vertical;
+    min-height: 80px;
+}
+
+select:focus, textarea:focus {
     outline: none;
     border-color: #B40010;
     box-shadow: 0 0 0 2px rgba(180, 0, 16, 0.1);
+}
+
+.subsection {
+    margin: 15px 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
 }
 
 .help-text {
