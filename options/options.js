@@ -16,7 +16,12 @@ function localizeContent() {
     document.getElementById('title').textContent = chrome.i18n.getMessage('optionsTitle');
     document.getElementById('archiveUrlLabel').textContent = chrome.i18n.getMessage('optionsArchiveUrl');
     document.getElementById('archiveUrlHelp').textContent = chrome.i18n.getMessage('optionsArchiveUrlHelp');
-    document.getElementById('autoArchivingTitle').textContent = chrome.i18n.getMessage('optionsAutoArchivingTitle');
+    
+    // Special handling for auto archiving title to preserve the (Beta) span
+    const autoArchivingTitle = document.getElementById('autoArchivingTitle');
+    const baseTitle = chrome.i18n.getMessage('optionsAutoArchivingTitle');
+    autoArchivingTitle.innerHTML = `${baseTitle} <span style="color: #ff6600; font-size: 0.8em; font-weight: normal;">(Beta)</span>`;
+    
     document.getElementById('textIndicatorsLabel').textContent = chrome.i18n.getMessage('optionsTextIndicatorsLabel');
     document.getElementById('textIndicatorsHelp').textContent = chrome.i18n.getMessage('optionsTextIndicatorsHelp');
     document.getElementById('pagePathPatternsLabel').textContent = chrome.i18n.getMessage('optionsPagePathPatternsLabel');
