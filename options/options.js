@@ -32,7 +32,26 @@ function localizeContent() {
     document.getElementById('debugModeLabel').textContent = chrome.i18n.getMessage('optionsDebugModeLabel') || 'Enable debug mode';
     document.getElementById('debugModeHelp').textContent = chrome.i18n.getMessage('optionsDebugModeHelp') || 'When enabled, detailed logging will be shown in console and debug tools will be available in popup';
     document.getElementById('save').textContent = chrome.i18n.getMessage('optionsSave');
+    document.getElementById('reset').textContent = chrome.i18n.getMessage('optionsReset');
     document.title = chrome.i18n.getMessage('optionsTitle');
+    
+    // Localize features section
+    document.getElementById('featuresTitle').textContent = chrome.i18n.getMessage('optionsFeaturesTitle');
+    document.getElementById('feature1').textContent = chrome.i18n.getMessage('optionsFeature1');
+    document.getElementById('feature2').textContent = chrome.i18n.getMessage('optionsFeature2');
+    document.getElementById('feature3').textContent = chrome.i18n.getMessage('optionsFeature3');
+    document.getElementById('feature4').textContent = chrome.i18n.getMessage('optionsFeature4');
+    document.getElementById('feature5').textContent = chrome.i18n.getMessage('optionsFeature5');
+    document.getElementById('feature6').textContent = chrome.i18n.getMessage('optionsFeature6');
+    
+    // Special handling for features with <strong> tags to preserve formatting
+    const feature7Element = document.getElementById('feature7');
+    const feature7Text = chrome.i18n.getMessage('optionsFeature7');
+    feature7Element.innerHTML = `<strong>Auto-archive pages</strong> ${feature7Text.replace('Auto-archive pages ', '')}`;
+    
+    const feature8Element = document.getElementById('feature8');
+    const feature8Text = chrome.i18n.getMessage('optionsFeature8');
+    feature8Element.innerHTML = `<strong>Configure scanning</strong> ${feature8Text.replace('Configure scanning ', '')}`;
 }
 
 function loadOptions() {
