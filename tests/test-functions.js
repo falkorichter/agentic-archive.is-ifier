@@ -243,16 +243,20 @@ function testDebugScanAnalysis(url, settings, mockPageContent = '') {
     const foundIndicators = scanPageForIndicators(settings.textIndicators || '', mockPageContent);
     
     // Determine final result
+    // In debug mode, indicators take precedence over normal scanning conditions (except homepage exclusion)
     let wouldArchive = false;
     let reason = '';
     
-    if (normalScanWouldOccur && foundIndicators.length > 0) {
+    if (isHomepage) {
+      wouldArchive = false;
+      reason = 'Homepage exclusion';
+    } else if (foundIndicators.length > 0) {
       wouldArchive = true;
       reason = `Found indicators: ${foundIndicators.join(', ')}`;
-    } else if (!normalScanWouldOccur) {
-      wouldArchive = false;
-      reason = isHomepage ? 'Homepage exclusion' : 'No matching patterns and global scanning disabled';
-    } else if (foundIndicators.length === 0) {
+      if (!normalScanWouldOccur) {
+        reason += ' (debug mode: indicators override normal scanning conditions)';
+      }
+    } else {
       wouldArchive = false;
       reason = 'No indicators found in page content';
     }
