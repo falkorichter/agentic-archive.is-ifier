@@ -35,6 +35,27 @@
     "optionsSave": {
         "message": "Save"
     },
+    "optionsAutoArchivingTitle": {
+        "message": "Auto-Archiving Settings"
+    },
+    "optionsTextIndicatorsLabel": {
+        "message": "Text indicators to scan for"
+    },
+    "optionsTextIndicatorsHelp": {
+        "message": "Enter text patterns to search for (one per line). Supports regex patterns between / /"
+    },
+    "optionsPagePathPatternsLabel": {
+        "message": "Page path patterns to scan"
+    },
+    "optionsPagePathPatternsHelp": {
+        "message": "Enter URL patterns to match (one per line). Leave empty to disable path-based scanning"
+    },
+    "optionsGlobalScanningLabel": {
+        "message": "Scan all websites for indicators"
+    },
+    "optionsGlobalScanningHelp": {
+        "message": "When enabled, all visited pages will be scanned regardless of path patterns"
+    },
     "notificationSuccess": {
         "message": "URL archived successfully"
     },

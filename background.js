@@ -18,14 +18,56 @@ chrome.runtime.onInstalled.addListener(() => {
   setupContextMenus();
   
   // Set default options
-  chrome.storage.sync.get(['archiveUrl'], (result) => {
+  chrome.storage.sync.get([
+    'archiveUrl', 
+    'globalScanning',
+    'textIndicators',
+    'pagePathPatterns'
+  ], (result) => {
+    const defaults = {};
     if (!result.archiveUrl) {
-      chrome.storage.sync.set({
-        archiveUrl: DEFAULT_ARCHIVE_URL
-      });
+      defaults.archiveUrl = DEFAULT_ARCHIVE_URL;
+    }
+    if (result.globalScanning === undefined) {
+      defaults.globalScanning = false; // Default to disabled
+    }
+    if (!result.textIndicators) {
+      defaults.textIndicators = '';
+    }
+    if (!result.pagePathPatterns) {
+      defaults.pagePathPatterns = '';
+    }
+    
+    if (Object.keys(defaults).length > 0) {
+      chrome.storage.sync.set(defaults);
     }
   });
 });
+
+// Handle messages from content script
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === 'AUTO_ARCHIVE') {
+    handleAutoArchive(message.url, message.indicators, sender.tab);
+    sendResponse({success: true});
+  }
+});
+
+// Handle auto-archiving when indicators are found
+async function handleAutoArchive(url, indicators, tab) {
+  try {
+    await archiveUrl(url);
+    
+    // Show notification about auto-archiving
+    const indicatorText = indicators.join(', ');
+    showNotification(
+      'Auto-archived page', 
+      `Found indicators: ${indicatorText}`
+    );
+  } catch (error) {
+    console.error('Auto-archive failed:', error);
+    showNotification('Auto-archive failed', error.message);
+  }
+}
 
 // Set up context menus
 function setupContextMenus() {

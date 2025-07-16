@@ -193,6 +193,190 @@ const testCases = [
     }
   },
 
+  // Content scanning tests
+  {
+    name: 'scanPageForIndicators - Simple text match',
+    test: () => {
+      const indicators = 'premium content\npaywall';
+      const pageContent = 'This article contains premium content for subscribers only.';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 1 && result[0] === 'premium content', 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'scanPageForIndicators - No matches',
+    test: () => {
+      const indicators = 'premium content\npaywall';
+      const pageContent = 'This is a free article for everyone to read.';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 0, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'scanPageForIndicators - Regex pattern match',
+    test: () => {
+      const indicators = '/premium|exclusive/\npaywall';
+      const pageContent = 'This exclusive article is for members only.';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 1 && result[0] === '/premium|exclusive/', 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'scanPageForIndicators - Multiple matches',
+    test: () => {
+      const indicators = 'premium\nsubscription';
+      const pageContent = 'Premium subscription required for this content.';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 2 && result.includes('premium') && result.includes('subscription'), 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'scanPageForIndicators - Whitespace normalization',
+    test: () => {
+      const indicators = 'Zugriff auf alle Inhalte';
+      const pageContent = 'Zugriff\n                                auf alle Inhalte';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 1 && result[0] === 'Zugriff auf alle Inhalte', 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanUrlWithPatterns - Simple pattern match',
+    test: () => {
+      const patterns = 'news.example.com\nblog.test.org';
+      const url = 'https://news.example.com/article/123';
+      const result = shouldScanUrlWithPatterns(url, patterns);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanUrlWithPatterns - No pattern match',
+    test: () => {
+      const patterns = 'news.example.com\nblog.test.org';
+      const url = 'https://other.website.com/article/123';
+      const result = shouldScanUrlWithPatterns(url, patterns);
+      return { 
+        pass: result === false, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanUrlWithPatterns - Regex pattern match',
+    test: () => {
+      const patterns = '/article\\/\\d+/\nblog.test.org';
+      const url = 'https://example.com/article/12345';
+      const result = shouldScanUrlWithPatterns(url, patterns);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Global scanning enabled',
+    test: () => {
+      const url = 'https://any-website.com/page';
+      const settings = { globalScanning: true, pagePathPatterns: '' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Pattern match only',
+    test: () => {
+      const url = 'https://news.example.com/article';
+      const settings = { globalScanning: false, pagePathPatterns: 'news.example.com' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - No scanning conditions met',
+    test: () => {
+      const url = 'https://other-site.com/page';
+      const settings = { globalScanning: false, pagePathPatterns: 'news.example.com' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === false, 
+        result: result 
+      };
+    }
+  },
+  
+  // Homepage exclusion tests
+  {
+    name: 'shouldScanPage - Homepage exclusion with global scanning',
+    test: () => {
+      const url = 'https://spiegel.de/';
+      const settings = { globalScanning: true, pagePathPatterns: '' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === false, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Homepage exclusion without trailing slash',
+    test: () => {
+      const url = 'https://spiegel.de';
+      const settings = { globalScanning: true, pagePathPatterns: '' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === false, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Article page with global scanning',
+    test: () => {
+      const url = 'https://spiegel.de/article/123';
+      const settings = { globalScanning: true, pagePathPatterns: '' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Article page with path patterns',
+    test: () => {
+      const url = 'https://spiegel.de/news/something';
+      const settings = { globalScanning: false, pagePathPatterns: 'spiegel.de' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+
   // Tab index behavior test
   {
     name: 'testTabIndexBehavior - Tab opens next to current tab',
@@ -200,6 +384,98 @@ const testCases = [
       const result = testTabIndexBehavior();
       return { 
         pass: result.success && result.expectedNewTabIndex === 4 && result.isCorrect, 
+        result: result 
+      };
+    }
+  },
+
+  // Debug mode functionality test
+  {
+    name: 'debugMode - Settings include debug mode',
+    test: () => {
+      // Test that debug mode setting can be included in settings object
+      const testSettings = {
+        globalScanning: false,
+        textIndicators: 'test',
+        pagePathPatterns: '',
+        debugMode: true
+      };
+      const hasDebugMode = 'debugMode' in testSettings;
+      const debugModeValue = testSettings.debugMode;
+      return { 
+        pass: hasDebugMode && debugModeValue === true,
+        result: { hasDebugMode, debugModeValue, testSettings }
+      };
+    }
+  },
+
+  // Content script message handling tests
+  {
+    name: 'contentScriptMessage - PING message handling',
+    test: () => {
+      const result = testContentScriptMessageHandling('PING');
+      return { 
+        pass: result.success && result.isValidMessage && result.expectedResponse.available === true,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'contentScriptMessage - MANUAL_DEBUG_SCAN message handling',
+    test: () => {
+      const result = testContentScriptMessageHandling('MANUAL_DEBUG_SCAN');
+      return { 
+        pass: result.success && result.isValidMessage && result.expectedResponse.success === true,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'contentScriptMessage - Unknown message type handling',
+    test: () => {
+      const result = testContentScriptMessageHandling('UNKNOWN_MESSAGE');
+      return { 
+        pass: result.success && !result.isValidMessage && result.expectedResponse === null,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'debugScan - With indicators found',
+    test: () => {
+      const result = testDebugScanWithIndicators();
+      return { 
+        pass: result.success && result.wouldArchive === true && result.foundIndicators.length > 0,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'debugScan - Homepage exclusion',
+    test: () => {
+      const result = testDebugScanHomepage();
+      return { 
+        pass: result.success && result.wouldArchive === false && result.isHomepage === true,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'debugScan - No indicators found',
+    test: () => {
+      const result = testDebugScanNoIndicators();
+      return { 
+        pass: result.success && result.wouldArchive === false && result.foundIndicators.length === 0,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'debugScan - No scanning conditions met',
+    test: () => {
+      const result = testDebugScanNoConditions();
+      return { 
+        pass: result.success && result.wouldArchive === false && result.normalScanWouldOccur === false,
         result: result 
       };
     }

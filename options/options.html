@@ -20,6 +20,42 @@
         </div>
 
         <div class="section">
+            <h3 id="autoArchivingTitle">Auto-Archiving Settings <span style="color: #ff6600; font-size: 0.8em; font-weight: normal;">(Beta)</span></h3>
+            
+            <div class="subsection">
+                <label for="textIndicators" id="textIndicatorsLabel">Text indicators to scan for:</label>
+                <textarea id="textIndicators" rows="4" placeholder="premium content&#10;paywall&#10;subscription required&#10;/premium|exclusive/"></textarea>
+                <p class="help-text" id="textIndicatorsHelp">Enter text patterns to search for (one per line). Supports regex patterns between / /</p>
+            </div>
+
+            <div class="subsection">
+                <label for="pagePathPatterns" id="pagePathPatternsLabel">Page path patterns to scan:</label>
+                <textarea id="pagePathPatterns" rows="3" placeholder="news.example.com&#10;/blog/premium/&#10;/article\\/\\d+/"></textarea>
+                <p class="help-text" id="pagePathPatternsHelp">Enter URL patterns to match (one per line). Leave empty to disable path-based scanning</p>
+            </div>
+
+            <div class="subsection">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="globalScanning">
+                    <span id="globalScanningLabel">Scan all websites for indicators</span>
+                </label>
+                <p class="help-text" id="globalScanningHelp">When enabled, all visited pages will be scanned regardless of path patterns</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 id="debugSettingsTitle">Debug Settings</h3>
+            
+            <div class="subsection">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="debugMode">
+                    <span id="debugModeLabel">Enable debug mode</span>
+                </label>
+                <p class="help-text" id="debugModeHelp">When enabled, detailed logging will be shown in console and debug tools will be available in popup</p>
+            </div>
+        </div>
+
+        <div class="section">
             <h3>Features:</h3>
             <ul>
                 <li>Right-click on links to archive them</li>
@@ -28,6 +64,8 @@
                 <li>Extract real URLs from archive links</li>
                 <li>Archive selected text as URLs</li>
                 <li>Archive the current page</li>
+                <li><strong>Auto-archive pages</strong> containing specified text indicators</li>
+                <li><strong>Configure scanning</strong> for specific page path patterns or all websites</li>
             </ul>
         </div>
 

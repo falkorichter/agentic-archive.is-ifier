@@ -16,8 +16,21 @@ async function initializePopup() {
         document.getElementById('archivePageDesc').textContent = chrome.i18n.getMessage('popupArchivePageDesc');
         document.getElementById('showVersionsTitle').textContent = chrome.i18n.getMessage('popupShowVersions');
         document.getElementById('showVersionsDesc').textContent = chrome.i18n.getMessage('popupShowVersionsDesc');
+        document.getElementById('debugScanTitle').textContent = chrome.i18n.getMessage('popupDebugScanTitle') || 'Run Debug Scan';
+        document.getElementById('debugScanDesc').textContent = chrome.i18n.getMessage('popupDebugScanDesc') || 'Manually trigger detection and view logs';
         document.getElementById('settingsTitle').textContent = chrome.i18n.getMessage('popupSettings');
         document.getElementById('settingsDesc').textContent = chrome.i18n.getMessage('popupSettingsDesc');
+        
+        // Check if debug mode is enabled and show/hide debug button
+        const settings = await chrome.storage.sync.get(['debugMode']);
+        const debugModeEnabled = settings.debugMode || false;
+        
+        const debugButton = document.getElementById('runDebugScan');
+        if (debugModeEnabled) {
+            debugButton.style.display = 'block';
+        } else {
+            debugButton.style.display = 'none';
+        }
     } catch (error) {
         console.error('Error initializing popup:', error);
     }
@@ -32,6 +45,11 @@ function setupEventListeners() {
     // Show archived versions
     document.getElementById('showVersions').addEventListener('click', async () => {
         await handleShowVersions();
+    });
+    
+    // Run debug scan
+    document.getElementById('runDebugScan').addEventListener('click', async () => {
+        await handleDebugScan();
     });
     
     // Open settings
@@ -74,6 +92,85 @@ async function handleArchivePage() {
     } catch (error) {
         console.error('Error archiving page:', error);
         showStatus('Error archiving page', 'error');
+    }
+}
+
+async function handleDebugScan() {
+    try {
+        showStatus('Running debug scan...', 'info');
+        
+        // Get current active tab
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        
+        if (!tab || !tab.url) {
+            showStatus('Error: Could not get current page URL', 'error');
+            return;
+        }
+        
+        // Check if it's a valid URL to scan
+        if (tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://') || tab.url.startsWith('moz-extension://')) {
+            showStatus('Error: Cannot scan browser internal pages', 'error');
+            return;
+        }
+        
+        // First, check if content script is available
+        let contentScriptAvailable = false;
+        try {
+            const pingResponse = await chrome.tabs.sendMessage(tab.id, { type: 'PING' });
+            contentScriptAvailable = pingResponse && pingResponse.available;
+        } catch (error) {
+            // Content script not available
+            contentScriptAvailable = false;
+        }
+        
+        // If content script is not available, try to inject it
+        if (!contentScriptAvailable) {
+            showStatus('Injecting content script...', 'info');
+            
+            try {
+                await chrome.scripting.executeScript({
+                    target: { tabId: tab.id },
+                    files: ['content.js']
+                });
+                
+                // Wait a moment for the script to initialize
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+            } catch (injectError) {
+                console.error('Failed to inject content script:', injectError);
+                showStatus('Error: Could not inject content script. Page may not support scripts.', 'error');
+                return;
+            }
+        }
+        
+        // Now try to run the debug scan
+        try {
+            const response = await chrome.tabs.sendMessage(tab.id, {
+                type: 'MANUAL_DEBUG_SCAN'
+            });
+            
+            if (response && response.success) {
+                const result = response.result;
+                if (result && typeof result.wouldArchive === 'boolean') {
+                    if (result.wouldArchive) {
+                        showStatus(`✅ Archive WOULD open - ${result.reason}`, 'success');
+                    } else {
+                        showStatus(`❌ Archive would NOT open - ${result.reason}`, 'info');
+                    }
+                } else {
+                    showStatus('Debug scan completed! Check page for notification.', 'success');
+                }
+            } else {
+                showStatus('Debug scan failed: ' + (response?.error || 'Unknown error'), 'error');
+            }
+        } catch (error) {
+            console.error('Failed to send debug scan message:', error);
+            showStatus('Error: Failed to communicate with content script.', 'error');
+        }
+        
+    } catch (error) {
+        console.error('Error running debug scan:', error);
+        showStatus('Error running debug scan', 'error');
     }
 }
 

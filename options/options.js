@@ -16,23 +16,49 @@ function localizeContent() {
     document.getElementById('title').textContent = chrome.i18n.getMessage('optionsTitle');
     document.getElementById('archiveUrlLabel').textContent = chrome.i18n.getMessage('optionsArchiveUrl');
     document.getElementById('archiveUrlHelp').textContent = chrome.i18n.getMessage('optionsArchiveUrlHelp');
+    document.getElementById('autoArchivingTitle').textContent = chrome.i18n.getMessage('optionsAutoArchivingTitle');
+    document.getElementById('textIndicatorsLabel').textContent = chrome.i18n.getMessage('optionsTextIndicatorsLabel');
+    document.getElementById('textIndicatorsHelp').textContent = chrome.i18n.getMessage('optionsTextIndicatorsHelp');
+    document.getElementById('pagePathPatternsLabel').textContent = chrome.i18n.getMessage('optionsPagePathPatternsLabel');
+    document.getElementById('pagePathPatternsHelp').textContent = chrome.i18n.getMessage('optionsPagePathPatternsHelp');
+    document.getElementById('globalScanningLabel').textContent = chrome.i18n.getMessage('optionsGlobalScanningLabel');
+    document.getElementById('globalScanningHelp').textContent = chrome.i18n.getMessage('optionsGlobalScanningHelp');
+    document.getElementById('debugSettingsTitle').textContent = chrome.i18n.getMessage('optionsDebugSettingsTitle') || 'Debug Settings';
+    document.getElementById('debugModeLabel').textContent = chrome.i18n.getMessage('optionsDebugModeLabel') || 'Enable debug mode';
+    document.getElementById('debugModeHelp').textContent = chrome.i18n.getMessage('optionsDebugModeHelp') || 'When enabled, detailed logging will be shown in console and debug tools will be available in popup';
     document.getElementById('save').textContent = chrome.i18n.getMessage('optionsSave');
     document.title = chrome.i18n.getMessage('optionsTitle');
 }
 
 function loadOptions() {
     chrome.storage.sync.get({
-        archiveUrl: 'https://archive.ph/submit/'
+        archiveUrl: 'https://archive.ph/submit/',
+        globalScanning: false,
+        textIndicators: '',
+        pagePathPatterns: '',
+        debugMode: false
     }, function(items) {
         document.getElementById('archiveUrl').value = items.archiveUrl;
+        document.getElementById('globalScanning').checked = items.globalScanning;
+        document.getElementById('textIndicators').value = items.textIndicators;
+        document.getElementById('pagePathPatterns').value = items.pagePathPatterns;
+        document.getElementById('debugMode').checked = items.debugMode;
     });
 }
 
 function saveOptions() {
     const archiveUrl = document.getElementById('archiveUrl').value;
+    const globalScanning = document.getElementById('globalScanning').checked;
+    const textIndicators = document.getElementById('textIndicators').value;
+    const pagePathPatterns = document.getElementById('pagePathPatterns').value;
+    const debugMode = document.getElementById('debugMode').checked;
     
     chrome.storage.sync.set({
-        archiveUrl: archiveUrl
+        archiveUrl: archiveUrl,
+        globalScanning: globalScanning,
+        textIndicators: textIndicators,
+        pagePathPatterns: pagePathPatterns,
+        debugMode: debugMode
     }, function() {
         // Update status
         showStatus('Options saved successfully!', 'success');
@@ -44,6 +70,10 @@ function saveOptions() {
 
 function resetOptions() {
     document.getElementById('archiveUrl').value = 'https://archive.ph/submit/';
+    document.getElementById('globalScanning').checked = false;
+    document.getElementById('textIndicators').value = '';
+    document.getElementById('pagePathPatterns').value = '';
+    document.getElementById('debugMode').checked = false;
     saveOptions();
 }
 
