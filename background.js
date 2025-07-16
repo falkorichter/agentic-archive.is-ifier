@@ -142,6 +142,28 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
+// Handle messages from popup
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  try {
+    switch (message.action) {
+      case 'archivePage':
+        archiveUrl(message.url);
+        sendResponse({ success: true });
+        break;
+      case 'showVersions':
+        showArchivedVersions(message.url);
+        sendResponse({ success: true });
+        break;
+      default:
+        sendResponse({ success: false, error: 'Unknown action' });
+    }
+  } catch (error) {
+    console.error('Error handling message:', error);
+    sendResponse({ success: false, error: error.message });
+  }
+  return true; // Indicates we will send a response asynchronously
+});
+
 // Archive a URL
 async function archiveUrl(url, copyToClipboard = false) {
   try {

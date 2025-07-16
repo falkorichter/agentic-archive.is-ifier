@@ -2,12 +2,17 @@
     "manifest_version": 3,
     "name": "__MSG_appName__",
     "description": "__MSG_appDesc__",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "default_locale": "en_US",
     "icons": {
         "16": "img/icon.png",
         "48": "img/icon.png",
         "128": "img/icon.png"
+    },
+    "action": {
+        "default_icon": "img/icon.png",
+        "default_title": "__MSG_appName__",
+        "default_popup": "popup/popup.html"
     },
     "background": {
         "service_worker": "background.js"

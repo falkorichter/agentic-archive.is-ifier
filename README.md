@@ -4,6 +4,16 @@ A Chrome extension for archiving URLs with archive.is and similar services. This
 
 ## Features
 
+### ✅ Popup Interface
+The extension provides a clean popup interface when clicking the extension icon in the browser toolbar:
+
+![Popup Interface](https://github.com/user-attachments/assets/fda4e460-8af4-48df-8e16-6bae43557c7c)
+
+The popup offers three main options:
+- **📄 Archive current page** - Archives the active tab using the configured archive service
+- **🕐 Show archived versions** - Opens Wayback Machine to view page history  
+- **⚙️ Settings** - Links to the extension options page
+
 ### ✅ Context Menu Integration
 - **Archive links** - Submit URLs to your configured archive service (archive.is, archive.ph, archive.today)
 - **Archive and copy** - Archive links and automatically copy the archive URL to clipboard  
@@ -41,6 +51,13 @@ See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 
 ## Usage
 
+### Popup Interface
+1. **Click the extension icon** in the browser toolbar to open the popup menu
+2. **Archive current page** - Click to archive the active tab
+3. **Show archived versions** - Click to view page history on Wayback Machine
+4. **Settings** - Click to open the extension options page
+
+### Context Menu
 1. **Configure** - Right-click the extension icon → Options to choose your preferred archive service and set up auto-archiving
 2. **Archive links** - Right-click any link and select archive options from context menu
 3. **Archive pages** - Right-click anywhere on a page to archive the current page
@@ -55,6 +72,10 @@ See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 ├── manifest.json              # Extension manifest with permissions
 ├── background.js              # Service worker for context menus & API calls
 ├── content.js                 # Content script for page scanning & auto-archiving
+├── popup/
+│   ├── popup.html              # Popup interface UI
+│   ├── popup.css               # Popup styling
+│   └── popup.js                # Popup functionality
 ├── options/
 │   ├── options.html          # Options page UI
 │   ├── options.css           # Styling
@@ -105,12 +126,15 @@ Run the test suite by opening `tests/test.html` in your browser. Tests cover:
 - Complete archiving workflows
 - Auto-archiving and content scanning functionality
 
+**Future Enhancement**: Consider integrating Playwright into the CI pipeline to enable automated browser testing of the popup interface and ensure UI functionality doesn't break with future changes. This would provide visual regression testing and automated screenshot capture for documentation updates.
+
 ### Contributing
 When contributing:
 1. Update the README with new features
 2. Write tests for new functionality  
 3. Check for external code changes before submitting
 4. Document the LLM and tools used in development
+5. **Update screenshots** - When UI changes are made, update screenshots in the README using browser testing tools like Playwright to ensure documentation stays current
 
 ## AI Generation Notice
 
