@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Archive.is-ifier</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <header>
+            <h1 id="appTitle">Archive.is-ifier</h1>
+        </header>
+        
+        <main>
+            <div class="menu-item" id="archivePage">
+                <div class="menu-icon">📄</div>
+                <div class="menu-text">
+                    <div class="menu-title" id="archivePageTitle">Archive current page</div>
+                    <div class="menu-description" id="archivePageDesc">Save this page to archive.is</div>
+                </div>
+            </div>
+            
+            <div class="menu-item" id="showVersions">
+                <div class="menu-icon">🕐</div>
+                <div class="menu-text">
+                    <div class="menu-title" id="showVersionsTitle">Show archived versions</div>
+                    <div class="menu-description" id="showVersionsDesc">View history on Wayback Machine</div>
+                </div>
+            </div>
+            
+            <div class="separator"></div>
+            
+            <div class="menu-item" id="openSettings">
+                <div class="menu-icon">⚙️</div>
+                <div class="menu-text">
+                    <div class="menu-title" id="settingsTitle">Settings</div>
+                    <div class="menu-description" id="settingsDesc">Configure archive options</div>
+                </div>
+            </div>
+        </main>
+        
+        <div id="status" class="status hidden"></div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
