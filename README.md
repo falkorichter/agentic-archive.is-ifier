@@ -38,7 +38,7 @@ The extension provides a comprehensive options page for configuring archive serv
 ### ✅ Technical Implementation
 - **Manifest v3** - Modern Chrome extension with proper permissions
 - **Service worker** - Efficient background processing
-- **Internationalization** - Multi-language support framework
+- **Internationalization** - Multi-language support framework (currently English only)
 - **Custom icon** - Distinctive "is!" icon for easy identification
 - **Error handling** - Comprehensive notifications and error management
 - **Comprehensive tests** - Isolated unit tests for core functionality
@@ -94,6 +94,40 @@ See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 │   └── test-functions.js    # Unit tests for core functions
 └── INSTALL.md               # Installation instructions
 ```
+
+## Internationalization
+
+The extension includes internationalization (i18n) support using Chrome's built-in i18n API:
+
+### Current Translation Status
+- **English (en_US)**: ✅ Complete - All UI strings localized in `_locales/en_US/messages.json`
+- **Other languages**: ❌ Not available - Only English is currently supported
+
+### i18n Implementation
+- UI strings are stored in `_locales/en_US/messages.json`
+- JavaScript uses `chrome.i18n.getMessage()` to load localized text
+- Manifest uses `__MSG_key__` syntax for extension metadata
+- Options page is fully localized except for hardcoded feature list
+
+### Known Issues
+- ~~The "(Beta)" indicator in "Auto-Archiving Settings" uses inline HTML styling that gets stripped by text-only i18n replacement~~ **FIXED**: Modified localization to use `innerHTML` for preserving HTML formatting
+- Some debug-related messages fall back to hardcoded English strings when translations are missing
+
+### Technical Notes
+**Why the "(Beta)" span wasn't showing in Chrome extension context:**
+The original implementation used `textContent` to set localized strings, which strips all HTML formatting. When the extension loaded in Chrome, the JavaScript would replace the hardcoded HTML title `Auto-Archiving Settings <span>(Beta)</span>` with just the plain text "Auto-Archiving Settings", removing the styled beta indicator.
+
+**Solution:**
+Modified `options.js` to use `innerHTML` specifically for the auto-archiving title, allowing the "(Beta)" span to be preserved while maintaining i18n compatibility. This approach ensures the beta styling appears consistently in both standalone HTML viewing and Chrome extension context.
+
+![Fixed Options Page](https://github.com/user-attachments/assets/05e3b558-0067-4e32-999e-0703a08bb5e9)
+
+### Adding New Languages
+To add a new language:
+1. Create a new directory under `_locales/` (e.g., `_locales/es/`)
+2. Copy `_locales/en_US/messages.json` to the new directory
+3. Translate all message values while keeping the keys unchanged
+4. Test the extension with the new locale
 
 ## Archive Service Integration
 
