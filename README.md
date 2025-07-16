@@ -25,6 +25,10 @@ The popup offers three main options:
 - **Pattern-based scanning** - Configure URL patterns for targeted page scanning
 
 ### ✅ Configuration & Options
+The extension provides a comprehensive options page for configuring archive services and viewing available features:
+
+![Options Interface](https://github.com/user-attachments/assets/8fba6b77-ab51-4295-94fd-f3febc32cdf7)
+
 - **Configurable archive service** - Choose between archive.ph, archive.is, archive.today
 - **Auto-archiving settings** - Configure text indicators and page patterns for automatic archiving
 - **Global scanning toggle** - Option to scan all websites for indicators, not just specific patterns

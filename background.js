@@ -122,22 +122,22 @@ function setupContextMenus() {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
     case MENU_IDS.ARCHIVE_LINK:
-      archiveUrl(info.linkUrl);
+      archiveUrl(info.linkUrl, false, tab);
       break;
     case MENU_IDS.ARCHIVE_COPY:
-      archiveUrl(info.linkUrl, true);
+      archiveUrl(info.linkUrl, true, tab);
       break;
     case MENU_IDS.SHOW_VERSIONS:
-      showArchivedVersions(info.linkUrl);
+      showArchivedVersions(info.linkUrl, tab);
       break;
     case MENU_IDS.SHOW_REAL_URL:
-      showRealUrl(info.linkUrl);
+      showRealUrl(info.linkUrl, tab);
       break;
     case MENU_IDS.ARCHIVE_SELECTION:
-      archiveUrl(info.selectionText);
+      archiveUrl(info.selectionText, false, tab);
       break;
     case MENU_IDS.ARCHIVE_PAGE:
-      archiveUrl(tab.url);
+      archiveUrl(tab.url, false, tab);
       break;
   }
 });
@@ -165,7 +165,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 // Archive a URL
-async function archiveUrl(url, copyToClipboard = false) {
+async function archiveUrl(url, copyToClipboard = false, currentTab = null) {
   try {
     // Get the archive service URL from storage
     const result = await chrome.storage.sync.get(['archiveUrl']);
@@ -181,10 +181,11 @@ async function archiveUrl(url, copyToClipboard = false) {
     // Submit to archive service
     const archiveSubmitUrl = `${archiveServiceUrl}?url=${encodeURIComponent(cleanedUrl)}`;
     
-    // Open archive page in new tab
+    // Open archive page in new tab next to current tab
     const tab = await chrome.tabs.create({ 
       url: archiveSubmitUrl,
-      active: !copyToClipboard // Don't activate tab if we're just copying
+      active: !copyToClipboard, // Don't activate tab if we're just copying
+      index: currentTab ? currentTab.index + 1 : undefined
     });
 
     if (copyToClipboard) {
@@ -210,18 +211,24 @@ async function archiveUrl(url, copyToClipboard = false) {
 }
 
 // Show archived versions of a URL
-function showArchivedVersions(url) {
+function showArchivedVersions(url, currentTab = null) {
   const cleanedUrl = cleanUrl(url);
   const searchUrl = `https://web.archive.org/web/*/${cleanedUrl}`;
-  chrome.tabs.create({ url: searchUrl });
+  chrome.tabs.create({ 
+    url: searchUrl,
+    index: currentTab ? currentTab.index + 1 : undefined
+  });
 }
 
 // Show real URL from archive.is link
-function showRealUrl(url) {
+function showRealUrl(url, currentTab = null) {
   if (isArchiveUrl(url)) {
     const realUrl = extractRealUrlFromArchive(url);
     if (realUrl) {
-      chrome.tabs.create({ url: realUrl });
+      chrome.tabs.create({ 
+        url: realUrl,
+        index: currentTab ? currentTab.index + 1 : undefined
+      });
     } else {
       showNotification(chrome.i18n.getMessage('notificationError'), 'Could not extract real URL');
     }

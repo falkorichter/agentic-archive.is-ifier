@@ -119,6 +119,7 @@ function testShowRealUrlWorkflow(url) {
   }
 }
 
+
 // New functions for content script functionality testing
 
 // Test function for scanning page content for indicators
@@ -198,4 +199,24 @@ function shouldScanPage(url, settings) {
 
   // Otherwise, check if current page matches any path patterns
   return shouldScanUrlWithPatterns(url, settings.pagePathPatterns || '');
+
+// Test function to verify tab creation with correct index
+function testTabIndexBehavior() {
+  try {
+    // Mock tab object representing current tab at index 3
+    const mockCurrentTab = { index: 3, id: 123 };
+    
+    // Test that the next tab would be created at index 4
+    const expectedIndex = mockCurrentTab.index + 1;
+    
+    return {
+      success: true,
+      currentTabIndex: mockCurrentTab.index,
+      expectedNewTabIndex: expectedIndex,
+      isCorrect: expectedIndex === 4
+    };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+
 }

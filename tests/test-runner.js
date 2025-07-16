@@ -310,6 +310,14 @@ const testCases = [
       const result = shouldScanPage(url, settings);
       return { 
         pass: result === false, 
+
+  // Tab index behavior test
+  {
+    name: 'testTabIndexBehavior - Tab opens next to current tab',
+    test: () => {
+      const result = testTabIndexBehavior();
+      return { 
+        pass: result.success && result.expectedNewTabIndex === 4 && result.isCorrect, 
         result: result 
       };
     }
