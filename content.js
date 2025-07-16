@@ -70,6 +70,11 @@
         });
     }
 
+    // Helper function to normalize whitespace for text matching
+    function normalizeWhitespace(text) {
+        return text.replace(/\s+/g, ' ').trim();
+    }
+
     // Scan page content for indicator texts
     function scanPageForIndicators(textIndicators) {
         if (!textIndicators.trim()) {
@@ -79,6 +84,7 @@
         const indicators = textIndicators.split('\n').filter(i => i.trim());
         const foundIndicators = [];
         const pageText = document.body.innerText.toLowerCase();
+        const normalizedPageText = normalizeWhitespace(pageText);
 
         indicators.forEach(indicator => {
             const trimmedIndicator = indicator.trim();
@@ -89,18 +95,20 @@
                 if (trimmedIndicator.startsWith('/') && trimmedIndicator.endsWith('/')) {
                     // Treat as regex
                     const regex = new RegExp(trimmedIndicator.slice(1, -1), 'gi');
-                    if (regex.test(pageText)) {
+                    if (regex.test(normalizedPageText)) {
                         foundIndicators.push(trimmedIndicator);
                     }
                 } else {
-                    // Simple string matching (case insensitive)
-                    if (pageText.includes(trimmedIndicator.toLowerCase())) {
+                    // Simple string matching (case insensitive) with normalized whitespace
+                    const normalizedIndicator = normalizeWhitespace(trimmedIndicator.toLowerCase());
+                    if (normalizedPageText.includes(normalizedIndicator)) {
                         foundIndicators.push(trimmedIndicator);
                     }
                 }
             } catch (error) {
                 // If regex is invalid, fall back to string matching
-                if (pageText.includes(trimmedIndicator.toLowerCase())) {
+                const normalizedIndicator = normalizeWhitespace(trimmedIndicator.toLowerCase());
+                if (normalizedPageText.includes(normalizedIndicator)) {
                     foundIndicators.push(trimmedIndicator);
                 }
             }

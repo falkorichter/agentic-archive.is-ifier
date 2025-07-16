@@ -122,6 +122,11 @@ function testShowRealUrlWorkflow(url) {
 
 // New functions for content script functionality testing
 
+// Helper function to normalize whitespace for text matching
+function normalizeWhitespace(text) {
+  return text.replace(/\s+/g, ' ').trim();
+}
+
 // Test function for scanning page content for indicators
 function scanPageForIndicators(textIndicators, pageContent) {
   if (!textIndicators.trim()) {
@@ -131,6 +136,7 @@ function scanPageForIndicators(textIndicators, pageContent) {
   const indicators = textIndicators.split('\n').filter(i => i.trim());
   const foundIndicators = [];
   const pageText = pageContent.toLowerCase();
+  const normalizedPageText = normalizeWhitespace(pageText);
 
   indicators.forEach(indicator => {
     const trimmedIndicator = indicator.trim();
@@ -141,18 +147,20 @@ function scanPageForIndicators(textIndicators, pageContent) {
       if (trimmedIndicator.startsWith('/') && trimmedIndicator.endsWith('/')) {
         // Treat as regex
         const regex = new RegExp(trimmedIndicator.slice(1, -1), 'gi');
-        if (regex.test(pageText)) {
+        if (regex.test(normalizedPageText)) {
           foundIndicators.push(trimmedIndicator);
         }
       } else {
-        // Simple string matching (case insensitive)
-        if (pageText.includes(trimmedIndicator.toLowerCase())) {
+        // Simple string matching (case insensitive) with normalized whitespace
+        const normalizedIndicator = normalizeWhitespace(trimmedIndicator.toLowerCase());
+        if (normalizedPageText.includes(normalizedIndicator)) {
           foundIndicators.push(trimmedIndicator);
         }
       }
     } catch (error) {
       // If regex is invalid, fall back to string matching
-      if (pageText.includes(trimmedIndicator.toLowerCase())) {
+      const normalizedIndicator = normalizeWhitespace(trimmedIndicator.toLowerCase());
+      if (normalizedPageText.includes(normalizedIndicator)) {
         foundIndicators.push(trimmedIndicator);
       }
     }

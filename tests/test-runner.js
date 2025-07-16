@@ -243,6 +243,18 @@ const testCases = [
     }
   },
   {
+    name: 'scanPageForIndicators - Whitespace normalization',
+    test: () => {
+      const indicators = 'Zugriff auf alle Inhalte';
+      const pageContent = 'Zugriff\n                                auf alle Inhalte';
+      const result = scanPageForIndicators(indicators, pageContent);
+      return { 
+        pass: result.length === 1 && result[0] === 'Zugriff auf alle Inhalte', 
+        result: result 
+      };
+    }
+  },
+  {
     name: 'shouldScanUrlWithPatterns - Simple pattern match',
     test: () => {
       const patterns = 'news.example.com\nblog.test.org';
