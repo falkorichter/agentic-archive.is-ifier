@@ -81,7 +81,19 @@
             globalScanning: settings.globalScanning
         });
         
-        // If global scanning is enabled, scan all pages
+        // Check if this is a homepage URL (exclude homepages from scanning)
+        const url = new URL(currentUrl);
+        const isHomepage = url.pathname === '/' || url.pathname === '';
+        
+        if (isHomepage) {
+            debugLog('Homepage detected - skipping scan', {
+                hostname: url.hostname,
+                pathname: url.pathname
+            });
+            return false;
+        }
+        
+        // If global scanning is enabled, scan all pages (except homepages)
         if (settings.globalScanning === true) {
             debugLog('Global scanning enabled - will scan this page');
             return true;

@@ -326,6 +326,56 @@ const testCases = [
       };
     }
   },
+  
+  // Homepage exclusion tests
+  {
+    name: 'shouldScanPage - Homepage exclusion with global scanning',
+    test: () => {
+      const url = 'https://spiegel.de/';
+      const settings = { globalScanning: true, pagePathPatterns: '' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === false, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Homepage exclusion without trailing slash',
+    test: () => {
+      const url = 'https://spiegel.de';
+      const settings = { globalScanning: true, pagePathPatterns: '' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === false, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Article page with global scanning',
+    test: () => {
+      const url = 'https://spiegel.de/article/123';
+      const settings = { globalScanning: true, pagePathPatterns: '' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'shouldScanPage - Article page with path patterns',
+    test: () => {
+      const url = 'https://spiegel.de/news/something';
+      const settings = { globalScanning: false, pagePathPatterns: 'spiegel.de' };
+      const result = shouldScanPage(url, settings);
+      return { 
+        pass: result === true, 
+        result: result 
+      };
+    }
+  },
 
   // Tab index behavior test
   {

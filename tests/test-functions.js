@@ -200,7 +200,19 @@ function shouldScanUrlWithPatterns(url, pagePathPatterns) {
 
 // Test function for overall scanning decision logic
 function shouldScanPage(url, settings) {
-  // If global scanning is enabled, scan all pages
+  // Check if this is a homepage URL (exclude homepages from scanning)
+  try {
+    const urlObj = new URL(url);
+    const isHomepage = urlObj.pathname === '/' || urlObj.pathname === '';
+    
+    if (isHomepage) {
+      return false;
+    }
+  } catch (error) {
+    // If URL parsing fails, continue with other checks
+  }
+  
+  // If global scanning is enabled, scan all pages (except homepages)
   if (settings.globalScanning === true) {
     return true;
   }
