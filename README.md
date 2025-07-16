@@ -23,6 +23,10 @@ The popup offers three main options:
 - **Archive current page** - Archive the currently active page
 
 ### ✅ Configuration & Options
+The extension provides a comprehensive options page for configuring archive services and viewing available features:
+
+![Options Interface](https://github.com/user-attachments/assets/8fba6b77-ab51-4295-94fd-f3febc32cdf7)
+
 - **Configurable archive service** - Choose between archive.ph, archive.is, archive.today
 - **Clean options UI** - Intuitive settings interface 
 - **Persistent settings** - Your preferences are saved and synchronized
