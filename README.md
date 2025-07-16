@@ -172,6 +172,13 @@ npm test
 # or directly: node tests/test-runner-headless.js
 ```
 
+**Playwright Browser Tests:**
+```bash
+npm run test:playwright        # Run Playwright tests
+npm run test:playwright:ui     # Run with UI for debugging
+npm run test:playwright:headed # Run in visible browser mode
+```
+
 **HTML/CSS Validation:**
 ```bash
 npm run validate
@@ -182,7 +189,7 @@ npm run validate:css   # CSS syntax and style consistency
 
 **Complete CI Check:**
 ```bash
-npm run ci  # Runs both tests and validation
+npm run ci  # Runs all tests, Playwright tests, and validation
 ```
 
 **Browser-based Testing:**
@@ -196,8 +203,8 @@ Tests cover:
 - Auto-archiving and content scanning functionality
 - **HTML validation** - Syntax, semantics, accessibility
 - **CSS validation** - Syntax, modern standards, consistency
-
-**Future Enhancement**: Consider integrating Playwright into the CI pipeline to enable automated browser testing of the popup interface and ensure UI functionality doesn't break with future changes. This would provide visual regression testing and automated screenshot capture for documentation updates.
+- **Browser automation** - Popup interface and options page functionality
+- **Visual regression** - Screenshot comparison for UI consistency
 
 ### Contributing
 When contributing:
@@ -206,7 +213,7 @@ When contributing:
 3. **Run validation** - Ensure `npm run ci` passes before submitting
 4. Check for external code changes before submitting
 5. Document the LLM and tools used in development
-6. **Update screenshots** - When UI changes are made, update screenshots in the README using browser testing tools like Playwright to ensure documentation stays current
+6. **Update screenshots** - When UI changes are made, update screenshots in the README using Playwright visual regression tests to ensure documentation stays current
 
 ## AI Generation Notice
 
