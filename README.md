@@ -42,7 +42,7 @@ The extension provides a comprehensive options page for configuring archive serv
 - **Custom icon** - Distinctive "is!" icon for easy identification
 - **Error handling** - Comprehensive notifications and error management
 - **Comprehensive tests** - Isolated unit tests for core functionality
-- **Code quality** - HTML/CSS validation integrated into CI pipeline
+- **Code quality** - JavaScript linting (ESLint), HTML/CSS validation, and code formatting (Prettier) integrated into CI pipeline
 
 ## Installation
 
@@ -96,9 +96,12 @@ See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 │   └── test-functions.js    # Unit tests for core functions
 ├── .github/workflows/
 │   └── ci.yml               # CI pipeline with tests and validation
-├── package.json             # Node.js dependencies for validation tools
+├── package.json             # Node.js dependencies for linting and validation tools
 ├── .htmlvalidate.json       # HTML validation configuration
 ├── .stylelintrc.json        # CSS validation configuration
+├── eslint.config.js         # JavaScript linting configuration
+├── .prettierrc.json         # Code formatting configuration
+├── .prettierignore          # Files to exclude from formatting
 └── INSTALL.md               # Installation instructions
 ```
 
@@ -172,17 +175,36 @@ npm test
 # or directly: node tests/test-runner-headless.js
 ```
 
-**HTML/CSS Validation:**
+**Linting and Validation:**
 ```bash
+# JavaScript linting with ESLint
+npm run lint:js
+
+# HTML validation  
+npm run lint:html
+
+# CSS linting with Stylelint
+npm run lint:css
+
+# Run all linting tools
+npm run lint
+
+# Legacy validation command (HTML/CSS only)
 npm run validate
-# or separately:
-npm run validate:html  # HTML syntax and semantics
-npm run validate:css   # CSS syntax and style consistency
+```
+
+**Code Formatting:**
+```bash
+# Format code with Prettier
+npm run format
+
+# Check if code is properly formatted
+npm run format:check
 ```
 
 **Complete CI Check:**
 ```bash
-npm run ci  # Runs both tests and validation
+npm run ci  # Runs tests, linting, and format check
 ```
 
 **Browser-based Testing:**
@@ -194,8 +216,10 @@ Tests cover:
 - Context menu functionality
 - Complete archiving workflows
 - Auto-archiving and content scanning functionality
+- **JavaScript linting** - Code quality with ESLint, browser extension environment
 - **HTML validation** - Syntax, semantics, accessibility
 - **CSS validation** - Syntax, modern standards, consistency
+- **Code formatting** - Consistent style with Prettier
 
 **Future Enhancement**: Consider integrating Playwright into the CI pipeline to enable automated browser testing of the popup interface and ensure UI functionality doesn't break with future changes. This would provide visual regression testing and automated screenshot capture for documentation updates.
 
@@ -203,7 +227,7 @@ Tests cover:
 When contributing:
 1. Update the README with new features
 2. Write tests for new functionality  
-3. **Run validation** - Ensure `npm run ci` passes before submitting
+3. **Run validation** - Ensure `npm run ci` passes before submitting (includes tests, linting, and formatting)
 4. Check for external code changes before submitting
 5. Document the LLM and tools used in development
 6. **Update screenshots** - When UI changes are made, update screenshots in the README using browser testing tools like Playwright to ensure documentation stays current
@@ -221,7 +245,7 @@ This entire codebase was generated using AI tools (specifically GitHub Copilot a
 **Last updated:** 2024
 **AI Tools Used:** GitHub Copilot, Claude (Anthropic)
 **Development Method:** Fully AI-generated with iterative refinement
-**Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation
+**Test Coverage:** Core functionality, URL processing, archive detection, JavaScript linting, HTML/CSS validation, code formatting
 
 ---
 
