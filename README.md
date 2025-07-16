@@ -27,7 +27,7 @@ The popup offers three main options:
 ### ✅ Configuration & Options
 The extension provides a comprehensive options page for configuring archive services and viewing available features:
 
-![Options Interface](https://github.com/user-attachments/assets/8fba6b77-ab51-4295-94fd-f3febc32cdf7)
+![Options Interface](https://github.com/user-attachments/assets/209931be-ea84-4feb-ad5d-1e8ebc91f1d2)
 
 - **Configurable archive service** - Choose between archive.ph, archive.is, archive.today
 - **Auto-archiving settings** - Configure text indicators and page patterns for automatic archiving
