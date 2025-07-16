@@ -113,7 +113,37 @@ async function handleDebugScan() {
             return;
         }
         
-        // Send message to content script to run manual debug scan
+        // First, check if content script is available
+        let contentScriptAvailable = false;
+        try {
+            const pingResponse = await chrome.tabs.sendMessage(tab.id, { type: 'PING' });
+            contentScriptAvailable = pingResponse && pingResponse.available;
+        } catch (error) {
+            // Content script not available
+            contentScriptAvailable = false;
+        }
+        
+        // If content script is not available, try to inject it
+        if (!contentScriptAvailable) {
+            showStatus('Injecting content script...', 'info');
+            
+            try {
+                await chrome.scripting.executeScript({
+                    target: { tabId: tab.id },
+                    files: ['content.js']
+                });
+                
+                // Wait a moment for the script to initialize
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+            } catch (injectError) {
+                console.error('Failed to inject content script:', injectError);
+                showStatus('Error: Could not inject content script. Page may not support scripts.', 'error');
+                return;
+            }
+        }
+        
+        // Now try to run the debug scan
         try {
             const response = await chrome.tabs.sendMessage(tab.id, {
                 type: 'MANUAL_DEBUG_SCAN'
@@ -125,8 +155,8 @@ async function handleDebugScan() {
                 showStatus('Debug scan failed: ' + (response?.error || 'Unknown error'), 'error');
             }
         } catch (error) {
-            // Content script might not be injected yet, or page doesn't support content scripts
-            showStatus('Error: Content script not available. Try refreshing the page.', 'error');
+            console.error('Failed to send debug scan message:', error);
+            showStatus('Error: Failed to communicate with content script.', 'error');
         }
         
     } catch (error) {

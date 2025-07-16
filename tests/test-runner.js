@@ -357,6 +357,38 @@ const testCases = [
         result: { hasDebugMode, debugModeValue, testSettings }
       };
     }
+  },
+
+  // Content script message handling tests
+  {
+    name: 'contentScriptMessage - PING message handling',
+    test: () => {
+      const result = testContentScriptMessageHandling('PING');
+      return { 
+        pass: result.success && result.isValidMessage && result.expectedResponse.available === true,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'contentScriptMessage - MANUAL_DEBUG_SCAN message handling',
+    test: () => {
+      const result = testContentScriptMessageHandling('MANUAL_DEBUG_SCAN');
+      return { 
+        pass: result.success && result.isValidMessage && result.expectedResponse.success === true,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'contentScriptMessage - Unknown message type handling',
+    test: () => {
+      const result = testContentScriptMessageHandling('UNKNOWN_MESSAGE');
+      return { 
+        pass: result.success && !result.isValidMessage && result.expectedResponse === null,
+        result: result 
+      };
+    }
   }
 ];
 

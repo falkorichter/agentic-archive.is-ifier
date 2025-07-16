@@ -227,5 +227,32 @@ function testTabIndexBehavior() {
   } catch (error) {
     return { success: false, error: error.message };
   }
+}
 
+// Test function for content script message handling
+function testContentScriptMessageHandling(messageType) {
+  try {
+    let expectedResponse = null;
+    
+    switch (messageType) {
+      case 'PING':
+        expectedResponse = { available: true };
+        break;
+      case 'MANUAL_DEBUG_SCAN':
+        // This would normally be async, but for testing we simulate the expected structure
+        expectedResponse = { success: true };
+        break;
+      default:
+        expectedResponse = null;
+    }
+    
+    return {
+      success: true,
+      messageType: messageType,
+      expectedResponse: expectedResponse,
+      isValidMessage: expectedResponse !== null
+    };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
 }

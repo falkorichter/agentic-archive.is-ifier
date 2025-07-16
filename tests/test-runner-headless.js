@@ -51,7 +51,8 @@ function runTests() {
           scanPageForIndicators: scanPageForIndicators,
           shouldScanUrlWithPatterns: shouldScanUrlWithPatterns,
           shouldScanPage: shouldScanPage,
-          testTabIndexBehavior: testTabIndexBehavior
+          testTabIndexBehavior: testTabIndexBehavior,
+          testContentScriptMessageHandling: testContentScriptMessageHandling
         };
       }
     `);
@@ -69,7 +70,7 @@ function runTests() {
       const { cleanUrl, isValidUrl, isArchiveUrl, extractRealUrlFromArchive, 
               generateArchiveId, testArchiveUrlWorkflow, testShowArchivedVersionsWorkflow, 
               testShowRealUrlWorkflow, scanPageForIndicators, shouldScanUrlWithPatterns,
-              shouldScanPage, testTabIndexBehavior } = testFunctions;
+              shouldScanPage, testTabIndexBehavior, testContentScriptMessageHandling } = testFunctions;
       
       const testCases = [${testCasesMatch[1]}];
       return testCases;

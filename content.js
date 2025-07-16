@@ -244,6 +244,10 @@
                 sendResponse({ success: false, error: error.message });
             });
             return true; // Will respond asynchronously
+        } else if (request.type === 'PING') {
+            // Simple ping to check if content script is available
+            sendResponse({ available: true });
+            return false;
         }
     });
 
