@@ -50,7 +50,7 @@ function runTests() {
           testShowRealUrlWorkflow: testShowRealUrlWorkflow,
           scanPageForIndicators: scanPageForIndicators,
           shouldScanUrlWithPatterns: shouldScanUrlWithPatterns,
-          shouldScanPage: shouldScanPage
+          shouldScanPage: shouldScanPage,
           testTabIndexBehavior: testTabIndexBehavior
         };
       }
@@ -69,8 +69,7 @@ function runTests() {
       const { cleanUrl, isValidUrl, isArchiveUrl, extractRealUrlFromArchive, 
               generateArchiveId, testArchiveUrlWorkflow, testShowArchivedVersionsWorkflow, 
               testShowRealUrlWorkflow, scanPageForIndicators, shouldScanUrlWithPatterns,
-              shouldScanPage } = testFunctions;
-              testShowRealUrlWorkflow, testTabIndexBehavior } = testFunctions;
+              shouldScanPage, testTabIndexBehavior } = testFunctions;
       
       const testCases = [${testCasesMatch[1]}];
       return testCases;

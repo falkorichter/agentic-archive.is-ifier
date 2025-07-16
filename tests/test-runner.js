@@ -310,6 +310,10 @@ const testCases = [
       const result = shouldScanPage(url, settings);
       return { 
         pass: result === false, 
+        result: result 
+      };
+    }
+  },
 
   // Tab index behavior test
   {

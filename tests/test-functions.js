@@ -199,6 +199,7 @@ function shouldScanPage(url, settings) {
 
   // Otherwise, check if current page matches any path patterns
   return shouldScanUrlWithPatterns(url, settings.pagePathPatterns || '');
+}
 
 // Test function to verify tab creation with correct index
 function testTabIndexBehavior() {
