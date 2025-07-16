@@ -2,11 +2,26 @@
 
 This directory contains tests for the Archive.is-ifier Chrome extension that can be run in isolation without requiring the Chrome extension APIs.
 
+## Files
+
+- `test.html` - Browser-based test runner with visual interface
+- `test-runner.js` - Test execution framework and test case definitions
+- `test-functions.js` - Core extension functions extracted for testing
+- `test-runner-headless.js` - Headless test runner for CI environments
+
 ## Running the Tests
 
+### Browser Tests (Development)
 1. Open `test.html` in any modern web browser
 2. Click "Run All Tests" to execute all test cases
 3. View the results to see which functions pass or fail
+
+### Headless Tests (CI)
+```bash
+node test-runner-headless.js
+```
+
+The headless test runner is used by GitHub Actions CI to automatically run tests on pull requests and pushes.
 
 ## Test Coverage
 
