@@ -183,6 +183,12 @@ This extension is similar to [rahiel/archiveror](https://github.com/rahiel/archi
 
 ## Development
 
+### Setup
+Before running tests or validation, install dependencies:
+```bash
+npm install
+```
+
 ### Testing
 Run the test suite and validation by:
 
@@ -246,11 +252,12 @@ This entire codebase was generated using AI tools (specifically GitHub Copilot a
 
 ## Development Metadata
 
-**Last updated:** 2024
+**Last updated:** December 2024
 **AI Tools Used:** GitHub Copilot, Claude (Anthropic)
 **Development Method:** Fully AI-generated with iterative refinement
 **Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation, translation key sorting
 **CI Validation:** Tests, HTML validation, CSS validation, translation key alphabetical sorting
+**Dependencies:** html-validate, stylelint - requires `npm install` before validation
 
 ---
 
