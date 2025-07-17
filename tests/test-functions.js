@@ -488,3 +488,201 @@ function testSortTranslationKeys(translations) {
     wasAlreadySorted: JSON.stringify(keys) === JSON.stringify(sortedKeys)
   };
 }
+
+// Changelog validation functions
+function validateChangelogFormat(content) {
+    const errors = [];
+    
+    // Check required header
+    if (!content.includes('# Changelog')) {
+        errors.push('Missing required "# Changelog" header');
+    }
+    
+    // Check Keep a Changelog reference
+    if (!content.includes('keepachangelog.com')) {
+        errors.push('Missing reference to keepachangelog.com in header section');
+    }
+    
+    // Check semantic versioning reference
+    if (!content.includes('semver.org')) {
+        errors.push('Missing reference to semver.org in header section');
+    }
+    
+    // Check for Unreleased section
+    if (!content.includes('## [Unreleased]')) {
+        errors.push('Missing required "## [Unreleased]" section');
+    }
+    
+    // Validate version format patterns
+    const versionPattern = /## \[([^\]]+)\] - ([^\s]+)/g;
+    const versions = [];
+    let match;
+    
+    while ((match = versionPattern.exec(content)) !== null) {
+        const [, version, date] = match;
+        versions.push({ version, date });
+        
+        // Validate date format
+        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateRegex.test(date)) {
+            errors.push(`Invalid date format "${date}" for version ${version}. Expected YYYY-MM-DD format`);
+        }
+        
+        // Validate semantic version format
+        const semverRegex = /^\d+\.\d+\.\d+$/;
+        if (!semverRegex.test(version) && version !== 'Unreleased') {
+            errors.push(`Invalid version format "${version}". Expected semantic versioning (MAJOR.MINOR.PATCH)`);
+        }
+    }
+    
+    // Check for valid changelog categories
+    const validCategories = ['Added', 'Changed', 'Deprecated', 'Removed', 'Fixed', 'Security'];
+    const categoryPattern = /### (Added|Changed|Deprecated|Removed|Fixed|Security)/g;
+    
+    // Check for invalid categories
+    const invalidCategoryPattern = /### (?!(?:Added|Changed|Deprecated|Removed|Fixed|Security)\b)(\w+)/g;
+    while ((match = invalidCategoryPattern.exec(content)) !== null) {
+        errors.push(`Invalid changelog category "${match[1]}". Must be one of: ${validCategories.join(', ')}`);
+    }
+    
+    // Check for version links at the bottom
+    if (versions.length > 0) {
+        const linkPattern = /^\[[\d.]+\]:\s*https?:\/\//m;
+        if (!linkPattern.test(content)) {
+            errors.push('Missing version comparison links at the bottom of the changelog');
+        }
+        
+        // Check that all versions have corresponding links
+        versions.forEach(({ version }) => {
+            const linkRegex = new RegExp(`\\[${version.replace(/\./g, '\\.')}\\]:\\s*https?://`, 'm');
+            if (!linkRegex.test(content)) {
+                errors.push(`Missing comparison link for version ${version}`);
+            }
+        });
+    }
+    
+    return errors;
+}
+
+function testValidChangelogFormat() {
+    const validChangelog = `# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0.0] - 2025-01-09
+
+### Added
+
+- Initial release with basic functionality
+
+### Fixed
+
+- Bug fixes and improvements
+
+[unreleased]: https://github.com/example/repo/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/example/repo/releases/tag/v1.0.0`;
+
+    const errors = validateChangelogFormat(validChangelog);
+    return {
+        pass: errors.length === 0,
+        result: errors.length === 0 ? 'Valid changelog format detected' : `Errors: ${errors.join(', ')}`
+    };
+}
+
+function testInvalidChangelogMissingHeader() {
+    const invalidChangelog = `Some content without proper header
+
+## [1.0.0] - 2025-01-09
+
+### Added
+- Something`;
+
+    const errors = validateChangelogFormat(invalidChangelog);
+    return {
+        pass: errors.length > 0 && errors.some(e => e.includes('Changelog')),
+        result: errors.length > 0 ? 'Missing header detected' : 'Failed to detect missing header'
+    };
+}
+
+function testInvalidVersionFormat() {
+    const invalidChangelog = `# Changelog
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0] - 2025-01-09
+
+### Added
+- Something`;
+
+    const errors = validateChangelogFormat(invalidChangelog);
+    return {
+        pass: errors.length > 0 && errors.some(e => e.includes('version format')),
+        result: errors.length > 0 ? 'Invalid version format detected' : 'Failed to detect invalid version'
+    };
+}
+
+function testInvalidDateFormat() {
+    const invalidChangelog = `# Changelog
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0.0] - 01/09/2025
+
+### Added
+- Something`;
+
+    const errors = validateChangelogFormat(invalidChangelog);
+    return {
+        pass: errors.length > 0 && errors.some(e => e.includes('date format')),
+        result: errors.length > 0 ? 'Invalid date format detected' : 'Failed to detect invalid date'
+    };
+}
+
+function testInvalidCategory() {
+    const invalidChangelog = `# Changelog
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0.0] - 2025-01-09
+
+### InvalidCategory
+- Something`;
+
+    const errors = validateChangelogFormat(invalidChangelog);
+    return {
+        pass: errors.length > 0 && errors.some(e => e.includes('Invalid changelog category')),
+        result: errors.length > 0 ? 'Invalid category detected' : 'Failed to detect invalid category'
+    };
+}
+
+function testMissingUnreleasedSection() {
+    const invalidChangelog = `# Changelog
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.0] - 2025-01-09
+
+### Added
+- Something`;
+
+    const errors = validateChangelogFormat(invalidChangelog);
+    return {
+        pass: errors.length > 0 && errors.some(e => e.includes('Unreleased')),
+        result: errors.length > 0 ? 'Missing Unreleased section detected' : 'Failed to detect missing Unreleased'
+    };
+}

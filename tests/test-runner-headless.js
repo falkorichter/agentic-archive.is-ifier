@@ -61,7 +61,13 @@ function runTests() {
           testBumpPatchVersionLogic: testBumpPatchVersionLogic,
           testVersionFormatValidation: testVersionFormatValidation,
           testTranslationKeysOrder: testTranslationKeysOrder,
-          testSortTranslationKeys: testSortTranslationKeys
+          testSortTranslationKeys: testSortTranslationKeys,
+          testValidChangelogFormat: testValidChangelogFormat,
+          testInvalidChangelogMissingHeader: testInvalidChangelogMissingHeader,
+          testInvalidVersionFormat: testInvalidVersionFormat,
+          testInvalidDateFormat: testInvalidDateFormat,
+          testInvalidCategory: testInvalidCategory,
+          testMissingUnreleasedSection: testMissingUnreleasedSection
         };
       }
     `);
@@ -82,7 +88,9 @@ function runTests() {
               shouldScanPage, testTabIndexBehavior, testContentScriptMessageHandling,
               testDebugScanAnalysis, testDebugScanWithIndicators, testDebugScanHomepage,
               testDebugScanNoIndicators, testDebugScanNoConditions, testBumpPatchVersionLogic,
-              testVersionFormatValidation, testTranslationKeysOrder, testSortTranslationKeys } = testFunctions;
+              testVersionFormatValidation, testTranslationKeysOrder, testSortTranslationKeys,
+              testValidChangelogFormat, testInvalidChangelogMissingHeader, testInvalidVersionFormat,
+              testInvalidDateFormat, testInvalidCategory, testMissingUnreleasedSection } = testFunctions;
       
       const testCases = [${testCasesMatch[1]}];
       return testCases;
