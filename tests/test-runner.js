@@ -479,6 +479,108 @@ const testCases = [
         result: result 
       };
     }
+  },
+
+  // Version bump tests
+  {
+    name: 'versionBump - Valid version 1.0.0',
+    test: () => {
+      const result = testBumpPatchVersionLogic('1.0.0');
+      return { 
+        pass: result.success && result.newVersion === '1.0.1',
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionBump - Valid version with leading zeros 00.0.0',
+    test: () => {
+      const result = testBumpPatchVersionLogic('00.0.0');
+      return { 
+        pass: result.success && result.newVersion === '0.0.1',
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionBump - Large patch version 1.0.10000',
+    test: () => {
+      const result = testBumpPatchVersionLogic('1.0.10000');
+      return { 
+        pass: result.success && result.newVersion === '1.0.10001',
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionBump - Invalid negative patch version 1.0.-10000',
+    test: () => {
+      const result = testBumpPatchVersionLogic('1.0.-10000');
+      return { 
+        pass: !result.success && result.error.includes('cannot be negative'),
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionBump - Invalid negative major version -1.0.0',
+    test: () => {
+      const result = testBumpPatchVersionLogic('-1.0.0');
+      return { 
+        pass: !result.success && result.error.includes('cannot be negative'),
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionBump - Invalid negative minor version 1.-5.0',
+    test: () => {
+      const result = testBumpPatchVersionLogic('1.-5.0');
+      return { 
+        pass: !result.success && result.error.includes('cannot be negative'),
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionValidation - Invalid format too few parts 1.0',
+    test: () => {
+      const result = testVersionFormatValidation('1.0');
+      return { 
+        pass: !result.isValid && result.error.includes('Expected MAJOR.MINOR.PATCH'),
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionValidation - Invalid format too many parts 1.0.0.0',
+    test: () => {
+      const result = testVersionFormatValidation('1.0.0.0');
+      return { 
+        pass: !result.isValid && result.error.includes('Expected MAJOR.MINOR.PATCH'),
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionValidation - Invalid format non-numeric patch 1.0.abc',
+    test: () => {
+      const result = testVersionFormatValidation('1.0.abc');
+      return { 
+        pass: !result.isValid && result.error.includes('must be valid numbers'),
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'versionValidation - Valid version 2.15.999',
+    test: () => {
+      const result = testVersionFormatValidation('2.15.999');
+      return { 
+        pass: result.isValid,
+        result: result 
+      };
+    }
   }
 ];
 
