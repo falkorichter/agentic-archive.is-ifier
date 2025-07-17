@@ -44,4 +44,4 @@ The version bump script updates:
 - `package.json` - Node.js package version
 - `manifest.json` - Browser extension version
 
-Both files must always have the same version number.
+Both files must always have the same version number.# Demo change
