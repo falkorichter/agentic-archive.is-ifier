@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for version comparison
       
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -22,5 +24,13 @@ jobs:
     - name: Install dependencies
       run: npm install
       
+    - name: Check version bump (skip for first commit)
+      run: |
+        if git show HEAD~1:package.json 2>/dev/null; then
+          npm run version:check
+        else
+          echo "First commit detected, skipping version check"
+        fi
+      
     - name: Run tests and validation
-      run: npm run ci
+      run: npm run test && npm run validate
