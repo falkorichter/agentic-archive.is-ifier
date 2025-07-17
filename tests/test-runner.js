@@ -657,6 +657,50 @@ const testCases = [
         result: result 
       };
     }
+  },
+
+  // Changelog validation tests
+  {
+    name: 'changelogValidation - Valid changelog format',
+    test: () => {
+      const result = testValidChangelogFormat();
+      return result;
+    }
+  },
+  {
+    name: 'changelogValidation - Missing header detection',
+    test: () => {
+      const result = testInvalidChangelogMissingHeader();
+      return result;
+    }
+  },
+  {
+    name: 'changelogValidation - Invalid version format detection',
+    test: () => {
+      const result = testInvalidVersionFormat();
+      return result;
+    }
+  },
+  {
+    name: 'changelogValidation - Invalid date format detection',
+    test: () => {
+      const result = testInvalidDateFormat();
+      return result;
+    }
+  },
+  {
+    name: 'changelogValidation - Invalid category detection',
+    test: () => {
+      const result = testInvalidCategory();
+      return result;
+    }
+  },
+  {
+    name: 'changelogValidation - Missing Unreleased section detection',
+    test: () => {
+      const result = testMissingUnreleasedSection();
+      return result;
+    }
   }
 ];
 

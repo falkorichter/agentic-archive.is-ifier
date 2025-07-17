@@ -192,12 +192,15 @@ npm test
 # or directly: node tests/test-runner-headless.js
 ```
 
-**HTML/CSS Validation:**
+**Validation Commands:**
 ```bash
 npm run validate
 # or separately:
-npm run validate:html  # HTML syntax and semantics
-npm run validate:css   # CSS syntax and style consistency
+npm run validate:html      # HTML syntax and semantics
+npm run validate:css       # CSS syntax and style consistency
+npm run validate:markdown  # Markdown syntax validation 
+npm run validate:changelog # Keep a Changelog format validation
+npm run validate:translations # Translation key alphabetical sorting
 ```
 
 **Complete CI Check:**
@@ -223,6 +226,7 @@ Tests cover:
 - **HTML validation** - Syntax, semantics, accessibility
 - **CSS validation** - Syntax, modern standards, consistency
 - **Translation key management** - Alphabetical sorting validation
+- **Changelog validation** - Keep a Changelog format compliance and markdown syntax
 
 **Future Enhancement**: Consider integrating Playwright into the CI pipeline to enable automated browser testing of the popup interface and ensure UI functionality doesn't break with future changes. This would provide visual regression testing and automated screenshot capture for documentation updates.
 
@@ -246,11 +250,11 @@ This entire codebase was generated using AI tools (specifically GitHub Copilot a
 
 ## Development Metadata
 
-**Last updated:** 2024
+**Last updated:** 2025-01-09
 **AI Tools Used:** GitHub Copilot, Claude (Anthropic)
 **Development Method:** Fully AI-generated with iterative refinement
-**Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation, translation key sorting
-**CI Validation:** Tests, HTML validation, CSS validation, translation key alphabetical sorting
+**Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation, translation key sorting, changelog validation
+**CI Validation:** Tests, HTML validation, CSS validation, markdown validation, changelog format validation, translation key alphabetical sorting
 
 ---
 
