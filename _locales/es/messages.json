@@ -51,31 +51,31 @@
         "message": "Configuración de Depuración"
     },
     "optionsFeature1": {
-        "message": "Right-click on links to archive them"
+        "message": "Clic derecho en enlaces para archivarlos"
     },
     "optionsFeature2": {
-        "message": "Archive links and copy the archive URL to clipboard"
+        "message": "Archivar enlaces y copiar la URL del archivo al portapapeles"
     },
     "optionsFeature3": {
-        "message": "View archived versions of links"
+        "message": "Ver versiones archivadas de enlaces"
     },
     "optionsFeature4": {
-        "message": "Extract real URLs from archive links"
+        "message": "Extraer URLs reales de enlaces de archivo"
     },
     "optionsFeature5": {
-        "message": "Archive selected text as URLs"
+        "message": "Archivar texto seleccionado como URLs"
     },
     "optionsFeature6": {
-        "message": "Archive the current page"
+        "message": "Archivar la página actual"
     },
     "optionsFeature7": {
-        "message": "Auto-archive pages containing specified text indicators"
+        "message": "Auto-archivar páginas que contengan indicadores de texto específicos"
     },
     "optionsFeature8": {
-        "message": "Configure scanning for specific page path patterns or all websites"
+        "message": "Configurar escaneo para patrones específicos de ruta de página o todos los sitios web"
     },
     "optionsFeaturesTitle": {
-        "message": "Features:"
+        "message": "Características:"
     },
     "optionsGlobalScanningHelp": {
         "message": "Cuando esté habilitado, todas las páginas visitadas serán escaneadas independientemente de los patrones de ruta"
@@ -90,7 +90,7 @@
         "message": "Patrones de ruta de página a escanear"
     },
     "optionsReset": {
-        "message": "Reset to defaults"
+        "message": "Restablecer a valores predeterminados"
     },
     "optionsSave": {
         "message": "Guardar"

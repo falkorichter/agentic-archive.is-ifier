@@ -51,31 +51,31 @@
         "message": "デバッグ設定"
     },
     "optionsFeature1": {
-        "message": "Right-click on links to archive them"
+        "message": "リンクを右クリックしてアーカイブ"
     },
     "optionsFeature2": {
-        "message": "Archive links and copy the archive URL to clipboard"
+        "message": "リンクをアーカイブしてアーカイブURLをクリップボードにコピー"
     },
     "optionsFeature3": {
-        "message": "View archived versions of links"
+        "message": "リンクのアーカイブされたバージョンを表示"
     },
     "optionsFeature4": {
-        "message": "Extract real URLs from archive links"
+        "message": "アーカイブリンクから実際のURLを抽出"
     },
     "optionsFeature5": {
-        "message": "Archive selected text as URLs"
+        "message": "選択したテキストをURLとしてアーカイブ"
     },
     "optionsFeature6": {
-        "message": "Archive the current page"
+        "message": "現在のページをアーカイブ"
     },
     "optionsFeature7": {
-        "message": "Auto-archive pages containing specified text indicators"
+        "message": "指定されたテキストインジケーターを含むページを自動アーカイブ"
     },
     "optionsFeature8": {
-        "message": "Configure scanning for specific page path patterns or all websites"
+        "message": "特定のページパスパターンまたはすべてのウェブサイトのスキャンを設定"
     },
     "optionsFeaturesTitle": {
-        "message": "Features:"
+        "message": "機能:"
     },
     "optionsGlobalScanningHelp": {
         "message": "有効にすると、パスパターンに関係なく、すべての訪問ページがスキャンされます"
@@ -90,7 +90,7 @@
         "message": "スキャンするページパスパターン"
     },
     "optionsReset": {
-        "message": "Reset to defaults"
+        "message": "デフォルトにリセット"
     },
     "optionsSave": {
         "message": "保存"

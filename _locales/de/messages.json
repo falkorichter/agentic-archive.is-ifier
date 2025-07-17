@@ -51,31 +51,31 @@
         "message": "Debug-Einstellungen"
     },
     "optionsFeature1": {
-        "message": "Right-click on links to archive them"
+        "message": "Rechtsklick auf Links, um sie zu archivieren"
     },
     "optionsFeature2": {
-        "message": "Archive links and copy the archive URL to clipboard"
+        "message": "Links archivieren und Archiv-URL in die Zwischenablage kopieren"
     },
     "optionsFeature3": {
-        "message": "View archived versions of links"
+        "message": "Archivierte Versionen von Links anzeigen"
     },
     "optionsFeature4": {
-        "message": "Extract real URLs from archive links"
+        "message": "Echte URLs aus Archiv-Links extrahieren"
     },
     "optionsFeature5": {
-        "message": "Archive selected text as URLs"
+        "message": "Ausgewählten Text als URLs archivieren"
     },
     "optionsFeature6": {
-        "message": "Archive the current page"
+        "message": "Die aktuelle Seite archivieren"
     },
     "optionsFeature7": {
-        "message": "Auto-archive pages containing specified text indicators"
+        "message": "Seiten mit bestimmten Textindikatoren automatisch archivieren"
     },
     "optionsFeature8": {
-        "message": "Configure scanning for specific page path patterns or all websites"
+        "message": "Scannen für bestimmte Seitenpfad-Muster oder alle Websites konfigurieren"
     },
     "optionsFeaturesTitle": {
-        "message": "Features:"
+        "message": "Funktionen:"
     },
     "optionsGlobalScanningHelp": {
         "message": "Wenn aktiviert, werden alle besuchten Seiten unabhängig von Pfadmustern gescannt"
@@ -90,7 +90,7 @@
         "message": "Seitenpfad-Muster zum Scannen"
     },
     "optionsReset": {
-        "message": "Reset to defaults"
+        "message": "Auf Standardwerte zurücksetzen"
     },
     "optionsSave": {
         "message": "Speichern"

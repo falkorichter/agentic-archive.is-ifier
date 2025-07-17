@@ -51,31 +51,31 @@
         "message": "Configurações de Debug"
     },
     "optionsFeature1": {
-        "message": "Right-click on links to archive them"
+        "message": "Clique com o botão direito nos links para arquivá-los"
     },
     "optionsFeature2": {
-        "message": "Archive links and copy the archive URL to clipboard"
+        "message": "Arquivar links e copiar a URL do arquivo para a área de transferência"
     },
     "optionsFeature3": {
-        "message": "View archived versions of links"
+        "message": "Ver versões arquivadas dos links"
     },
     "optionsFeature4": {
-        "message": "Extract real URLs from archive links"
+        "message": "Extrair URLs reais de links de arquivo"
     },
     "optionsFeature5": {
-        "message": "Archive selected text as URLs"
+        "message": "Arquivar texto selecionado como URLs"
     },
     "optionsFeature6": {
-        "message": "Archive the current page"
+        "message": "Arquivar a página atual"
     },
     "optionsFeature7": {
-        "message": "Auto-archive pages containing specified text indicators"
+        "message": "Auto-arquivar páginas contendo indicadores de texto especificados"
     },
     "optionsFeature8": {
-        "message": "Configure scanning for specific page path patterns or all websites"
+        "message": "Configurar escaneamento para padrões específicos de caminho de página ou todos os sites"
     },
     "optionsFeaturesTitle": {
-        "message": "Features:"
+        "message": "Recursos:"
     },
     "optionsGlobalScanningHelp": {
         "message": "Quando ativado, todas as páginas visitadas serão escaneadas independentemente dos padrões de caminho"
@@ -90,7 +90,7 @@
         "message": "Padrões de caminho de página para escanear"
     },
     "optionsReset": {
-        "message": "Reset to defaults"
+        "message": "Redefinir para padrões"
     },
     "optionsSave": {
         "message": "Salvar"

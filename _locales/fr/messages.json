@@ -51,31 +51,31 @@
         "message": "Paramètres de Débogage"
     },
     "optionsFeature1": {
-        "message": "Right-click on links to archive them"
+        "message": "Clic droit sur les liens pour les archiver"
     },
     "optionsFeature2": {
-        "message": "Archive links and copy the archive URL to clipboard"
+        "message": "Archiver les liens et copier l'URL d'archive dans le presse-papiers"
     },
     "optionsFeature3": {
-        "message": "View archived versions of links"
+        "message": "Voir les versions archivées des liens"
     },
     "optionsFeature4": {
-        "message": "Extract real URLs from archive links"
+        "message": "Extraire les vraies URLs des liens d'archive"
     },
     "optionsFeature5": {
-        "message": "Archive selected text as URLs"
+        "message": "Archiver le texte sélectionné en tant qu'URLs"
     },
     "optionsFeature6": {
-        "message": "Archive the current page"
+        "message": "Archiver la page actuelle"
     },
     "optionsFeature7": {
-        "message": "Auto-archive pages containing specified text indicators"
+        "message": "Auto-archiver les pages contenant des indicateurs de texte spécifiés"
     },
     "optionsFeature8": {
-        "message": "Configure scanning for specific page path patterns or all websites"
+        "message": "Configurer l'analyse pour des motifs de chemin de page spécifiques ou tous les sites web"
     },
     "optionsFeaturesTitle": {
-        "message": "Features:"
+        "message": "Fonctionnalités:"
     },
     "optionsGlobalScanningHelp": {
         "message": "Lorsque activé, toutes les pages visitées seront analysées indépendamment des motifs de chemin"
@@ -90,7 +90,7 @@
         "message": "Motifs de chemin de page à analyser"
     },
     "optionsReset": {
-        "message": "Reset to defaults"
+        "message": "Réinitialiser aux valeurs par défaut"
     },
     "optionsSave": {
         "message": "Enregistrer"
