@@ -140,7 +140,21 @@ To add a new language:
 1. Create a new directory under `_locales/` (e.g., `_locales/es/`)
 2. Copy `_locales/en_US/messages.json` to the new directory
 3. Translate all message values while keeping the keys unchanged
-4. Test the extension with the new locale
+4. **Ensure keys are sorted alphabetically** - Use `npm run translations:sort` to automatically sort keys
+5. Test the extension with the new locale
+
+### Translation Key Management
+**Important**: Translation keys in all `_locales/*/messages.json` files must be sorted alphabetically for consistency and maintainability. This is enforced by CI validation.
+
+**Commands:**
+- `npm run translations:sort` - Automatically sort all translation keys alphabetically
+- `npm run validate:translations` - Check if translation keys are properly sorted
+- The CI pipeline automatically validates key sorting and will fail if keys are not sorted
+
+**When adding new translation keys:**
+1. Add the key to all locale files
+2. Run `npm run translations:sort` to ensure proper ordering
+3. Verify with `npm run validate:translations`
 
 ## Archive Service Integration
 
@@ -191,6 +205,12 @@ npm run validate:css   # CSS syntax and style consistency
 npm run ci  # Runs both tests and validation
 ```
 
+**Translation Key Management:**
+```bash
+npm run translations:sort      # Sort all translation keys alphabetically
+npm run validate:translations  # Validate key sorting
+```
+
 **Browser-based Testing:**
 Open `tests/test.html` in your browser for interactive testing.
 
@@ -202,6 +222,7 @@ Tests cover:
 - Auto-archiving and content scanning functionality
 - **HTML validation** - Syntax, semantics, accessibility
 - **CSS validation** - Syntax, modern standards, consistency
+- **Translation key management** - Alphabetical sorting validation
 
 **Future Enhancement**: Consider integrating Playwright into the CI pipeline to enable automated browser testing of the popup interface and ensure UI functionality doesn't break with future changes. This would provide visual regression testing and automated screenshot capture for documentation updates.
 
@@ -213,6 +234,7 @@ When contributing:
 4. Check for external code changes before submitting
 5. Document the LLM and tools used in development
 6. **Update screenshots** - When UI changes are made, update screenshots in the README using browser testing tools like Playwright to ensure documentation stays current
+7. **Translation keys** - Keep translation keys in `_locales/*/messages.json` files sorted alphabetically for consistency and maintainability. Use `npm run translations:sort` to automatically sort keys or `npm run validate:translations` to check sorting.
 
 ## AI Generation Notice
 
@@ -227,7 +249,8 @@ This entire codebase was generated using AI tools (specifically GitHub Copilot a
 **Last updated:** 2024
 **AI Tools Used:** GitHub Copilot, Claude (Anthropic)
 **Development Method:** Fully AI-generated with iterative refinement
-**Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation
+**Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation, translation key sorting
+**CI Validation:** Tests, HTML validation, CSS validation, translation key alphabetical sorting
 
 ---
 

@@ -1,9 +1,9 @@
 {
-    "appName": {
-        "message": "Archive.is-ifier"
-    },
     "appDesc": {
         "message": "右键使用archive.is归档URL"
+    },
+    "appName": {
+        "message": "Archive.is-ifier"
     },
     "contextMenuArchive": {
         "message": "归档此链接"
@@ -11,20 +11,26 @@
     "contextMenuArchiveCopy": {
         "message": "归档此链接并复制URL"
     },
-    "contextMenuShowVersions": {
-        "message": "显示已归档版本"
-    },
-    "contextMenuShowReal": {
-        "message": "显示真实URL"
+    "contextMenuArchivePage": {
+        "message": "归档当前页面"
     },
     "contextMenuArchiveSelection": {
         "message": "归档选定的URL"
     },
-    "contextMenuArchivePage": {
-        "message": "归档当前页面"
+    "contextMenuShowReal": {
+        "message": "显示真实URL"
     },
-    "optionsTitle": {
-        "message": "Archive.is-ifier选项"
+    "contextMenuShowVersions": {
+        "message": "显示已归档版本"
+    },
+    "notificationCopied": {
+        "message": "归档URL已复制到剪贴板"
+    },
+    "notificationError": {
+        "message": "归档URL时出错"
+    },
+    "notificationSuccess": {
+        "message": "URL归档成功"
     },
     "optionsArchiveUrl": {
         "message": "归档服务URL"
@@ -32,38 +38,41 @@
     "optionsArchiveUrlHelp": {
         "message": "选择要使用的归档服务"
     },
-    "optionsSave": {
-        "message": "保存"
-    },
     "optionsAutoArchivingTitle": {
         "message": "自动归档设置"
     },
-    "optionsTextIndicatorsLabel": {
-        "message": "要扫描的文本指示符"
+    "optionsDebugModeHelp": {
+        "message": "启用后，详细日志将显示在控制台中，调试工具将在弹出窗口中可用"
     },
-    "optionsTextIndicatorsHelp": {
-        "message": "输入要搜索的文本模式（每行一个）。支持/ /之间的正则表达式模式"
+    "optionsDebugModeLabel": {
+        "message": "启用调试模式"
     },
-    "optionsPagePathPatternsLabel": {
-        "message": "要扫描的页面路径模式"
-    },
-    "optionsPagePathPatternsHelp": {
-        "message": "输入要匹配的URL模式（每行一个）。留空以禁用基于路径的扫描"
-    },
-    "optionsGlobalScanningLabel": {
-        "message": "扫描所有网站以查找指示符"
+    "optionsDebugSettingsTitle": {
+        "message": "调试设置"
     },
     "optionsGlobalScanningHelp": {
         "message": "启用后，无论路径模式如何，都会扫描所有访问的页面"
     },
-    "notificationSuccess": {
-        "message": "URL归档成功"
+    "optionsGlobalScanningLabel": {
+        "message": "扫描所有网站以查找指示符"
     },
-    "notificationError": {
-        "message": "归档URL时出错"
+    "optionsPagePathPatternsHelp": {
+        "message": "输入要匹配的URL模式（每行一个）。留空以禁用基于路径的扫描"
     },
-    "notificationCopied": {
-        "message": "归档URL已复制到剪贴板"
+    "optionsPagePathPatternsLabel": {
+        "message": "要扫描的页面路径模式"
+    },
+    "optionsSave": {
+        "message": "保存"
+    },
+    "optionsTextIndicatorsHelp": {
+        "message": "输入要搜索的文本模式（每行一个）。支持/ /之间的正则表达式模式"
+    },
+    "optionsTextIndicatorsLabel": {
+        "message": "要扫描的文本指示符"
+    },
+    "optionsTitle": {
+        "message": "Archive.is-ifier选项"
     },
     "popupArchivePage": {
         "message": "归档当前页面"
@@ -71,11 +80,11 @@
     "popupArchivePageDesc": {
         "message": "将此页面保存到archive.is"
     },
-    "popupShowVersions": {
-        "message": "显示已归档版本"
+    "popupDebugScanDesc": {
+        "message": "手动触发检测并查看日志"
     },
-    "popupShowVersionsDesc": {
-        "message": "在Wayback Machine上查看历史记录"
+    "popupDebugScanTitle": {
+        "message": "运行调试扫描"
     },
     "popupSettings": {
         "message": "设置"
@@ -83,19 +92,10 @@
     "popupSettingsDesc": {
         "message": "配置归档选项"
     },
-    "popupDebugScanTitle": {
-        "message": "运行调试扫描"
+    "popupShowVersions": {
+        "message": "显示已归档版本"
     },
-    "popupDebugScanDesc": {
-        "message": "手动触发检测并查看日志"
-    },
-    "optionsDebugSettingsTitle": {
-        "message": "调试设置"
-    },
-    "optionsDebugModeLabel": {
-        "message": "启用调试模式"
-    },
-    "optionsDebugModeHelp": {
-        "message": "启用后，详细日志将显示在控制台中，调试工具将在弹出窗口中可用"
+    "popupShowVersionsDesc": {
+        "message": "在Wayback Machine上查看历史记录"
     }
 }

@@ -456,3 +456,35 @@ function testVersionFormatValidation(version) {
     };
   }
 }
+
+// Test function for translation key sorting validation
+function testTranslationKeysOrder(translations) {
+  const keys = Object.keys(translations);
+  const sortedKeys = [...keys].sort();
+  
+  return {
+    currentKeys: keys,
+    sortedKeys: sortedKeys,
+    isCorrectOrder: JSON.stringify(keys) === JSON.stringify(sortedKeys),
+    keyCount: keys.length
+  };
+}
+
+// Test function for sorting translation keys
+function testSortTranslationKeys(translations) {
+  const keys = Object.keys(translations);
+  const sortedKeys = [...keys].sort();
+  const sortedTranslations = {};
+  
+  sortedKeys.forEach(key => {
+    sortedTranslations[key] = translations[key];
+  });
+  
+  return {
+    original: translations,
+    sorted: sortedTranslations,
+    originalKeys: keys,
+    sortedKeys: sortedKeys,
+    wasAlreadySorted: JSON.stringify(keys) === JSON.stringify(sortedKeys)
+  };
+}

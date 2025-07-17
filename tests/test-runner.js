@@ -581,6 +581,82 @@ const testCases = [
         result: result 
       };
     }
+  },
+
+  // Translation key sorting tests
+  {
+    name: 'translationKeysOrder - Unsorted keys detection',
+    test: () => {
+      const unsortedTranslations = {
+        "zTestKey": { "message": "Z message" },
+        "appName": { "message": "App Name" },
+        "contextMenuArchive": { "message": "Archive" },
+        "bSecondKey": { "message": "B message" }
+      };
+      const result = testTranslationKeysOrder(unsortedTranslations);
+      return { 
+        pass: result.isCorrectOrder === false && result.keyCount === 4,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'translationKeysOrder - Already sorted keys',
+    test: () => {
+      const sortedTranslations = {
+        "appName": { "message": "App Name" },
+        "bSecondKey": { "message": "B message" },
+        "contextMenuArchive": { "message": "Archive" },
+        "zTestKey": { "message": "Z message" }
+      };
+      const result = testTranslationKeysOrder(sortedTranslations);
+      return { 
+        pass: result.isCorrectOrder === true && result.keyCount === 4,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'translationKeysOrder - Empty translations',
+    test: () => {
+      const result = testTranslationKeysOrder({});
+      return { 
+        pass: result.isCorrectOrder === true && result.keyCount === 0,
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'sortTranslationKeys - Sort unsorted translations',
+    test: () => {
+      const unsortedTranslations = {
+        "zTestKey": { "message": "Z message" },
+        "appName": { "message": "App Name" },
+        "contextMenuArchive": { "message": "Archive" }
+      };
+      const result = testSortTranslationKeys(unsortedTranslations);
+      return { 
+        pass: result.wasAlreadySorted === false && 
+              result.sortedKeys[0] === "appName" && 
+              result.sortedKeys[2] === "zTestKey",
+        result: result 
+      };
+    }
+  },
+  {
+    name: 'sortTranslationKeys - Already sorted translations',
+    test: () => {
+      const sortedTranslations = {
+        "appName": { "message": "App Name" },
+        "contextMenuArchive": { "message": "Archive" },
+        "zTestKey": { "message": "Z message" }
+      };
+      const result = testSortTranslationKeys(sortedTranslations);
+      return { 
+        pass: result.wasAlreadySorted === true,
+        result: result 
+      };
+    }
   }
 ];
 

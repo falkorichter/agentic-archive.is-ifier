@@ -1,13 +1,15 @@
 {
   "name": "agentic-archive.is-ifier",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Browser extension to archive pages and links using archive.is services",
   "private": true,
   "scripts": {
     "test": "node tests/test-runner-headless.js",
     "validate:html": "html-validate *.html **/*.html",
     "validate:css": "stylelint **/*.css",
-    "validate": "npm run validate:html && npm run validate:css",
+    "validate:translations": "node scripts/validate-translation-keys.js",
+    "validate": "npm run validate:html && npm run validate:css && npm run validate:translations",
+    "translations:sort": "node scripts/sort-translation-keys.js",
     "version:bump": "node scripts/bump-version.js",
     "version:check": "node scripts/check-version-bump.js",
     "ci": "npm run test && npm run validate"
