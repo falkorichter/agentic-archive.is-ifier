@@ -1,9 +1,9 @@
 {
-    "appName": {
-        "message": "Archive.is-ifier"
-    },
     "appDesc": {
         "message": "Rechtsklick zum Archivieren von URLs mit archive.is"
+    },
+    "appName": {
+        "message": "Archive.is-ifier"
     },
     "contextMenuArchive": {
         "message": "Diesen Link archivieren"
@@ -11,20 +11,26 @@
     "contextMenuArchiveCopy": {
         "message": "Diesen Link archivieren und URL kopieren"
     },
-    "contextMenuShowVersions": {
-        "message": "Archivierte Versionen anzeigen"
-    },
-    "contextMenuShowReal": {
-        "message": "Echte URL anzeigen"
+    "contextMenuArchivePage": {
+        "message": "Aktuelle Seite archivieren"
     },
     "contextMenuArchiveSelection": {
         "message": "Ausgewählte URL archivieren"
     },
-    "contextMenuArchivePage": {
-        "message": "Aktuelle Seite archivieren"
+    "contextMenuShowReal": {
+        "message": "Echte URL anzeigen"
     },
-    "optionsTitle": {
-        "message": "Archive.is-ifier Einstellungen"
+    "contextMenuShowVersions": {
+        "message": "Archivierte Versionen anzeigen"
+    },
+    "notificationCopied": {
+        "message": "Archiv-URL in die Zwischenablage kopiert"
+    },
+    "notificationError": {
+        "message": "Fehler beim Archivieren der URL"
+    },
+    "notificationSuccess": {
+        "message": "URL erfolgreich archiviert"
     },
     "optionsArchiveUrl": {
         "message": "Archivdienst-URL"
@@ -32,38 +38,41 @@
     "optionsArchiveUrlHelp": {
         "message": "Wählen Sie, welchen Archivdienst Sie verwenden möchten"
     },
-    "optionsSave": {
-        "message": "Speichern"
-    },
     "optionsAutoArchivingTitle": {
         "message": "Auto-Archivierung Einstellungen"
     },
-    "optionsTextIndicatorsLabel": {
-        "message": "Textindikatoren zum Suchen"
+    "optionsDebugModeHelp": {
+        "message": "Wenn aktiviert, wird detaillierte Protokollierung in der Konsole angezeigt und Debug-Tools sind im Popup verfügbar"
     },
-    "optionsTextIndicatorsHelp": {
-        "message": "Geben Sie Textmuster zum Suchen ein (eines pro Zeile). Unterstützt Regex-Muster zwischen / /"
+    "optionsDebugModeLabel": {
+        "message": "Debug-Modus aktivieren"
     },
-    "optionsPagePathPatternsLabel": {
-        "message": "Seitenpfad-Muster zum Scannen"
-    },
-    "optionsPagePathPatternsHelp": {
-        "message": "Geben Sie URL-Muster zum Abgleichen ein (eines pro Zeile). Leer lassen, um pfadbasiertes Scannen zu deaktivieren"
-    },
-    "optionsGlobalScanningLabel": {
-        "message": "Alle Websites nach Indikatoren durchsuchen"
+    "optionsDebugSettingsTitle": {
+        "message": "Debug-Einstellungen"
     },
     "optionsGlobalScanningHelp": {
         "message": "Wenn aktiviert, werden alle besuchten Seiten unabhängig von Pfadmustern gescannt"
     },
-    "notificationSuccess": {
-        "message": "URL erfolgreich archiviert"
+    "optionsGlobalScanningLabel": {
+        "message": "Alle Websites nach Indikatoren durchsuchen"
     },
-    "notificationError": {
-        "message": "Fehler beim Archivieren der URL"
+    "optionsPagePathPatternsHelp": {
+        "message": "Geben Sie URL-Muster zum Abgleichen ein (eines pro Zeile). Leer lassen, um pfadbasiertes Scannen zu deaktivieren"
     },
-    "notificationCopied": {
-        "message": "Archiv-URL in die Zwischenablage kopiert"
+    "optionsPagePathPatternsLabel": {
+        "message": "Seitenpfad-Muster zum Scannen"
+    },
+    "optionsSave": {
+        "message": "Speichern"
+    },
+    "optionsTextIndicatorsHelp": {
+        "message": "Geben Sie Textmuster zum Suchen ein (eines pro Zeile). Unterstützt Regex-Muster zwischen / /"
+    },
+    "optionsTextIndicatorsLabel": {
+        "message": "Textindikatoren zum Suchen"
+    },
+    "optionsTitle": {
+        "message": "Archive.is-ifier Einstellungen"
     },
     "popupArchivePage": {
         "message": "Aktuelle Seite archivieren"
@@ -71,11 +80,11 @@
     "popupArchivePageDesc": {
         "message": "Diese Seite auf archive.is speichern"
     },
-    "popupShowVersions": {
-        "message": "Archivierte Versionen anzeigen"
+    "popupDebugScanDesc": {
+        "message": "Erkennung manuell auslösen und Protokolle anzeigen"
     },
-    "popupShowVersionsDesc": {
-        "message": "Verlauf auf Wayback Machine anzeigen"
+    "popupDebugScanTitle": {
+        "message": "Debug-Scan ausführen"
     },
     "popupSettings": {
         "message": "Einstellungen"
@@ -83,19 +92,10 @@
     "popupSettingsDesc": {
         "message": "Archivoptionen konfigurieren"
     },
-    "popupDebugScanTitle": {
-        "message": "Debug-Scan ausführen"
+    "popupShowVersions": {
+        "message": "Archivierte Versionen anzeigen"
     },
-    "popupDebugScanDesc": {
-        "message": "Erkennung manuell auslösen und Protokolle anzeigen"
-    },
-    "optionsDebugSettingsTitle": {
-        "message": "Debug-Einstellungen"
-    },
-    "optionsDebugModeLabel": {
-        "message": "Debug-Modus aktivieren"
-    },
-    "optionsDebugModeHelp": {
-        "message": "Wenn aktiviert, wird detaillierte Protokollierung in der Konsole angezeigt und Debug-Tools sind im Popup verfügbar"
+    "popupShowVersionsDesc": {
+        "message": "Verlauf auf Wayback Machine anzeigen"
     }
 }

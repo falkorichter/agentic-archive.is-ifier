@@ -59,7 +59,9 @@ function runTests() {
           testDebugScanNoIndicators: testDebugScanNoIndicators,
           testDebugScanNoConditions: testDebugScanNoConditions,
           testBumpPatchVersionLogic: testBumpPatchVersionLogic,
-          testVersionFormatValidation: testVersionFormatValidation
+          testVersionFormatValidation: testVersionFormatValidation,
+          testTranslationKeysOrder: testTranslationKeysOrder,
+          testSortTranslationKeys: testSortTranslationKeys
         };
       }
     `);
@@ -80,7 +82,7 @@ function runTests() {
               shouldScanPage, testTabIndexBehavior, testContentScriptMessageHandling,
               testDebugScanAnalysis, testDebugScanWithIndicators, testDebugScanHomepage,
               testDebugScanNoIndicators, testDebugScanNoConditions, testBumpPatchVersionLogic,
-              testVersionFormatValidation } = testFunctions;
+              testVersionFormatValidation, testTranslationKeysOrder, testSortTranslationKeys } = testFunctions;
       
       const testCases = [${testCasesMatch[1]}];
       return testCases;

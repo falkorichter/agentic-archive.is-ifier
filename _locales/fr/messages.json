@@ -1,9 +1,9 @@
 {
-    "appName": {
-        "message": "Archive.is-ifier"
-    },
     "appDesc": {
         "message": "Clic droit pour archiver les URLs avec archive.is"
+    },
+    "appName": {
+        "message": "Archive.is-ifier"
     },
     "contextMenuArchive": {
         "message": "Archiver ce lien"
@@ -11,20 +11,26 @@
     "contextMenuArchiveCopy": {
         "message": "Archiver ce lien et copier l'URL"
     },
-    "contextMenuShowVersions": {
-        "message": "Afficher les versions archivées"
-    },
-    "contextMenuShowReal": {
-        "message": "Afficher l'URL réelle"
+    "contextMenuArchivePage": {
+        "message": "Archiver la page actuelle"
     },
     "contextMenuArchiveSelection": {
         "message": "Archiver l'URL sélectionnée"
     },
-    "contextMenuArchivePage": {
-        "message": "Archiver la page actuelle"
+    "contextMenuShowReal": {
+        "message": "Afficher l'URL réelle"
     },
-    "optionsTitle": {
-        "message": "Options d'Archive.is-ifier"
+    "contextMenuShowVersions": {
+        "message": "Afficher les versions archivées"
+    },
+    "notificationCopied": {
+        "message": "URL d'archive copiée dans le presse-papiers"
+    },
+    "notificationError": {
+        "message": "Erreur lors de l'archivage de l'URL"
+    },
+    "notificationSuccess": {
+        "message": "URL archivée avec succès"
     },
     "optionsArchiveUrl": {
         "message": "URL du service d'archivage"
@@ -32,38 +38,41 @@
     "optionsArchiveUrlHelp": {
         "message": "Choisir quel service d'archivage utiliser"
     },
-    "optionsSave": {
-        "message": "Enregistrer"
-    },
     "optionsAutoArchivingTitle": {
         "message": "Paramètres d'Auto-Archivage"
     },
-    "optionsTextIndicatorsLabel": {
-        "message": "Indicateurs de texte à rechercher"
+    "optionsDebugModeHelp": {
+        "message": "Lorsque activé, la journalisation détaillée sera affichée dans la console et les outils de débogage seront disponibles dans le popup"
     },
-    "optionsTextIndicatorsHelp": {
-        "message": "Entrez les motifs de texte à rechercher (un par ligne). Prend en charge les motifs regex entre / /"
+    "optionsDebugModeLabel": {
+        "message": "Activer le mode débogage"
     },
-    "optionsPagePathPatternsLabel": {
-        "message": "Motifs de chemin de page à analyser"
-    },
-    "optionsPagePathPatternsHelp": {
-        "message": "Entrez les motifs d'URL à faire correspondre (un par ligne). Laissez vide pour désactiver l'analyse basée sur les chemins"
-    },
-    "optionsGlobalScanningLabel": {
-        "message": "Analyser tous les sites web pour les indicateurs"
+    "optionsDebugSettingsTitle": {
+        "message": "Paramètres de Débogage"
     },
     "optionsGlobalScanningHelp": {
         "message": "Lorsque activé, toutes les pages visitées seront analysées indépendamment des motifs de chemin"
     },
-    "notificationSuccess": {
-        "message": "URL archivée avec succès"
+    "optionsGlobalScanningLabel": {
+        "message": "Analyser tous les sites web pour les indicateurs"
     },
-    "notificationError": {
-        "message": "Erreur lors de l'archivage de l'URL"
+    "optionsPagePathPatternsHelp": {
+        "message": "Entrez les motifs d'URL à faire correspondre (un par ligne). Laissez vide pour désactiver l'analyse basée sur les chemins"
     },
-    "notificationCopied": {
-        "message": "URL d'archive copiée dans le presse-papiers"
+    "optionsPagePathPatternsLabel": {
+        "message": "Motifs de chemin de page à analyser"
+    },
+    "optionsSave": {
+        "message": "Enregistrer"
+    },
+    "optionsTextIndicatorsHelp": {
+        "message": "Entrez les motifs de texte à rechercher (un par ligne). Prend en charge les motifs regex entre / /"
+    },
+    "optionsTextIndicatorsLabel": {
+        "message": "Indicateurs de texte à rechercher"
+    },
+    "optionsTitle": {
+        "message": "Options d'Archive.is-ifier"
     },
     "popupArchivePage": {
         "message": "Archiver la page actuelle"
@@ -71,11 +80,11 @@
     "popupArchivePageDesc": {
         "message": "Enregistrer cette page sur archive.is"
     },
-    "popupShowVersions": {
-        "message": "Afficher les versions archivées"
+    "popupDebugScanDesc": {
+        "message": "Déclencher manuellement la détection et afficher les journaux"
     },
-    "popupShowVersionsDesc": {
-        "message": "Voir l'historique sur Wayback Machine"
+    "popupDebugScanTitle": {
+        "message": "Exécuter l'Analyse de Débogage"
     },
     "popupSettings": {
         "message": "Paramètres"
@@ -83,19 +92,10 @@
     "popupSettingsDesc": {
         "message": "Configurer les options d'archivage"
     },
-    "popupDebugScanTitle": {
-        "message": "Exécuter l'Analyse de Débogage"
+    "popupShowVersions": {
+        "message": "Afficher les versions archivées"
     },
-    "popupDebugScanDesc": {
-        "message": "Déclencher manuellement la détection et afficher les journaux"
-    },
-    "optionsDebugSettingsTitle": {
-        "message": "Paramètres de Débogage"
-    },
-    "optionsDebugModeLabel": {
-        "message": "Activer le mode débogage"
-    },
-    "optionsDebugModeHelp": {
-        "message": "Lorsque activé, la journalisation détaillée sera affichée dans la console et les outils de débogage seront disponibles dans le popup"
+    "popupShowVersionsDesc": {
+        "message": "Voir l'historique sur Wayback Machine"
     }
 }
