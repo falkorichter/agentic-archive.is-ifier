@@ -57,7 +57,9 @@ function runTests() {
           testDebugScanWithIndicators: testDebugScanWithIndicators,
           testDebugScanHomepage: testDebugScanHomepage,
           testDebugScanNoIndicators: testDebugScanNoIndicators,
-          testDebugScanNoConditions: testDebugScanNoConditions
+          testDebugScanNoConditions: testDebugScanNoConditions,
+          testBumpPatchVersionLogic: testBumpPatchVersionLogic,
+          testVersionFormatValidation: testVersionFormatValidation
         };
       }
     `);
@@ -77,7 +79,8 @@ function runTests() {
               testShowRealUrlWorkflow, scanPageForIndicators, shouldScanUrlWithPatterns,
               shouldScanPage, testTabIndexBehavior, testContentScriptMessageHandling,
               testDebugScanAnalysis, testDebugScanWithIndicators, testDebugScanHomepage,
-              testDebugScanNoIndicators, testDebugScanNoConditions } = testFunctions;
+              testDebugScanNoIndicators, testDebugScanNoConditions, testBumpPatchVersionLogic,
+              testVersionFormatValidation } = testFunctions;
       
       const testCases = [${testCasesMatch[1]}];
       return testCases;

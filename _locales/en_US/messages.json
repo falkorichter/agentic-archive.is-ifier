@@ -112,5 +112,20 @@
     },
     "optionsReset": {
         "message": "Reset to defaults"
+    },  
+    "popupDebugScanTitle": {
+        "message": "Run Debug Scan"
+    },
+    "popupDebugScanDesc": {
+        "message": "Manually trigger detection and view logs"
+    },
+    "optionsDebugSettingsTitle": {
+        "message": "Debug Settings"
+    },
+    "optionsDebugModeLabel": {
+        "message": "Enable debug mode"
+    },
+    "optionsDebugModeHelp": {
+        "message": "When enabled, detailed logging will be shown in console and debug tools will be available in popup"
     }
 }

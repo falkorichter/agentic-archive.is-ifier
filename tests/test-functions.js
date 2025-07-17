@@ -390,3 +390,69 @@ function testContentScriptMessageHandling(messageType) {
     return { success: false, error: error.message };
   }
 }
+
+// Version bump utility functions for testing
+function parseVersionComponents(version) {
+  const versionParts = version.split('.');
+  if (versionParts.length !== 3) {
+    throw new Error(`Invalid version format: ${version}. Expected MAJOR.MINOR.PATCH`);
+  }
+  
+  const major = parseInt(versionParts[0]);
+  const minor = parseInt(versionParts[1]);
+  const patch = parseInt(versionParts[2]);
+  
+  // Check for invalid numbers (NaN, negative, etc.)
+  if (isNaN(major) || isNaN(minor) || isNaN(patch)) {
+    throw new Error(`Invalid version format: ${version}. All components must be valid numbers`);
+  }
+  
+  if (major < 0 || minor < 0 || patch < 0) {
+    throw new Error(`Invalid version format: ${version}. Version components cannot be negative`);
+  }
+  
+  return { major, minor, patch };
+}
+
+// Test function for version bump logic (without file operations)
+function testBumpPatchVersionLogic(currentVersion) {
+  try {
+    const { major, minor, patch } = parseVersionComponents(currentVersion);
+    const newVersion = `${major}.${minor}.${patch + 1}`;
+    
+    return {
+      success: true,
+      currentVersion: currentVersion,
+      newVersion: newVersion,
+      major: major,
+      minor: minor,
+      oldPatch: patch,
+      newPatch: patch + 1
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      currentVersion: currentVersion
+    };
+  }
+}
+
+// Test function for version format validation
+function testVersionFormatValidation(version) {
+  try {
+    parseVersionComponents(version);
+    return {
+      success: true,
+      version: version,
+      isValid: true
+    };
+  } catch (error) {
+    return {
+      success: true,
+      version: version,
+      isValid: false,
+      error: error.message
+    };
+  }
+}
