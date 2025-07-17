@@ -108,13 +108,19 @@ The extension includes internationalization (i18n) support using Chrome's built-
 
 ### Current Translation Status
 - **English (en_US)**: ✅ Complete - All UI strings localized in `_locales/en_US/messages.json`
-- **Other languages**: ❌ Not available - Only English is currently supported
+- **Spanish (es)**: ✅ Complete - All UI strings localized in `_locales/es/messages.json`
+- **French (fr)**: ✅ Complete - All UI strings localized in `_locales/fr/messages.json`
+- **German (de)**: ✅ Complete - All UI strings localized in `_locales/de/messages.json`
+- **Portuguese (pt)**: ✅ Complete - All UI strings localized in `_locales/pt/messages.json`
+- **Japanese (ja)**: ✅ Complete - All UI strings localized in `_locales/ja/messages.json`
+- **Chinese Simplified (zh_CN)**: ✅ Complete - All UI strings localized in `_locales/zh_CN/messages.json`
 
 ### i18n Implementation
-- UI strings are stored in `_locales/en_US/messages.json`
-- JavaScript uses `chrome.i18n.getMessage()` to load localized text
+- UI strings are stored in `_locales/{locale}/messages.json` files for each supported language
+- JavaScript uses `chrome.i18n.getMessage()` to load localized text based on browser language settings
 - Manifest uses `__MSG_key__` syntax for extension metadata
 - Options page is fully localized except for hardcoded feature list
+- Automatic language detection based on browser locale with fallback to English
 
 ### Known Issues
 - ~~The "(Beta)" indicator in "Auto-Archiving Settings" uses inline HTML styling that gets stripped by text-only i18n replacement~~ **FIXED**: Modified localization to use `innerHTML` for preserving HTML formatting
