@@ -216,6 +216,13 @@ npm run translations:sort      # Sort all translation keys alphabetically
 npm run validate:translations  # Validate key sorting
 ```
 
+**Changelog Management:**
+```bash
+npm run changelog:generate     # Generate changelog entries from git history
+# Usage: npm run changelog:generate [since] [version]
+# Example: npm run changelog:generate "2 weeks ago" "1.3.0"
+```
+
 **Browser-based Testing:**
 Open `tests/test.html` in your browser for interactive testing.
 

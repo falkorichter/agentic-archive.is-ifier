@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.8] - 2025-07-17
+
+### Added
+- Changelog generation script for automated entry creation from git history
+- `npm run changelog:generate` command for developer convenience
+- Automated changelog entry categorization (Added, Changed, Fixed, etc.)
+
+### Changed
+- Enhanced documentation with changelog generation workflow
+- Improved development tooling for changelog maintenance
+
 ## [1.2.7] - 2025-07-17
 
 ### Added
@@ -137,7 +148,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Archive selected text containing URLs
 - Archive current page functionality
 
-[unreleased]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.7...HEAD
+[unreleased]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.8...HEAD
+[1.2.8]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.5...v1.2.6
 [1.2.5]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.4...v1.2.5
