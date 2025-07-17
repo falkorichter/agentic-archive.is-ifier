@@ -50,6 +50,33 @@
     "optionsDebugSettingsTitle": {
         "message": "调试设置"
     },
+    "optionsFeature1": {
+        "message": "右键点击链接进行存档"
+    },
+    "optionsFeature2": {
+        "message": "存档链接并将存档URL复制到剪贴板"
+    },
+    "optionsFeature3": {
+        "message": "查看链接的存档版本"
+    },
+    "optionsFeature4": {
+        "message": "从存档链接中提取真实URL"
+    },
+    "optionsFeature5": {
+        "message": "将选定文本作为URL存档"
+    },
+    "optionsFeature6": {
+        "message": "存档当前页面"
+    },
+    "optionsFeature7": {
+        "message": "自动存档包含指定文本指示符的页面"
+    },
+    "optionsFeature8": {
+        "message": "配置特定页面路径模式或所有网站的扫描"
+    },
+    "optionsFeaturesTitle": {
+        "message": "功能："
+    },
     "optionsGlobalScanningHelp": {
         "message": "启用后，无论路径模式如何，都会扫描所有访问的页面"
     },
@@ -61,6 +88,9 @@
     },
     "optionsPagePathPatternsLabel": {
         "message": "要扫描的页面路径模式"
+    },
+    "optionsReset": {
+        "message": "重置为默认值"
     },
     "optionsSave": {
         "message": "保存"

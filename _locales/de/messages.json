@@ -50,6 +50,33 @@
     "optionsDebugSettingsTitle": {
         "message": "Debug-Einstellungen"
     },
+    "optionsFeature1": {
+        "message": "Rechtsklick auf Links, um sie zu archivieren"
+    },
+    "optionsFeature2": {
+        "message": "Links archivieren und Archiv-URL in die Zwischenablage kopieren"
+    },
+    "optionsFeature3": {
+        "message": "Archivierte Versionen von Links anzeigen"
+    },
+    "optionsFeature4": {
+        "message": "Echte URLs aus Archiv-Links extrahieren"
+    },
+    "optionsFeature5": {
+        "message": "Ausgewählten Text als URLs archivieren"
+    },
+    "optionsFeature6": {
+        "message": "Die aktuelle Seite archivieren"
+    },
+    "optionsFeature7": {
+        "message": "Seiten mit bestimmten Textindikatoren automatisch archivieren"
+    },
+    "optionsFeature8": {
+        "message": "Scannen für bestimmte Seitenpfad-Muster oder alle Websites konfigurieren"
+    },
+    "optionsFeaturesTitle": {
+        "message": "Funktionen:"
+    },
     "optionsGlobalScanningHelp": {
         "message": "Wenn aktiviert, werden alle besuchten Seiten unabhängig von Pfadmustern gescannt"
     },
@@ -61,6 +88,9 @@
     },
     "optionsPagePathPatternsLabel": {
         "message": "Seitenpfad-Muster zum Scannen"
+    },
+    "optionsReset": {
+        "message": "Auf Standardwerte zurücksetzen"
     },
     "optionsSave": {
         "message": "Speichern"

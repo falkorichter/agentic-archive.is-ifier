@@ -19,3 +19,5 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 - **MAJOR** version when you make incompatible API changes
 - **MINOR** version when you add functionality in a backward compatible manner
 - **PATCH** version when you make backward compatible bug fixes
+
+When adding new localization keys to the extension, ensure they are translated to all supported languages (de, es, fr, ja, pt, zh_CN) not just en_US. All locale files must contain proper translations for new keys to maintain internationalization support.

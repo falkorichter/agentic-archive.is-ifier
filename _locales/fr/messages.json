@@ -50,6 +50,33 @@
     "optionsDebugSettingsTitle": {
         "message": "Paramètres de Débogage"
     },
+    "optionsFeature1": {
+        "message": "Clic droit sur les liens pour les archiver"
+    },
+    "optionsFeature2": {
+        "message": "Archiver les liens et copier l'URL d'archive dans le presse-papiers"
+    },
+    "optionsFeature3": {
+        "message": "Voir les versions archivées des liens"
+    },
+    "optionsFeature4": {
+        "message": "Extraire les vraies URLs des liens d'archive"
+    },
+    "optionsFeature5": {
+        "message": "Archiver le texte sélectionné en tant qu'URLs"
+    },
+    "optionsFeature6": {
+        "message": "Archiver la page actuelle"
+    },
+    "optionsFeature7": {
+        "message": "Auto-archiver les pages contenant des indicateurs de texte spécifiés"
+    },
+    "optionsFeature8": {
+        "message": "Configurer l'analyse pour des motifs de chemin de page spécifiques ou tous les sites web"
+    },
+    "optionsFeaturesTitle": {
+        "message": "Fonctionnalités:"
+    },
     "optionsGlobalScanningHelp": {
         "message": "Lorsque activé, toutes les pages visitées seront analysées indépendamment des motifs de chemin"
     },
@@ -61,6 +88,9 @@
     },
     "optionsPagePathPatternsLabel": {
         "message": "Motifs de chemin de page à analyser"
+    },
+    "optionsReset": {
+        "message": "Réinitialiser aux valeurs par défaut"
     },
     "optionsSave": {
         "message": "Enregistrer"
