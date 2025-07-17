@@ -50,6 +50,33 @@
     "optionsDebugSettingsTitle": {
         "message": "デバッグ設定"
     },
+    "optionsFeature1": {
+        "message": "リンクを右クリックしてアーカイブ"
+    },
+    "optionsFeature2": {
+        "message": "リンクをアーカイブしてアーカイブURLをクリップボードにコピー"
+    },
+    "optionsFeature3": {
+        "message": "リンクのアーカイブされたバージョンを表示"
+    },
+    "optionsFeature4": {
+        "message": "アーカイブリンクから実際のURLを抽出"
+    },
+    "optionsFeature5": {
+        "message": "選択したテキストをURLとしてアーカイブ"
+    },
+    "optionsFeature6": {
+        "message": "現在のページをアーカイブ"
+    },
+    "optionsFeature7": {
+        "message": "指定されたテキストインジケーターを含むページを自動アーカイブ"
+    },
+    "optionsFeature8": {
+        "message": "特定のページパスパターンまたはすべてのウェブサイトのスキャンを設定"
+    },
+    "optionsFeaturesTitle": {
+        "message": "機能:"
+    },
     "optionsGlobalScanningHelp": {
         "message": "有効にすると、パスパターンに関係なく、すべての訪問ページがスキャンされます"
     },
@@ -61,6 +88,9 @@
     },
     "optionsPagePathPatternsLabel": {
         "message": "スキャンするページパスパターン"
+    },
+    "optionsReset": {
+        "message": "デフォルトにリセット"
     },
     "optionsSave": {
         "message": "保存"

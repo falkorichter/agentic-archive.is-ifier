@@ -50,6 +50,33 @@
     "optionsDebugSettingsTitle": {
         "message": "Configurações de Debug"
     },
+    "optionsFeature1": {
+        "message": "Clique com o botão direito nos links para arquivá-los"
+    },
+    "optionsFeature2": {
+        "message": "Arquivar links e copiar a URL do arquivo para a área de transferência"
+    },
+    "optionsFeature3": {
+        "message": "Ver versões arquivadas dos links"
+    },
+    "optionsFeature4": {
+        "message": "Extrair URLs reais de links de arquivo"
+    },
+    "optionsFeature5": {
+        "message": "Arquivar texto selecionado como URLs"
+    },
+    "optionsFeature6": {
+        "message": "Arquivar a página atual"
+    },
+    "optionsFeature7": {
+        "message": "Auto-arquivar páginas contendo indicadores de texto especificados"
+    },
+    "optionsFeature8": {
+        "message": "Configurar escaneamento para padrões específicos de caminho de página ou todos os sites"
+    },
+    "optionsFeaturesTitle": {
+        "message": "Recursos:"
+    },
     "optionsGlobalScanningHelp": {
         "message": "Quando ativado, todas as páginas visitadas serão escaneadas independentemente dos padrões de caminho"
     },
@@ -61,6 +88,9 @@
     },
     "optionsPagePathPatternsLabel": {
         "message": "Padrões de caminho de página para escanear"
+    },
+    "optionsReset": {
+        "message": "Redefinir para padrões"
     },
     "optionsSave": {
         "message": "Salvar"

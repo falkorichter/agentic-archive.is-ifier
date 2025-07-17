@@ -50,6 +50,33 @@
     "optionsDebugSettingsTitle": {
         "message": "Configuración de Depuración"
     },
+    "optionsFeature1": {
+        "message": "Clic derecho en enlaces para archivarlos"
+    },
+    "optionsFeature2": {
+        "message": "Archivar enlaces y copiar la URL del archivo al portapapeles"
+    },
+    "optionsFeature3": {
+        "message": "Ver versiones archivadas de enlaces"
+    },
+    "optionsFeature4": {
+        "message": "Extraer URLs reales de enlaces de archivo"
+    },
+    "optionsFeature5": {
+        "message": "Archivar texto seleccionado como URLs"
+    },
+    "optionsFeature6": {
+        "message": "Archivar la página actual"
+    },
+    "optionsFeature7": {
+        "message": "Auto-archivar páginas que contengan indicadores de texto específicos"
+    },
+    "optionsFeature8": {
+        "message": "Configurar escaneo para patrones específicos de ruta de página o todos los sitios web"
+    },
+    "optionsFeaturesTitle": {
+        "message": "Características:"
+    },
     "optionsGlobalScanningHelp": {
         "message": "Cuando esté habilitado, todas las páginas visitadas serán escaneadas independientemente de los patrones de ruta"
     },
@@ -61,6 +88,9 @@
     },
     "optionsPagePathPatternsLabel": {
         "message": "Patrones de ruta de página a escanear"
+    },
+    "optionsReset": {
+        "message": "Restablecer a valores predeterminados"
     },
     "optionsSave": {
         "message": "Guardar"

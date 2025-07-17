@@ -50,6 +50,33 @@
     "optionsDebugSettingsTitle": {
         "message": "Debug Settings"
     },
+    "optionsFeature1": {
+        "message": "Right-click on links to archive them"
+    },
+    "optionsFeature2": {
+        "message": "Archive links and copy the archive URL to clipboard"
+    },
+    "optionsFeature3": {
+        "message": "View archived versions of links"
+    },
+    "optionsFeature4": {
+        "message": "Extract real URLs from archive links"
+    },
+    "optionsFeature5": {
+        "message": "Archive selected text as URLs"
+    },
+    "optionsFeature6": {
+        "message": "Archive the current page"
+    },
+    "optionsFeature7": {
+        "message": "Auto-archive pages containing specified text indicators"
+    },
+    "optionsFeature8": {
+        "message": "Configure scanning for specific page path patterns or all websites"
+    },
+    "optionsFeaturesTitle": {
+        "message": "Features:"
+    },
     "optionsGlobalScanningHelp": {
         "message": "When enabled, all visited pages will be scanned regardless of path patterns"
     },
@@ -61,6 +88,9 @@
     },
     "optionsPagePathPatternsLabel": {
         "message": "Page path patterns to scan"
+    },
+    "optionsReset": {
+        "message": "Reset to defaults"
     },
     "optionsSave": {
         "message": "Save"
