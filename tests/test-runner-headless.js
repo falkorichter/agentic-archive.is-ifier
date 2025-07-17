@@ -57,7 +57,10 @@ function runTests() {
           testDebugScanWithIndicators: testDebugScanWithIndicators,
           testDebugScanHomepage: testDebugScanHomepage,
           testDebugScanNoIndicators: testDebugScanNoIndicators,
-          testDebugScanNoConditions: testDebugScanNoConditions
+          testDebugScanNoConditions: testDebugScanNoConditions,
+          testArchiveBadgeForArchivedUrl: testArchiveBadgeForArchivedUrl,
+          testArchiveBadgeForNonArchivedUrl: testArchiveBadgeForNonArchivedUrl,
+          testBadgeUpdateLogic: testBadgeUpdateLogic
         };
       }
     `);
@@ -77,7 +80,8 @@ function runTests() {
               testShowRealUrlWorkflow, scanPageForIndicators, shouldScanUrlWithPatterns,
               shouldScanPage, testTabIndexBehavior, testContentScriptMessageHandling,
               testDebugScanAnalysis, testDebugScanWithIndicators, testDebugScanHomepage,
-              testDebugScanNoIndicators, testDebugScanNoConditions } = testFunctions;
+              testDebugScanNoIndicators, testDebugScanNoConditions, testArchiveBadgeForArchivedUrl,
+              testArchiveBadgeForNonArchivedUrl, testBadgeUpdateLogic } = testFunctions;
       
       const testCases = [${testCasesMatch[1]}];
       return testCases;

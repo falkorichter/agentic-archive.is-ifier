@@ -44,6 +44,27 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
+// Listen for tab updates to update archive status badge
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  // Only update badge when the tab has finished loading and has a URL
+  if (changeInfo.status === 'complete' && tab.url) {
+    updateArchiveBadge(tabId, tab.url);
+  }
+});
+
+// Listen for tab activation to update archive status badge
+chrome.tabs.onActivated.addListener(async (activeInfo) => {
+  try {
+    const tab = await chrome.tabs.get(activeInfo.tabId);
+    if (tab.url) {
+      updateArchiveBadge(activeInfo.tabId, tab.url);
+    }
+  } catch (error) {
+    // Tab might not exist anymore, clear badge
+    clearArchiveBadge(activeInfo.tabId);
+  }
+});
+
 // Handle messages from content script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'AUTO_ARCHIVE') {
@@ -316,4 +337,46 @@ function showNotification(title, message = '') {
     title: title,
     message: message
   });
+}
+
+// Update archive status badge based on current tab URL
+function updateArchiveBadge(tabId, url) {
+  try {
+    if (isArchiveUrl(url)) {
+      // Show badge for archived pages
+      chrome.action.setBadgeText({
+        tabId: tabId,
+        text: '✓'
+      });
+      chrome.action.setBadgeBackgroundColor({
+        tabId: tabId,
+        color: '#4CAF50' // Green color for archived pages
+      });
+      chrome.action.setTitle({
+        tabId: tabId,
+        title: chrome.i18n.getMessage('appName') + ' - This page is archived'
+      });
+    } else {
+      // Clear badge for non-archived pages
+      clearArchiveBadge(tabId);
+    }
+  } catch (error) {
+    console.error('Error updating archive badge:', error);
+  }
+}
+
+// Clear archive status badge
+function clearArchiveBadge(tabId) {
+  try {
+    chrome.action.setBadgeText({
+      tabId: tabId,
+      text: ''
+    });
+    chrome.action.setTitle({
+      tabId: tabId,
+      title: chrome.i18n.getMessage('appName')
+    });
+  } catch (error) {
+    console.error('Error clearing archive badge:', error);
+  }
 }
