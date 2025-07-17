@@ -1,9 +1,9 @@
 {
-    "appName": {
-        "message": "Archive.is-ifier"
-    },
     "appDesc": {
         "message": "Clic derecho para archivar URLs con archive.is"
+    },
+    "appName": {
+        "message": "Archive.is-ifier"
     },
     "contextMenuArchive": {
         "message": "Archivar este enlace"
@@ -11,20 +11,26 @@
     "contextMenuArchiveCopy": {
         "message": "Archivar este enlace y copiar URL"
     },
-    "contextMenuShowVersions": {
-        "message": "Mostrar versiones archivadas"
-    },
-    "contextMenuShowReal": {
-        "message": "Mostrar URL real"
+    "contextMenuArchivePage": {
+        "message": "Archivar página actual"
     },
     "contextMenuArchiveSelection": {
         "message": "Archivar URL seleccionada"
     },
-    "contextMenuArchivePage": {
-        "message": "Archivar página actual"
+    "contextMenuShowReal": {
+        "message": "Mostrar URL real"
     },
-    "optionsTitle": {
-        "message": "Opciones de Archive.is-ifier"
+    "contextMenuShowVersions": {
+        "message": "Mostrar versiones archivadas"
+    },
+    "notificationCopied": {
+        "message": "URL de archivo copiada al portapapeles"
+    },
+    "notificationError": {
+        "message": "Error al archivar URL"
+    },
+    "notificationSuccess": {
+        "message": "URL archivada exitosamente"
     },
     "optionsArchiveUrl": {
         "message": "URL del servicio de archivo"
@@ -32,74 +38,17 @@
     "optionsArchiveUrlHelp": {
         "message": "Elige qué servicio de archivo usar"
     },
-    "optionsSave": {
-        "message": "Guardar"
-    },
     "optionsAutoArchivingTitle": {
         "message": "Configuración de Auto-Archivado"
-    },
-    "optionsTextIndicatorsLabel": {
-        "message": "Indicadores de texto a buscar"
-    },
-    "optionsTextIndicatorsHelp": {
-        "message": "Ingresa patrones de texto a buscar (uno por línea). Soporta patrones regex entre / /"
-    },
-    "optionsPagePathPatternsLabel": {
-        "message": "Patrones de ruta de página a escanear"
-    },
-    "optionsPagePathPatternsHelp": {
-        "message": "Ingresa patrones de URL a coincidir (uno por línea). Deja vacío para desactivar el escaneo basado en rutas"
-    },
-    "optionsGlobalScanningLabel": {
-        "message": "Escanear todos los sitios web en busca de indicadores"
-    },
-    "optionsGlobalScanningHelp": {
-        "message": "Cuando esté habilitado, todas las páginas visitadas serán escaneadas independientemente de los patrones de ruta"
-    },
-    "notificationSuccess": {
-        "message": "URL archivada exitosamente"
-    },
-    "notificationError": {
-        "message": "Error al archivar URL"
-    },
-    "notificationCopied": {
-        "message": "URL de archivo copiada al portapapeles"
-    },
-    "popupArchivePage": {
-        "message": "Archivar página actual"
-    },
-    "popupArchivePageDesc": {
-        "message": "Guardar esta página en archive.is"
-    },
-    "popupShowVersions": {
-        "message": "Mostrar versiones archivadas"
-    },
-    "popupShowVersionsDesc": {
-        "message": "Ver historial en Wayback Machine"
-    },
-    "popupSettings": {
-        "message": "Configuración"
-    },
-    "popupSettingsDesc": {
-        "message": "Configurar opciones de archivo"
-    },
-    "popupDebugScanTitle": {
-        "message": "Ejecutar Escaneo de Depuración"
-    },
-    "popupDebugScanDesc": {
-        "message": "Activar manualmente la detección y ver registros"
-    },
-    "optionsDebugSettingsTitle": {
-        "message": "Configuración de Depuración"
-    },
-    "optionsDebugModeLabel": {
-        "message": "Habilitar modo de depuración"
     },
     "optionsDebugModeHelp": {
         "message": "Cuando esté habilitado, se mostrará un registro detallado en la consola y las herramientas de depuración estarán disponibles en el popup"
     },
-    "optionsFeaturesTitle": {
-        "message": "Features:"
+    "optionsDebugModeLabel": {
+        "message": "Habilitar modo de depuración"
+    },
+    "optionsDebugSettingsTitle": {
+        "message": "Configuración de Depuración"
     },
     "optionsFeature1": {
         "message": "Right-click on links to archive them"
@@ -125,7 +74,58 @@
     "optionsFeature8": {
         "message": "Configure scanning for specific page path patterns or all websites"
     },
+    "optionsFeaturesTitle": {
+        "message": "Features:"
+    },
+    "optionsGlobalScanningHelp": {
+        "message": "Cuando esté habilitado, todas las páginas visitadas serán escaneadas independientemente de los patrones de ruta"
+    },
+    "optionsGlobalScanningLabel": {
+        "message": "Escanear todos los sitios web en busca de indicadores"
+    },
+    "optionsPagePathPatternsHelp": {
+        "message": "Ingresa patrones de URL a coincidir (uno por línea). Deja vacío para desactivar el escaneo basado en rutas"
+    },
+    "optionsPagePathPatternsLabel": {
+        "message": "Patrones de ruta de página a escanear"
+    },
     "optionsReset": {
         "message": "Reset to defaults"
+    },
+    "optionsSave": {
+        "message": "Guardar"
+    },
+    "optionsTextIndicatorsHelp": {
+        "message": "Ingresa patrones de texto a buscar (uno por línea). Soporta patrones regex entre / /"
+    },
+    "optionsTextIndicatorsLabel": {
+        "message": "Indicadores de texto a buscar"
+    },
+    "optionsTitle": {
+        "message": "Opciones de Archive.is-ifier"
+    },
+    "popupArchivePage": {
+        "message": "Archivar página actual"
+    },
+    "popupArchivePageDesc": {
+        "message": "Guardar esta página en archive.is"
+    },
+    "popupDebugScanDesc": {
+        "message": "Activar manualmente la detección y ver registros"
+    },
+    "popupDebugScanTitle": {
+        "message": "Ejecutar Escaneo de Depuración"
+    },
+    "popupSettings": {
+        "message": "Configuración"
+    },
+    "popupSettingsDesc": {
+        "message": "Configurar opciones de archivo"
+    },
+    "popupShowVersions": {
+        "message": "Mostrar versiones archivadas"
+    },
+    "popupShowVersionsDesc": {
+        "message": "Ver historial en Wayback Machine"
     }
 }

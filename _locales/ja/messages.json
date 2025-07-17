@@ -1,9 +1,9 @@
 {
-    "appName": {
-        "message": "Archive.is-ifier"
-    },
     "appDesc": {
         "message": "右クリックでarchive.isを使ってURLをアーカイブ"
+    },
+    "appName": {
+        "message": "Archive.is-ifier"
     },
     "contextMenuArchive": {
         "message": "このリンクをアーカイブ"
@@ -11,20 +11,26 @@
     "contextMenuArchiveCopy": {
         "message": "このリンクをアーカイブしてURLをコピー"
     },
-    "contextMenuShowVersions": {
-        "message": "アーカイブされたバージョンを表示"
-    },
-    "contextMenuShowReal": {
-        "message": "実際のURLを表示"
+    "contextMenuArchivePage": {
+        "message": "現在のページをアーカイブ"
     },
     "contextMenuArchiveSelection": {
         "message": "選択されたURLをアーカイブ"
     },
-    "contextMenuArchivePage": {
-        "message": "現在のページをアーカイブ"
+    "contextMenuShowReal": {
+        "message": "実際のURLを表示"
     },
-    "optionsTitle": {
-        "message": "Archive.is-ifierオプション"
+    "contextMenuShowVersions": {
+        "message": "アーカイブされたバージョンを表示"
+    },
+    "notificationCopied": {
+        "message": "アーカイブURLがクリップボードにコピーされました"
+    },
+    "notificationError": {
+        "message": "URLのアーカイブ中にエラーが発生しました"
+    },
+    "notificationSuccess": {
+        "message": "URLが正常にアーカイブされました"
     },
     "optionsArchiveUrl": {
         "message": "アーカイブサービスURL"
@@ -32,74 +38,17 @@
     "optionsArchiveUrlHelp": {
         "message": "使用するアーカイブサービスを選択"
     },
-    "optionsSave": {
-        "message": "保存"
-    },
     "optionsAutoArchivingTitle": {
         "message": "自動アーカイブ設定"
-    },
-    "optionsTextIndicatorsLabel": {
-        "message": "検索するテキストインジケーター"
-    },
-    "optionsTextIndicatorsHelp": {
-        "message": "検索するテキストパターンを入力（1行に1つ）。/ /間の正規表現パターンをサポート"
-    },
-    "optionsPagePathPatternsLabel": {
-        "message": "スキャンするページパスパターン"
-    },
-    "optionsPagePathPatternsHelp": {
-        "message": "マッチするURLパターンを入力（1行に1つ）。パスベースのスキャンを無効にするには空のままにする"
-    },
-    "optionsGlobalScanningLabel": {
-        "message": "すべてのウェブサイトでインジケーターをスキャン"
-    },
-    "optionsGlobalScanningHelp": {
-        "message": "有効にすると、パスパターンに関係なく、すべての訪問ページがスキャンされます"
-    },
-    "notificationSuccess": {
-        "message": "URLが正常にアーカイブされました"
-    },
-    "notificationError": {
-        "message": "URLのアーカイブ中にエラーが発生しました"
-    },
-    "notificationCopied": {
-        "message": "アーカイブURLがクリップボードにコピーされました"
-    },
-    "popupArchivePage": {
-        "message": "現在のページをアーカイブ"
-    },
-    "popupArchivePageDesc": {
-        "message": "このページをarchive.isに保存"
-    },
-    "popupShowVersions": {
-        "message": "アーカイブされたバージョンを表示"
-    },
-    "popupShowVersionsDesc": {
-        "message": "Wayback Machineで履歴を表示"
-    },
-    "popupSettings": {
-        "message": "設定"
-    },
-    "popupSettingsDesc": {
-        "message": "アーカイブオプションを設定"
-    },
-    "popupDebugScanTitle": {
-        "message": "デバッグスキャンを実行"
-    },
-    "popupDebugScanDesc": {
-        "message": "手動で検出をトリガーしてログを表示"
-    },
-    "optionsDebugSettingsTitle": {
-        "message": "デバッグ設定"
-    },
-    "optionsDebugModeLabel": {
-        "message": "デバッグモードを有効にする"
     },
     "optionsDebugModeHelp": {
         "message": "有効にすると、詳細なログがコンソールに表示され、ポップアップでデバッグツールが利用可能になります"
     },
-    "optionsFeaturesTitle": {
-        "message": "Features:"
+    "optionsDebugModeLabel": {
+        "message": "デバッグモードを有効にする"
+    },
+    "optionsDebugSettingsTitle": {
+        "message": "デバッグ設定"
     },
     "optionsFeature1": {
         "message": "Right-click on links to archive them"
@@ -125,7 +74,58 @@
     "optionsFeature8": {
         "message": "Configure scanning for specific page path patterns or all websites"
     },
+    "optionsFeaturesTitle": {
+        "message": "Features:"
+    },
+    "optionsGlobalScanningHelp": {
+        "message": "有効にすると、パスパターンに関係なく、すべての訪問ページがスキャンされます"
+    },
+    "optionsGlobalScanningLabel": {
+        "message": "すべてのウェブサイトでインジケーターをスキャン"
+    },
+    "optionsPagePathPatternsHelp": {
+        "message": "マッチするURLパターンを入力（1行に1つ）。パスベースのスキャンを無効にするには空のままにする"
+    },
+    "optionsPagePathPatternsLabel": {
+        "message": "スキャンするページパスパターン"
+    },
     "optionsReset": {
         "message": "Reset to defaults"
+    },
+    "optionsSave": {
+        "message": "保存"
+    },
+    "optionsTextIndicatorsHelp": {
+        "message": "検索するテキストパターンを入力（1行に1つ）。/ /間の正規表現パターンをサポート"
+    },
+    "optionsTextIndicatorsLabel": {
+        "message": "検索するテキストインジケーター"
+    },
+    "optionsTitle": {
+        "message": "Archive.is-ifierオプション"
+    },
+    "popupArchivePage": {
+        "message": "現在のページをアーカイブ"
+    },
+    "popupArchivePageDesc": {
+        "message": "このページをarchive.isに保存"
+    },
+    "popupDebugScanDesc": {
+        "message": "手動で検出をトリガーしてログを表示"
+    },
+    "popupDebugScanTitle": {
+        "message": "デバッグスキャンを実行"
+    },
+    "popupSettings": {
+        "message": "設定"
+    },
+    "popupSettingsDesc": {
+        "message": "アーカイブオプションを設定"
+    },
+    "popupShowVersions": {
+        "message": "アーカイブされたバージョンを表示"
+    },
+    "popupShowVersionsDesc": {
+        "message": "Wayback Machineで履歴を表示"
     }
 }

@@ -1,9 +1,9 @@
 {
-    "appName": {
-        "message": "Archive.is-ifier"
-    },
     "appDesc": {
         "message": "Right-click to archive URLs with archive.is"
+    },
+    "appName": {
+        "message": "Archive.is-ifier"
     },
     "contextMenuArchive": {
         "message": "Archive this link"
@@ -11,20 +11,26 @@
     "contextMenuArchiveCopy": {
         "message": "Archive this link and copy URL"
     },
-    "contextMenuShowVersions": {
-        "message": "Show archived versions"
-    },
-    "contextMenuShowReal": {
-        "message": "Show real URL"
+    "contextMenuArchivePage": {
+        "message": "Archive current page"
     },
     "contextMenuArchiveSelection": {
         "message": "Archive selected URL"
     },
-    "contextMenuArchivePage": {
-        "message": "Archive current page"
+    "contextMenuShowReal": {
+        "message": "Show real URL"
     },
-    "optionsTitle": {
-        "message": "Archive.is-ifier Options"
+    "contextMenuShowVersions": {
+        "message": "Show archived versions"
+    },
+    "notificationCopied": {
+        "message": "Archive URL copied to clipboard"
+    },
+    "notificationError": {
+        "message": "Error archiving URL"
+    },
+    "notificationSuccess": {
+        "message": "URL archived successfully"
     },
     "optionsArchiveUrl": {
         "message": "Archive service URL"
@@ -32,59 +38,17 @@
     "optionsArchiveUrlHelp": {
         "message": "Choose which archive service to use"
     },
-    "optionsSave": {
-        "message": "Save"
-    },
     "optionsAutoArchivingTitle": {
         "message": "Auto-Archiving Settings"
     },
-    "optionsTextIndicatorsLabel": {
-        "message": "Text indicators to scan for"
+    "optionsDebugModeHelp": {
+        "message": "When enabled, detailed logging will be shown in console and debug tools will be available in popup"
     },
-    "optionsTextIndicatorsHelp": {
-        "message": "Enter text patterns to search for (one per line). Supports regex patterns between / /"
+    "optionsDebugModeLabel": {
+        "message": "Enable debug mode"
     },
-    "optionsPagePathPatternsLabel": {
-        "message": "Page path patterns to scan"
-    },
-    "optionsPagePathPatternsHelp": {
-        "message": "Enter URL patterns to match (one per line). Leave empty to disable path-based scanning"
-    },
-    "optionsGlobalScanningLabel": {
-        "message": "Scan all websites for indicators"
-    },
-    "optionsGlobalScanningHelp": {
-        "message": "When enabled, all visited pages will be scanned regardless of path patterns"
-    },
-    "notificationSuccess": {
-        "message": "URL archived successfully"
-    },
-    "notificationError": {
-        "message": "Error archiving URL"
-    },
-    "notificationCopied": {
-        "message": "Archive URL copied to clipboard"
-    },
-    "popupArchivePage": {
-        "message": "Archive current page"
-    },
-    "popupArchivePageDesc": {
-        "message": "Save this page to archive.is"
-    },
-    "popupShowVersions": {
-        "message": "Show archived versions"
-    },
-    "popupShowVersionsDesc": {
-        "message": "View history on Wayback Machine"
-    },
-    "popupSettings": {
-        "message": "Settings"
-    },
-    "popupSettingsDesc": {
-        "message": "Configure archive options"
-    },
-    "optionsFeaturesTitle": {
-        "message": "Features:"
+    "optionsDebugSettingsTitle": {
+        "message": "Debug Settings"
     },
     "optionsFeature1": {
         "message": "Right-click on links to archive them"
@@ -110,22 +74,58 @@
     "optionsFeature8": {
         "message": "Configure scanning for specific page path patterns or all websites"
     },
+    "optionsFeaturesTitle": {
+        "message": "Features:"
+    },
+    "optionsGlobalScanningHelp": {
+        "message": "When enabled, all visited pages will be scanned regardless of path patterns"
+    },
+    "optionsGlobalScanningLabel": {
+        "message": "Scan all websites for indicators"
+    },
+    "optionsPagePathPatternsHelp": {
+        "message": "Enter URL patterns to match (one per line). Leave empty to disable path-based scanning"
+    },
+    "optionsPagePathPatternsLabel": {
+        "message": "Page path patterns to scan"
+    },
     "optionsReset": {
         "message": "Reset to defaults"
-    },  
-    "popupDebugScanTitle": {
-        "message": "Run Debug Scan"
+    },
+    "optionsSave": {
+        "message": "Save"
+    },
+    "optionsTextIndicatorsHelp": {
+        "message": "Enter text patterns to search for (one per line). Supports regex patterns between / /"
+    },
+    "optionsTextIndicatorsLabel": {
+        "message": "Text indicators to scan for"
+    },
+    "optionsTitle": {
+        "message": "Archive.is-ifier Options"
+    },
+    "popupArchivePage": {
+        "message": "Archive current page"
+    },
+    "popupArchivePageDesc": {
+        "message": "Save this page to archive.is"
     },
     "popupDebugScanDesc": {
         "message": "Manually trigger detection and view logs"
     },
-    "optionsDebugSettingsTitle": {
-        "message": "Debug Settings"
+    "popupDebugScanTitle": {
+        "message": "Run Debug Scan"
     },
-    "optionsDebugModeLabel": {
-        "message": "Enable debug mode"
+    "popupSettings": {
+        "message": "Settings"
     },
-    "optionsDebugModeHelp": {
-        "message": "When enabled, detailed logging will be shown in console and debug tools will be available in popup"
+    "popupSettingsDesc": {
+        "message": "Configure archive options"
+    },
+    "popupShowVersions": {
+        "message": "Show archived versions"
+    },
+    "popupShowVersionsDesc": {
+        "message": "View history on Wayback Machine"
     }
 }

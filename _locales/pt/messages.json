@@ -1,9 +1,9 @@
 {
-    "appName": {
-        "message": "Archive.is-ifier"
-    },
     "appDesc": {
         "message": "Clique direito para arquivar URLs com archive.is"
+    },
+    "appName": {
+        "message": "Archive.is-ifier"
     },
     "contextMenuArchive": {
         "message": "Arquivar este link"
@@ -11,20 +11,26 @@
     "contextMenuArchiveCopy": {
         "message": "Arquivar este link e copiar URL"
     },
-    "contextMenuShowVersions": {
-        "message": "Mostrar versões arquivadas"
-    },
-    "contextMenuShowReal": {
-        "message": "Mostrar URL real"
+    "contextMenuArchivePage": {
+        "message": "Arquivar página atual"
     },
     "contextMenuArchiveSelection": {
         "message": "Arquivar URL selecionada"
     },
-    "contextMenuArchivePage": {
-        "message": "Arquivar página atual"
+    "contextMenuShowReal": {
+        "message": "Mostrar URL real"
     },
-    "optionsTitle": {
-        "message": "Opções do Archive.is-ifier"
+    "contextMenuShowVersions": {
+        "message": "Mostrar versões arquivadas"
+    },
+    "notificationCopied": {
+        "message": "URL do arquivo copiada para a área de transferência"
+    },
+    "notificationError": {
+        "message": "Erro ao arquivar URL"
+    },
+    "notificationSuccess": {
+        "message": "URL arquivada com sucesso"
     },
     "optionsArchiveUrl": {
         "message": "URL do serviço de arquivo"
@@ -32,74 +38,17 @@
     "optionsArchiveUrlHelp": {
         "message": "Escolha qual serviço de arquivo usar"
     },
-    "optionsSave": {
-        "message": "Salvar"
-    },
     "optionsAutoArchivingTitle": {
         "message": "Configurações de Auto-Arquivamento"
-    },
-    "optionsTextIndicatorsLabel": {
-        "message": "Indicadores de texto para procurar"
-    },
-    "optionsTextIndicatorsHelp": {
-        "message": "Digite padrões de texto para procurar (um por linha). Suporta padrões regex entre / /"
-    },
-    "optionsPagePathPatternsLabel": {
-        "message": "Padrões de caminho de página para escanear"
-    },
-    "optionsPagePathPatternsHelp": {
-        "message": "Digite padrões de URL para corresponder (um por linha). Deixe vazio para desativar o escaneamento baseado em caminhos"
-    },
-    "optionsGlobalScanningLabel": {
-        "message": "Escanear todos os sites em busca de indicadores"
-    },
-    "optionsGlobalScanningHelp": {
-        "message": "Quando ativado, todas as páginas visitadas serão escaneadas independentemente dos padrões de caminho"
-    },
-    "notificationSuccess": {
-        "message": "URL arquivada com sucesso"
-    },
-    "notificationError": {
-        "message": "Erro ao arquivar URL"
-    },
-    "notificationCopied": {
-        "message": "URL do arquivo copiada para a área de transferência"
-    },
-    "popupArchivePage": {
-        "message": "Arquivar página atual"
-    },
-    "popupArchivePageDesc": {
-        "message": "Salvar esta página no archive.is"
-    },
-    "popupShowVersions": {
-        "message": "Mostrar versões arquivadas"
-    },
-    "popupShowVersionsDesc": {
-        "message": "Ver histórico no Wayback Machine"
-    },
-    "popupSettings": {
-        "message": "Configurações"
-    },
-    "popupSettingsDesc": {
-        "message": "Configurar opções de arquivo"
-    },
-    "popupDebugScanTitle": {
-        "message": "Executar Verificação de Debug"
-    },
-    "popupDebugScanDesc": {
-        "message": "Acionar manualmente a detecção e visualizar logs"
-    },
-    "optionsDebugSettingsTitle": {
-        "message": "Configurações de Debug"
-    },
-    "optionsDebugModeLabel": {
-        "message": "Ativar modo debug"
     },
     "optionsDebugModeHelp": {
         "message": "Quando ativado, o log detalhado será mostrado no console e as ferramentas de debug estarão disponíveis no popup"
     },
-    "optionsFeaturesTitle": {
-        "message": "Features:"
+    "optionsDebugModeLabel": {
+        "message": "Ativar modo debug"
+    },
+    "optionsDebugSettingsTitle": {
+        "message": "Configurações de Debug"
     },
     "optionsFeature1": {
         "message": "Right-click on links to archive them"
@@ -125,7 +74,58 @@
     "optionsFeature8": {
         "message": "Configure scanning for specific page path patterns or all websites"
     },
+    "optionsFeaturesTitle": {
+        "message": "Features:"
+    },
+    "optionsGlobalScanningHelp": {
+        "message": "Quando ativado, todas as páginas visitadas serão escaneadas independentemente dos padrões de caminho"
+    },
+    "optionsGlobalScanningLabel": {
+        "message": "Escanear todos os sites em busca de indicadores"
+    },
+    "optionsPagePathPatternsHelp": {
+        "message": "Digite padrões de URL para corresponder (um por linha). Deixe vazio para desativar o escaneamento baseado em caminhos"
+    },
+    "optionsPagePathPatternsLabel": {
+        "message": "Padrões de caminho de página para escanear"
+    },
     "optionsReset": {
         "message": "Reset to defaults"
+    },
+    "optionsSave": {
+        "message": "Salvar"
+    },
+    "optionsTextIndicatorsHelp": {
+        "message": "Digite padrões de texto para procurar (um por linha). Suporta padrões regex entre / /"
+    },
+    "optionsTextIndicatorsLabel": {
+        "message": "Indicadores de texto para procurar"
+    },
+    "optionsTitle": {
+        "message": "Opções do Archive.is-ifier"
+    },
+    "popupArchivePage": {
+        "message": "Arquivar página atual"
+    },
+    "popupArchivePageDesc": {
+        "message": "Salvar esta página no archive.is"
+    },
+    "popupDebugScanDesc": {
+        "message": "Acionar manualmente a detecção e visualizar logs"
+    },
+    "popupDebugScanTitle": {
+        "message": "Executar Verificação de Debug"
+    },
+    "popupSettings": {
+        "message": "Configurações"
+    },
+    "popupSettingsDesc": {
+        "message": "Configurar opções de arquivo"
+    },
+    "popupShowVersions": {
+        "message": "Mostrar versões arquivadas"
+    },
+    "popupShowVersionsDesc": {
+        "message": "Ver histórico no Wayback Machine"
     }
 }
