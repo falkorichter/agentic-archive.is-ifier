@@ -1,6 +1,6 @@
 {
   "name": "agentic-archive.is-ifier",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "Browser extension to archive pages and links using archive.is services",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "version:bump": "node scripts/bump-version.js",
     "version:check": "node scripts/check-version-bump.js",
     "changelog:generate": "node scripts/generate-changelog.js",
+    "readme:update-date": "node scripts/update-readme-date.js",
     "ci": "npm run test && npm run validate"
   },
   "devDependencies": {

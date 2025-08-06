@@ -223,6 +223,11 @@ npm run changelog:generate     # Generate changelog entries from git history
 # Example: npm run changelog:generate "2 weeks ago" "1.3.0"
 ```
 
+**Documentation Metadata:**
+```bash
+npm run readme:update-date     # Update "Last updated" date in README to current date
+```
+
 **Browser-based Testing:**
 Open `tests/test.html` in your browser for interactive testing.
 
@@ -259,7 +264,7 @@ This entire codebase was generated using AI tools (specifically GitHub Copilot a
 
 ## Development Metadata
 
-**Last updated:** 2024
+**Last updated:** 2025-08-06
 **AI Tools Used:** GitHub Copilot, Claude (Anthropic)
 **Development Method:** Fully AI-generated with iterative refinement
 **Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation, translation key sorting
