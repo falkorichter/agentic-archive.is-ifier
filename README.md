@@ -99,6 +99,7 @@ See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 ├── package.json             # Node.js dependencies for validation tools
 ├── .htmlvalidate.json       # HTML validation configuration
 ├── .stylelintrc.json        # CSS validation configuration
+├── CHANGELOG.md             # Project changelog following Keep a Changelog format
 └── INSTALL.md               # Installation instructions
 ```
 
@@ -177,6 +178,10 @@ The extension includes automatic page archiving capabilities:
 
 When enabled, the content script scans pages for configured indicators and automatically archives matching pages.
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes to this project. The changelog follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format and documents all notable changes for each version.
+
 ## Related Projects
 
 This extension is similar to [rahiel/archiveror](https://github.com/rahiel/archiveror), which provides broader archiving functionality including multiple services (archive.is, archive.org, perma.cc, webcitation.org) and bookmark automation. Archiveror offers more comprehensive features like local MHTML saving and automatic bookmark archiving, while agentic-archive.is-ifier focuses specifically on archive.is-style services with a streamlined context menu experience.
@@ -211,6 +216,13 @@ npm run translations:sort      # Sort all translation keys alphabetically
 npm run validate:translations  # Validate key sorting
 ```
 
+**Changelog Management:**
+```bash
+npm run changelog:generate     # Generate changelog entries from git history
+# Usage: npm run changelog:generate [since] [version]
+# Example: npm run changelog:generate "2 weeks ago" "1.3.0"
+```
+
 **Browser-based Testing:**
 Open `tests/test.html` in your browser for interactive testing.
 
@@ -235,6 +247,7 @@ When contributing:
 5. Document the LLM and tools used in development
 6. **Update screenshots** - When UI changes are made, update screenshots in the README using browser testing tools like Playwright to ensure documentation stays current
 7. **Translation keys** - Keep translation keys in `_locales/*/messages.json` files sorted alphabetically for consistency and maintainability. Use `npm run translations:sort` to automatically sort keys or `npm run validate:translations` to check sorting.
+8. **Update changelog** - Add notable changes to [CHANGELOG.md](CHANGELOG.md) following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format. Use appropriate categories: Added, Changed, Deprecated, Removed, Fixed, Security.
 
 ## AI Generation Notice
 
@@ -251,6 +264,7 @@ This entire codebase was generated using AI tools (specifically GitHub Copilot a
 **Development Method:** Fully AI-generated with iterative refinement
 **Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation, translation key sorting
 **CI Validation:** Tests, HTML validation, CSS validation, translation key alphabetical sorting
+**Documentation:** Keep a Changelog implementation for comprehensive version tracking
 
 ---
 
