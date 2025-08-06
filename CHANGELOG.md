@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.9] - 2025-08-06
+
+### Fixed
+- Corrected "Last updated" date in README from inaccurate "2024" to current date "2025-08-06" in ISO format
+- Resolved date hallucination issue in documentation metadata
+
 ## [1.2.8] - 2025-07-17
 
 ### Added
