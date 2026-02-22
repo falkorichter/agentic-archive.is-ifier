@@ -16,6 +16,11 @@ Thumbs.db
 dist/
 build/
 
+# Jekyll build output
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+
 # Node.js dependencies (if any)
 node_modules/
 package-lock.json

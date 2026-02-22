@@ -89,6 +89,13 @@ See [INSTALL.md](INSTALL.md) for detailed installation instructions.
 │   └── messages.json         # Internationalization strings
 ├── img/
 │   └── icon.png             # Extension icon with "is!" text
+├── docs/                     # Jekyll website for GitHub Pages
+│   ├── _config.yml           # Jekyll configuration (minima theme)
+│   ├── index.md              # Website landing page
+│   ├── news.md               # News/blog listing page
+│   └── _posts/               # Blog posts
+│       ├── 2025-07-16-initial-release.md
+│       └── 2025-07-17-internationalization-support.md
 ├── tests/                    # Test suite for core functionality
 │   ├── test.html            # Browser-based test runner
 │   ├── test-runner.js       # Test execution framework
@@ -178,6 +185,23 @@ The extension includes automatic page archiving capabilities:
 
 When enabled, the content script scans pages for configured indicators and automatically archives matching pages.
 
+## Website & Blog
+
+The project has a Jekyll-based website hosted on GitHub Pages, featuring a news blog:
+
+- **Website**: [https://falkorichter.github.io/agentic-archive.is-ifier/](https://falkorichter.github.io/agentic-archive.is-ifier/)
+- **News blog**: [https://falkorichter.github.io/agentic-archive.is-ifier/news/](https://falkorichter.github.io/agentic-archive.is-ifier/news/)
+
+The website source is in the `docs/` directory and uses the [minima](https://github.com/jekyll/minima) Jekyll theme. Blog posts are stored in `docs/_posts/` as standard Jekyll post files.
+
+### Building the website locally
+
+```bash
+cd docs
+bundle install
+bundle exec jekyll serve
+```
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes to this project. The changelog follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format and documents all notable changes for each version.
@@ -259,12 +283,13 @@ This entire codebase was generated using AI tools (specifically GitHub Copilot a
 
 ## Development Metadata
 
-**Last updated:** 2024
+**Last updated:** 2026-02-22
 **AI Tools Used:** GitHub Copilot, Claude (Anthropic)
 **Development Method:** Fully AI-generated with iterative refinement
 **Test Coverage:** Core functionality, URL processing, archive detection, HTML/CSS validation, translation key sorting
 **CI Validation:** Tests, HTML validation, CSS validation, translation key alphabetical sorting
 **Documentation:** Keep a Changelog implementation for comprehensive version tracking
+**Website:** Jekyll-based blog hosted on GitHub Pages in `docs/` directory
 
 ---
 

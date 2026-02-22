@@ -1,0 +1,24 @@
+title: agentic-archive.is-ifier
+description: A Chrome extension for archiving URLs with archive.is and similar services.
+url: "https://falkorichter.github.io"
+baseurl: "/agentic-archive.is-ifier"
+
+theme: minima
+
+author:
+  name: falkorichter
+
+plugins:
+  - jekyll-feed
+
+markdown: kramdown
+
+permalink: /news/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "falkorichter"

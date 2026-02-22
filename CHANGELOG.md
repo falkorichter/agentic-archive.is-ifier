@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.9] - 2026-02-22
+
+### Added
+- Jekyll-based blog website in `docs/` directory for GitHub Pages hosting
+- News blog with listing page at `/news/`
+- Blog post: "Introducing agentic-archive.is-ifier v1.2.0" (initial release announcement)
+- Blog post: "Internationalization Support: 7 Languages Now Available"
+- Jekyll `_config.yml` with minima theme configuration
+
+### Changed
+- Updated `.gitignore` to exclude Jekyll build output (`docs/_site/`, `docs/.jekyll-cache/`)
+
 ## [1.2.8] - 2025-07-17
 
 ### Added
@@ -148,7 +160,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Archive selected text containing URLs
 - Archive current page functionality
 
-[unreleased]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.8...HEAD
+[unreleased]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.9...HEAD
+[1.2.9]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.8...v1.2.9
 [1.2.8]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/falkorichter/agentic-archive.is-ifier/compare/v1.2.5...v1.2.6
